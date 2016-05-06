@@ -1,102 +1,155 @@
 /*
-    krpano HTML5 Javascript Plugin Example
-*/
+    krpanoJS javascript plugin example / template
+ */
 
-function krpanoplugin()
-{
-    var local = this;   // save the 'this' pointer from the current plugin object
+var krpanoplugin = function() {
+    var local = this,
+        krpano = null, 
+        plugin = null,
+        pluginpath,
+        pluginTypes,
+        skinSettings,
+        isDebug,
+        isEdit;
 
-    var krpano = null;  // the krpano and plugin interface objects
-    var plugin = null;
-
-    var xml_value = 100.0;   // the value for a custom xml attribute
-
-    // registerplugin - startup point for the plugin (required)
-    // - krpanointerface = krpano interface object
-    // - pluginpath = the fully qualified plugin name (e.g. "plugin[name]")
-    // - pluginobject = the xml plugin object itself
-    local.registerplugin = function(krpanointerface, pluginpath, pluginobject)
-    {
-        // get the krpano interface and the plugin object
+    local.registerplugin = function(krpanointerface, path, pluginobject) {
         krpano = krpanointerface;
         plugin = pluginobject;
+        pluginpath = path;
+        skinSettings = krpano.skin_settings;
+        isEdit = skinSettings.isedit;
 
-        // first - say hello
-        krpano.trace(1, "hello from plugin[" + plugin.name + "]");
+        plugin.bgcapture = true;
+        plugin.type = "container";
 
-        // add plugin attributes
-        plugin.registerattribute("mode", "normal");
-        plugin.registerattribute("value", xml_value, value_setter, value_getter);
+        require(['jquery'], function($){
+            //修复input,textarea被点击事件被删除
+            $(plugin.sprite).delegate("input, textarea", "click", function() {
+                $(this).focus();
+            });
+        })
 
-        // add plugin action (the attribute needs to be lowercase!)
-        plugin.dosomething = action_dosomething;
-
-        // optionally - add some graphical content:
-
-        // register the size of the content
-        plugin.registercontentsize(200,200);
-
-        // use 100% width/height for automatic scaling with the plugin size
-        var text = document.createElement("div");
-        text.style.cssText = "width:100%;height:100%;"+
-            "display:flex;color:red;background:rgba(0,0,0,0.1);"+
-            "align-items:center;justify-content:center;text-align:center;";
-        text.innerHTML = "HTML5<br>TEST PLUGIN<br>click me";
-
-        // the plugin 'sprite' variable is the internal html element of the plugin
-        plugin.sprite.appendChild(text);
-
+        console.debug("ac正在加载");
+        initrequire(startUp);
     }
 
-    // unloadplugin - exit point for the plugin (optionally)
-    // - will be called from krpano when the plugin will be removed
-    // - everything that was added by the plugin should be removed here
-    local.unloadplugin = function()
-    {
-        plugin = null;
-        krpano = null;
+    function startUp() {
+        console.log("applicationContext");
+        var plugins = krpano.get('plugin').getArray();
+        var pluginsUrl = [];
+        var newPlugins = [];
+        var pluginTypes = skinSettings.plugin_types.replace(/\s/g, "");
+        pluginTypes = !pluginTypes ? ['plugin_base'] : pluginTypes.split(",");
+
+        console.debug(pluginTypes);
+
+        for (var i in plugins) {
+            for(var j in pluginTypes){
+                if (plugins[i].plugintype == pluginTypes[j] && plugins[i].js) {
+                    pluginsUrl.push(plugins[i].js);
+                    newPlugins.push(plugins[i]);
+                    
+                    // console.debug(plugins[i].js);
+                    break;
+                }
+            }
+        }
+
+        // console.debug(pluginTypes);
+        console.debug(pluginsUrl);
+
+        //组合所有插件
+        define('applicationContext', pluginsUrl, function(){
+            var plugins = {};
+            
+            for(var i = 0; i < newPlugins.length; i++){
+                var obj = {};
+
+                if(!arguments[i]){
+                    continue;
+                }
+                
+                obj.icon = newPlugins[i].icon;
+                obj.name = newPlugins[i].nickname;
+                obj.plugin = newPlugins[i];
+                obj.fn = new arguments[i](krpano, obj.plugin);
+                // console.log(isEdit == "true");
+
+                obj.viewFn = isEdit == "true"?obj.fn.edit:obj.fn.view;
+                
+
+                if(typeof obj.viewFn === "function"){
+                    obj.viewFn = new obj.viewFn();
+                }
+
+                // console.log(obj.fn, obj.fn.edit);
+                obj.plugintype = newPlugins[i].plugintype
+                
+                plugins[newPlugins[i].name] = obj;
+            }
+
+            console.log("哈哈");
+            
+            return {
+                count: newPlugins.length,
+                getPlugin: function(name){
+                    return plugins[name];
+                },
+                getArray: function(){
+                    return plugins;
+                },
+                getPluginByType: function(type){
+                    var tempList = [];
+
+                    var get = function(type){
+                        var temp = [];
+                        for(var i in plugins){
+                            if(plugins[i].plugintype == type){
+                                tempList.push(plugins[i]);
+                            }
+                        }
+                    }
+
+                    if(type instanceof Array){
+                        for(var i in type){
+                            get(type[i]);
+                        }
+                    } else if (typeof type === "string") {
+                        get(type);
+                    };
+
+                    return tempList;
+                }
+            }
+        })
     }
 
-    // onresize (optionally)
-    // - width,height = the new size for the plugin
-    // - when not defined then only the krpano plugin html element will be sized
-    local.onresize = function(width,height)
-    {
-        // not used in this example
-        // the plugin content will resize automatically because
-        // of the width=100%, height=100% CSS style
-        return false;
-    }
+    function initrequire(fn){
+        if (!window.requirejs) {
+            var head = document.getElementsByTagName('HEAD').item(0);
+            var script = document.createElement("script");
+            script.type = "text/javascript";
+            script.src = "require.js";
+            script.async = false;
 
-    function value_setter(newvalue)
-    {
-        if (newvalue != xml_value)
-        {
-            krpano.trace(1, "'value' will be changed from " + xml_value + " to " + newvalue);
-            xml_value = newvalue;
+            script.onload = function() {
+                fn();
+            }
+
+            head.appendChild(script);
+            return;
+        } else {
+            fn();
         }
     }
 
-    function value_getter()
-    {
-        return xml_value;
+    local.hittest = function(x, y) {
+        return false;
     }
 
-    function action_dosomething()
-    {
-        // trace the given action arguments
-        krpano.trace(1, "dosomething() was called with " + arguments.length + " arguments:");
-        for (var i=0; i < arguments.length; i++)
-            krpano.trace(1, "arguments[" + i + "]=" + arguments[i]);
+    local.onresize = function(width, height) {
+        // not used in this example
 
-        // trace some infos
-        krpano.trace(1, "mode=" + plugin.mode);
-        krpano.trace(1, "lookat=" + krpano.view.hlookat + " / " + krpano.view.vlookat);
-
-        // call krpano actions
-        plugin.accuracy = 1;    // disable grid fitting for smoother size changes
-        krpano.call("tween(width|height, 500|100)", plugin);
-        krpano.call("lookto(0,0,150); wait(1.0); lookto(90,0,90);");
-        krpano.call("tween(width|height, 200|200)", plugin);
+        return false;
     }
-}
+};
