@@ -54,10 +54,7 @@ var krpanoplugin = function() {
 	function startUp(krpanointerface, pluginpath, pluginobject) {
 		setTimeout(function(){
 			window.require([ 'jquery', pluginobject.js, 'applicationContext'], function($, index, ac) {
-				$(pluginobject.sprite).delegate("input, textarea", "click", function() {
-					$(this).focus();
-				});
-				
+
 				var fn = new index(krpanointerface, pluginobject);
 
 				var pluginTypes = skinSettings.plugin_types.replace(/\s/g, "");
@@ -367,7 +364,7 @@ var krpanoplugin = function() {
 			var ga = document.createElement('script');
 			ga.type = 'text/javascript';
 			ga.async = false;
-			ga.src = "photo/js/jquery-1.4.min.js";
+			ga.src = "/jquery.js";
 			document.body.appendChild(ga);
 
 			return window.$;

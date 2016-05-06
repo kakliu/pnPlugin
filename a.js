@@ -72,15 +72,15 @@ var krpanoplugin = function() {
                 obj.icon = newPlugins[i].icon;
                 obj.name = newPlugins[i].nickname;
                 obj.plugin = newPlugins[i];
-                obj.fn = new arguments[i](krpano, obj.plugin);
+                // obj.fn = new arguments[i](krpano, obj.plugin);
                 // console.log(isEdit == "true");
 
-                obj.viewFn = isEdit == "true"?obj.fn.edit:obj.fn.view;
+                // obj.viewFn = isEdit == "true"?obj.fn.edit:obj.fn.view;
                 
 
-                if(typeof obj.viewFn === "function"){
-                    obj.viewFn = new obj.viewFn();
-                }
+                // if(typeof obj.viewFn === "function"){
+                //     obj.viewFn = new obj.viewFn();
+                // }
 
                 // console.log(obj.fn, obj.fn.edit);
                 obj.plugintype = newPlugins[i].plugintype

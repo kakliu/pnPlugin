@@ -6,7 +6,7 @@
     <plugin name="flying" url="a.js" />
     <plugin name="editui" plugintype="plugin_ui" keep="true" url="%SWFPATH%/view.js" js="/tool.js"/>
     <plugin name="flyb" plugintype="plugin_base" keep="true" js="b.js"   edge="topleft" x="60%" zorder="0" alpha="0"  />
-    <plugin name="b8peqwbv" plugintype="plugin_base" keep="true" js="/p/webVR/webVR.js" align="center" edge="center" nickname="VR" />
+    <plugin name="b8peqwbv" plugintype="plugin_base" keep="true" js="c.js" align="center" edge="center" nickname="VR" />
     <!-- view/fov settings -->
     <view hlookat="0" vlookat="0" fovtype="VFOV" fov="90" fovmin="30" fovmax="150" />
 

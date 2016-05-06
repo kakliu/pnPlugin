@@ -3,29 +3,8 @@ var plugin;
 
 define([
 		'jquery',
-		'template',
-		'krpanoPluginJs',
-		'proxy',
-		'focaldistance/focaldistance',
-		'toolbar/toolbar.tpl',
-		'layer',
-		'rangeSlider/rangeSlider',
-		'addlink/menu',
-		'addlink/menu.tpl',
-		'css!common/common.css',
-		'css!common/basicCommon.css',
-		'css!toolbar/toolbar.css',
-		// 弹窗
-		'css!skin/layer.css',
-		'css!focaldistance/focaldistance.css',
-		// 设置焦距范围
-		
-		// 'css!/v2.0/rangeSlider/ion.rangeSlider.skinHTML5',
-		// 'css!/v2.0/rangeSlider/rang.css',
-		// 'css!/v2.0/rangeSlider/ion.rangeSlider.css',
-		// 添加连接器
-		'css!addlink/menu.css'
-	], function($,template,krpanoPluginJs,proxy,focaldistance){
+		'krpano',
+	], function($,krpanoPluginJs){
 
 		function X(krpano, plugin){
 			this.init(krpano, plugin);
