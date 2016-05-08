@@ -2,7 +2,13 @@
 var gulp = require('gulp');
 var livereload = require('gulp-livereload');
 var webserver = require('gulp-webserver');
+var concat = require('gulp-concat');
 
+gulp.task('concat', function () {
+    gulp.src(['jQuery.js','require.js'])
+        .pipe(concat('all.js'))//合并后的文件名
+        .pipe(gulp.dest('dist'));
+});
 
 gulp.task('webserver', function() {
     gulp.src('./') // 服务器目录（./代表根目录）

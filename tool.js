@@ -14,48 +14,7 @@ define([
 		X.prototype = {
 			initFn: true,
 			init: function(krpano, plugin){
-				krpanoPluginJs.init(krpano, plugin);
 				
-				var toolbarHtml = this.toolbarHtml =$(template(toolbar,{}));
-				var menu=$(template(menu,{}));
-
-				krpanoPluginJs.addChilde(toolbarHtml, true);
-				krpanoPluginJs.addChilde(menu, true);
-
-				new focaldistance(this);
-				this.setSceneView();
-				this.linker();
-				this.hotspot();
-			},
-			setSceneView:function(){
-				// 设置初始视角
-				$(document).on('click','.set',function(){
-					//加载初始视角值
-					view = krpanoPluginJs.getView();
-
-					proxy.setSceneViewById({
-		            	sceneId: krpanoPluginJs.getSceneId(),
-		            	hlookat: Math.round(view.ath),
-		            	vlookat: Math.round(view.atv)
-		            },function(data){
-		            	if(data.success){
-							$(this).addClass("curr");
-							msg("保存成功");
-						} else {
-							msg(data.errMsg);
-						}
-		            })
-				})		
-			},
-			linker:function(){
-				$(".add-link").click(function(){
-					krpanoPluginJs.addEditHotspot("link_scene","spoticon2");
-				})
-			},
-			hotspot:function(){
-				$(".add-spot").click(function(){
-					krpanoPluginJs.addEditHotspot("spot","spoticon2");
-				})
 			},
 			addPlugin: function(op) {
 				var self = this;
@@ -65,7 +24,7 @@ define([
 				
 				if(op.content){
 					var content = $("<div/>").addClass("toolbar-content").append(op.content).appendTo(plugin);
-					
+					console.log(plugin);
 					plugin.data("show", function(){
 						var height = content.outerHeight() + 40;
 						plugin.animate({height: height}, "normal");
@@ -95,14 +54,6 @@ define([
 				})
 				
 				return plugin;
-			}, 
-			hideAll: function(){
-				$.each($(this.toolbarHtml).children("li"), function(i, v){
-					if($(this).data("curr") == true) {
-						$(this).data("hide")();
-						$(this).data("curr", false);
-					}
-				});
 			}
 		}
 
