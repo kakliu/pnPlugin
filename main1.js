@@ -1,36 +1,73 @@
 /**
  * Created by Administrator on 2016/5/6.
  */
-//var vars = {};
-//var xml = "/getXml?id=20700&style=&"+Date.parse(new Date());
-//
-//embedpano({swf:"/krpano/krpano.swf", xml:xml, target:"panoView",  html5:"prefer", passQueryParameters:true, vars:vars, id:"krpanoSWFObject"});
-//
-//if(document.domain.indexOf("duc.cn")>-1){
-//    document.domain = "duc.cn";
-//} else if(document.domain.indexOf("panocooker.com")>-1){
-//    document.domain = "panocooker.com";
-//}
+/*
+    krpano Embedding Script
+    krpano 1.19-pr4 (build 2016-04-07)
+*/
+
 
 (function (window, undefined) {
     var yp = function (option) {
-        //this.init();
+        this.init();
         this.createPano(option);
     }
+
+
 
     yp.extend = yp.prototype;
 
     yp.extend.init = function () {
-        function addScript(path) {
-            var oHead = document.getElementsByTagName('HEAD').item(0);
-            var oScript = document.createElement("script");
-            oScript.type = "text/javascript";
-            oScript.src = path;
-            oHead.appendChild(oScript);
+      function loadJS(id,url){
+      var xmlHttp = null;
+      if(window.ActiveXObject)//IE
+      {
+        try {
+          xmlHttp = new ActiveXObject("Msxml2.XMLHTTP");
         }
+        catch (e) {
+          xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+      }
+      else if(window.XMLHttpRequest)//Firefox，Opera 8.0+，Safari，Chrome
+      {
+        xmlHttp = new XMLHttpRequest();
+      }
+      xmlHttp.open("GET",url,false);
+      xmlHttp.send(null);
+      if ( xmlHttp.readyState == 4 )
+      {
+        if((xmlHttp.status >= 200 && xmlHttp.status <300) || xmlHttp.status == 0 || xmlHttp.status == 304)
+        {
+          var myHead = document.getElementsByTagName("HEAD").item(0);
+          var myScript = document.createElement( "script" );
+          myScript.language = "javascript";
+          myScript.type = "text/javascript";
+          myScript.id = id;
+          try{
+            myScript.appendChild(document.createTextNode(xmlHttp.responseText));
+          }
+          catch (ex){
+            myScript.text = xmlHttp.responseText;
+          }
+          myHead.appendChild(myScript);
+          return true;
+        }
+        else
+        {
+          return false;
+        }
+      }
+      else
+      {
+        return false;
+      }
+    }
 
-        addScript("/common/logger.js");
-        addScript("/krpano/embedpano.js");
+        // addScript("/common/logger.js");
+        loadJS("jquery","jquery.js")
+        loadJS("myJS","/viewer/krpano.js")
+
     }
 
     //创建全景
@@ -43,7 +80,7 @@
         } else if (this.option.panoId) {
             this.option.xml = this.option.path + "/getXml?id=" + this.option.panoId + "&" + Date.parse(new Date());
         } else {
-            logger.error("创建失败,无可用xml");
+            console.error("创建失败,无可用xml");
             return;
         }
 
@@ -73,7 +110,7 @@
         this.element.css({width: this.option.width, height: this.option.height});
         $("body, html").css({width: this.option.width, height: this.option.height});
 
-        logger.info(kOption);
+        console.info(kOption);
         embedpano(kOption);
     }
 
@@ -93,6 +130,12 @@
         height: "100%"
     }
 
+
+
     window.YP = yp;
     window.YP.extend = yp.extend;
 })(window)
+
+    YP.prototype.a = function(){
+        console.log(this.krpano)
+    }

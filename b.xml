@@ -1,0 +1,9 @@
+<krpano>
+
+    <!-- grid preview pano -->
+    <preview type="grid(cube,64,64,512,0xeeeeee,0xffffff,0xff0000);" />
+    <skin_settings plugin_types="plugin_base, plugin_product, plugin_hotspot, plugin_navigation" />
+
+    <view hlookat="0" vlookat="0" fovtype="VFOV" fov="90" fovmin="30" fovmax="150" />
+
+</krpano>
