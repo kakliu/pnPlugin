@@ -6,6 +6,7 @@ var krpanoplugin = function() {
 	var local = this; // save the 'this' pointer from the current plugin
 						// object
 
+	console.log(local);
 	var krpano = null; // the krpano and plugin interface objects
 	var plugin = null;
 
@@ -33,26 +34,12 @@ var krpanoplugin = function() {
 		plugin.type = "container";
 		skinSettings = krpano.skin_settings;
 
-		if (!window.requirejs) {
-			var head = document.getElementsByTagName('HEAD').item(0);
-			var script = document.createElement("script");
-			script.type = "text/javascript";
-			script.src = "/require.js";
-			script.async = false;
-
-			script.onload = function() {
-				startUp(krpanointerface, pluginpath, pluginobject);
-			}
-
-			head.appendChild(script);
-			return;
-		} else {
-			startUp(krpanointerface, pluginpath, pluginobject);
-		}
+		startUp(krpanointerface, pluginpath, pluginobject);
 	}
 
 	function startUp(krpanointerface, pluginpath, pluginobject) {
 		setTimeout(function(){
+
 			window.require([ 'jquery', pluginobject.js, 'applicationContext'], function($, index, ac) {
 
 				var fn = new index(krpanointerface, pluginobject);
@@ -61,15 +48,15 @@ var krpanoplugin = function() {
 				pluginTypes = !pluginTypes ? ['plugin_base'] : pluginTypes.split(",");
 
 				var plugins = ac.getPluginByType(pluginTypes);
-				console.log(plugins);
+				console.log("plugins",plugins);
 				
 				for(var i =0; i < plugins.length; i++) {
 					var flag = krpano.get("skin_settings.isedit") == 'true'?true:false;
 					
 					var plugin = plugins[i].fn;
 					var pluginFn = plugins[i].viewFn;
-					
-					console.log(plugins[i].name, pluginFn && pluginFn.isAddPlugin);
+
+					console.log(i + "------------", plugin);
 					if(!pluginFn) {
 						continue;
 					} else if(pluginFn && pluginFn.isAddPlugin == false){
@@ -132,19 +119,4 @@ var krpanoplugin = function() {
 			});
 		});
 	}
-
-	
-	function initJquery() {
-		if (!window.$) {
-			var ga = document.createElement('script');
-			ga.type = 'text/javascript';
-			ga.async = false;
-			ga.src = "/jquery.js";
-			document.body.appendChild(ga);
-
-			return window.$;
-		}
-	}
-
-	initJquery();
 };

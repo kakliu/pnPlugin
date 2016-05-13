@@ -30,7 +30,9 @@
 <div id="pano" style="width:100%;height:100%;">
     <noscript><table style="width:100%;height:100%;"><tr style="vertical-align:middle;text-align:center;"><td>ERROR:<br><br>Javascript not activated<br><br></td></tr></table></noscript>
     <script>
-        embedpano({swf:"viewer/krpano.swf", xml:"a.xml", target:"pano", html5:"auto", mobilescale:1.0, passQueryParameters:true, initvars: {CODEURL: codeUrl} });
+        embedpano({swf:"viewer/krpano.swf", xml:"a.xml", target:"pano", html5:"auto", mobilescale:1.0, passQueryParameters:true, initvars: {CODEURL: codeUrl},onready:function(krpano){
+                window.krpano = krpano;
+        } });
     </script>
 </div>
 

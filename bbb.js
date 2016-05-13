@@ -7,7 +7,7 @@
 }(function($) {
 	var view = {
 		init: function(dom) {
-			console.log("ok is init");
+			console.log("ok is bbbb");
 		},
 		show: function() {
 			console.log(activityHtml);
@@ -15,7 +15,7 @@
 		hide: function() {}
 	}
 
-	function X(krpano, plugin) {}
+	function X() { console.log("is bbb.js ------------");}
 	X.prototype = {
 		view: view,
 		show: null,

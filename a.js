@@ -56,11 +56,15 @@ var krpanoplugin = function() {
         }
 
         // console.debug(pluginTypes);
-        console.debug(pluginsUrl);
+        console.debug("pluginsUrl",pluginsUrl);
+        console.debug("newPlugins",newPlugins);
 
         //组合所有插件
-        define('applicationContext', pluginsUrl, function(){
+        define('applicationContext', pluginsUrl, function(p){
             var plugins = {};
+
+            console.log("arguments",arguments);
+
             
             for(var i = 0; i < newPlugins.length; i++){
                 var obj = {};
@@ -72,15 +76,13 @@ var krpanoplugin = function() {
                 obj.icon = newPlugins[i].icon;
                 obj.name = newPlugins[i].nickname;
                 obj.plugin = newPlugins[i];
-                // obj.fn = new arguments[i](krpano, obj.plugin);
-                // console.log(isEdit == "true");
-
-                // obj.viewFn = isEdit == "true"?obj.fn.edit:obj.fn.view;
+                console.trace();
+                console.log("arguments---",arguments[i]);
+                obj.fn = new arguments[i](krpano,obj.plugin);
                 
-
-                // if(typeof obj.viewFn === "function"){
-                //     obj.viewFn = new obj.viewFn();
-                // }
+                if(typeof obj.viewFn === "function"){
+                    obj.viewFn = new obj.viewFn();
+                }
 
                 // console.log(obj.fn, obj.fn.edit);
                 obj.plugintype = newPlugins[i].plugintype

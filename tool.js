@@ -1,10 +1,6 @@
-var krpano;
-var plugin;
-
 define([
-		'jquery',
-		'krpano',
-	], function($,krpanoPluginJs){
+		'jquery'
+	], function($){
 
 		function X(krpano, plugin){
 			this.init(krpano, plugin);
@@ -14,7 +10,7 @@ define([
 		X.prototype = {
 			initFn: true,
 			init: function(krpano, plugin){
-				
+				console.log("is tool init;")
 			},
 			addPlugin: function(op) {
 				var self = this;
