@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="/js/duc.common.js"></script>
+		<script type="text/javascript" src="/depend/requirejs/require.js"></script>
+		<script type="text/javascript" src="/depend/jquery/jquery.js" ></script>
+		<script>
+			var baseUrl = getQueryString("debug")?"/v2.0":"/dist";
+			require.config({
+				baseUrl: baseUrl,
+				paths:{
+			    	'template': '/depend/template.js/template',
+			    	'css': '/depend/requirejs/css',
+			    	'text': '/depend/requirejs/text',
+			        'proxy': 'proxy/proxy'
+				}
+			});
+			
+			requirejs(['nonauthor/nonauthor']);
+		</script>
+	</head>
+	<body>
+		<div class="nonauthor">
+			<div class="mcenter">
+				<div class="logo">
+					<a href="/">
+						<img src="../../images/nlogo.png" />
+					</a>
+				</div>
+				<div class="ws">
+					<a href="javascript:;">
+						<img src="../../images/ws.png" />
+					</a>
+				</div>
+				<p class="noat">您不是我们的作者</p>
+				<p class="noatkf">如果您想开通此权限，请联系我们的客服</p>
+				<p class="tel">0571-22919900</p>
+			</div>
+		</div>
+		<ul class="nonauthorlist">
+			<li>
+				<a href="javascript:;">
+					<img src="../../images/np1.png" />
+				</a>
+			</li>
+			<li>
+				<a href="javascript:;">
+					<img src="../../images/np2.png" />
+				</a>
+			</li>
+			<li>
+				<a href="javascript:;">
+					<img src="../../images/np3.png" />
+				</a>
+			</li>
+			<li>
+				<a href="javascript:;">
+					<img src="../../images/np4.png" />
+				</a>
+			</li>
+			<li>
+				<a href="javascript:;">
+					<img src="../../images/np5.png" />
+				</a>
+			</li>
+			<li>
+				<a href="javascript:;">
+					<img src="../../images/np6.png" />
+				</a>
+			</li>
+			<li>
+				<a href="javascript:;">
+					<img src="../../images/np7.png" />
+				</a>
+			</li>
+			<li>
+				<a href="javascript:;">
+					<img src="../../images/np8.png" />
+				</a>
+			</li>
+			<li>
+				<a href="javascript:;">
+					<img src="../../images/np9.png" />
+				</a>
+			</li>
+			<li>
+				<a href="javascript:;">
+					<img src="../../images/np10.png" />
+				</a>
+			</li>
+		</ul>
+	</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>编辑页面</title>
+<link rel="stylesheet" type="text/css" href="../common/common.css">
+<link rel="stylesheet" type="text/css" href="../common/basicCommon.css">
+<link rel="stylesheet" type="text/css" href="edit.css">
+<!-- 弹窗css -->
+<link rel="stylesheet" type="text/css" href="../skin/layer.css">
+<script type="text/javascript" src="../depend/jquery.min.js"></script>
+<script type="text/javascript" src="../depend/template.js"></script>
+<script type="text/javascript" src="viewEdit.tpl.js"></script>
+<script type="text/javascript" src="../modul/jquery.sortable.js"></script>
+<script type="text/javascript" src="edit.js"></script>
+<!-- 弹窗 js-->
+<script type="text/javascript" src="../modul/layer.js"></script>
+</head>
+<div>
+	<div class="top">
+		<div class="logo"><a href="javascript:void(0)"><img src="../images/logo.png" class="logo-img"></a></div>
+		<div class="top-right">
+			<ul>
+				<li class="curr">全景编辑</li>
+				<li>组件管理</li>
+				<li>基本信息</li>
+			</ul>
+			<div class="top-right-btn">
+				<button type="button" class="end"></button>
+				<a href="" class="view"><img src="../images/view-y.png"></a>
+				<button type="button" class="delete"></button>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="content">
+	<div class="content-left">
+		<div class="item">
+			<i class="item-img"></i>
+			<input type="text" class="item-name" value="项目名称" readonly>
+		</div>
+		<div class="title">
+			<i class="view-img"></i>
+			全景列表
+		</div>
+		<div class="add">
+			<div class="add-file first-upload"><i></i><p class="add-fileimg">添加全景文件</p></div>
+			<div class="add-zu"><i></i><p class="add-zuimg">添加组</p></div>
+		</div>
+		<div id="multi" class="menu_list">
+			
+			
+		</div>
+	</div>
+	<div class="content-right"></div>
+</div>
+
+<!-- 拖拽上传图片 -->
+<script type="text/javascript" src="../dist/dropzone.js"></script>
+<link href="../dist/dropzone.css" rel="stylesheet" type="text/css"/>
+<link href="../dist/basic.css" rel="stylesheet" type="text/css"/>
+<link href="../dist/commondrap.css" rel="stylesheet" type="text/css"/>
+<body> 
+</body>
+</html>

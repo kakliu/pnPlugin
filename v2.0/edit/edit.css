@@ -1,0 +1,519 @@
+@charset "utf-8";
+.float-l {
+  float: left;
+}
+.float-r {
+  float: right;
+}
+body {
+  color: #fff;
+  overflow: hidden;
+}
+i {
+  background: url(../images/icon.png) no-repeat;
+  display: block;
+  width: 20px;
+  height: 20px;
+  float: left;
+}
+.content-left .content-left-left {
+  width: 250px;
+  float: left;
+  background-color: #2C333D;
+}
+.content-left .content-left-left .item {
+  position: relative;
+  border-bottom: 1px solid #62717F;
+  padding-left: 20px;
+  text-align: left;
+  height: 70px;
+  line-height: 70px;
+}
+.content-left .content-left-left .item .item-img {
+  margin-top: 26px;
+  background-position: -448px -92px;
+}
+.content-left .content-left-left .item .item-name {
+  display: none;
+  width: 153px;
+  font-size: 16px;
+  background-color: #2C333D;
+  color: #fff;
+  height: 40px;
+  line-height: 40px;
+  font-family: 微软雅黑;
+  overflow: hidden;
+  position: absolute;
+  left: 48px;
+  top: 16px;
+}
+.content-left .content-left-left .item .span-input {
+  width: 174px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  position: absolute;
+  left: 48px;
+  height: 40px;
+  line-height: 40px;
+  top: 16px;
+}
+.content-left .content-left-left .title {
+  height: 70px;
+  border-bottom: 2px dashed #687886;
+  line-height: 70px;
+  font-size: 16px;
+  text-align: left;
+  color: #fff;
+}
+.content-left .content-left-left .title .view-img {
+  float: left;
+  margin: 26px 10px 0 20px;
+  background-position: -448px -149px;
+}
+.content-left .content-left-left .add {
+  height: 84px;
+  border-bottom: 2px dashed #687886;
+}
+.content-left .content-left-left .add .add-file,
+.content-left .content-left-left .add .add-zu {
+  width: 125px;
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+  height: 84px;
+  cursor: pointer;
+  font-size: 12px;
+  color: #666;
+}
+.content-left .content-left-left .add .add-file {
+  border-right: 2px dashed #687886;
+}
+.content-left .content-left-left .add .add-file i {
+  background-position: -229px -96px;
+  width: 30px;
+  height: 30px;
+  margin-left: 48px;
+}
+.content-left .content-left-left .add .add-file .add-fileimg {
+  clear: both;
+  padding-top: 10px;
+}
+.content-left .content-left-left .add .add-zu i {
+  background-position: -292px -99px;
+  width: 28px;
+  height: 22px;
+  margin-left: 48px;
+  margin-top: 10px;
+}
+.content-left .content-left-left .add .add-zu .add-zuimg {
+  clear: both;
+  padding-top: 10px;
+}
+.content-left .content-left-left .bj-common {
+  position: absolute;
+  right: 10px;
+  top: 28px;
+  cursor: pointer;
+}
+.content-left .content-left-left .editName {
+  background-position: -406px -116px;
+}
+.content-left .content-left-left .editName:hover {
+  background-position: -406px -97px;
+}
+.content-left .content-left-left .save-com,
+.content-left .content-left-left .zu-save {
+  display: none;
+  background-position: -637px -288px;
+  width: 25px;
+}
+.content-left-right {
+  float: left;
+  overflow: hidden;
+}
+#multi {
+  overflow: auto;
+  position: relative;
+}
+#multi .mCSB_scrollTools {
+  width: 5px;
+  z-index: 101;
+}
+#multi .mCSB_inside > .mCSB_container {
+  margin-right: 5px;
+}
+.menu_list {
+  width: 244px;
+  color: #fff;
+  font-size: 14px;
+  background-color: #37404e;
+  margin: 0 3px;
+}
+.menu_list .tile ul:first-child {
+  display: block;
+}
+.menu_list .menu {
+  overflow: hidden;
+}
+.menu_list .menu.curr .menu_head {
+  background-color: #3A98D8;
+}
+.menu_list .menu.curr .menu_head .zk {
+  -webkit-transform: rotate(0deg);
+  transform: rotate(0deg);
+}
+.menu_list .menu.curr .menu_head .zu-name {
+  background-color: #3A98D8 !important;
+}
+.menu_list .menu.curr .menu_head .editCommon {
+  position: absolute;
+  left: 25px;
+  height: 43px;
+}
+.menu_list .menu.curr .menu_head .delet-btn {
+  display: block;
+}
+.menu_list .sortable-placeholder {
+  height: 40px;
+  border: 1px solid #3a98d8;
+  box-sizing: border-box;
+}
+.menu_list .menu_head {
+  height: 43px;
+  line-height: 43px;
+  padding-left: 10px;
+  font-size: 14px;
+  color: #fff;
+  cursor: pointer;
+  margin: 0px;
+  font-weight: bold;
+  border-radius: 3px;
+  text-align: left;
+  position: relative;
+  z-index: 100;
+}
+.menu_list .menu_head .zk {
+  display: block;
+  width: 9px;
+  height: 6px;
+  float: left;
+  background: url(../images/up.png) no-repeat;
+  top: 20px;
+  position: relative;
+  -webkit-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+  transition: all 0.5s ease-in 0.1s;
+}
+.menu_list .menu_head .zu-name {
+  background-color: #37404E;
+  color: #fff;
+  font-size: 14px;
+  font-family: 微软雅黑;
+  display: none;
+  width: 153px;
+  position: absolute;
+  left: 25px;
+  height: 43px;
+}
+.menu_list .menu_head .span-input {
+  width: 154px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  position: absolute;
+  left: 25px;
+}
+.menu_list .menu_head .alone {
+  top: 13px !important;
+  right: 8px;
+}
+.menu_list .menu_head .bj-common {
+  top: 11px !important;
+  right: 30px !important;
+}
+.menu_list .menu_body {
+  margin-right: 5px;
+}
+.menu_list .menu_body .bj-common {
+  top: 16px !important;
+  right: 21px !important;
+}
+.menu_list .menu_body .progress {
+  position: absolute;
+  width: 175px;
+  left: 44px;
+  margin-bottom: 0;
+  bottom: 7px;
+  height: 2px;
+}
+.menu_list .menu_head:hover .delet-btn {
+  display: block;
+}
+.menu_list .delet-btn {
+  display: block;
+  width: 16px;
+  height: 17px;
+  background-position: -332px -119px;
+  position: absolute;
+  right: 3px;
+  top: 20px;
+  display: none;
+}
+.menu_list .delet-btn:hover {
+  background-position: -332px -99px;
+}
+.menu_list .menu_body {
+  line-height: 38px;
+  backguound: #fff;
+  max-height: 270px;
+  overflow: hidden;
+  overflow-y: auto;
+  display: none;
+}
+.menu_list .menu_body li {
+  display: block;
+  height: 53px;
+  line-height: 53px;
+  color: #fff;
+  text-decoration: none;
+  background-color: #2C333D;
+  margin: 1px 4px;
+  border-radius: 5px;
+  clear: both;
+  position: relative;
+}
+.menu_list .menu_body li .span-input {
+  width: 151px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  position: absolute;
+  left: 43px;
+  text-align: left;
+}
+.menu_list .menu_body li .left-bor {
+  border-left: 2px solid #eee;
+  height: 38px;
+  margin-top: 7px;
+  filter: alpha(opacity=29);
+  -moz-opacity: 0.29;
+  -khtml-opacity: 0.29;
+  opacity: 0.29;
+}
+.menu_list .menu_body li input.name {
+  color: #fff;
+  font-family: 微软雅黑;
+  font-size: 14px;
+  background-color: #2C333D;
+  position: absolute;
+  left: 43px;
+  display: none;
+  height: 53px;
+  line-height: 53px;
+}
+.menu_list .menu_body li .drap {
+  display: inline-block;
+  width: 33px;
+  height: 53px;
+  float: left;
+  text-align: Center;
+  background-position: -488px -122px;
+}
+.menu_list .menu_body li.choose {
+  background-color: #3A98D8;
+}
+.menu_list .menu_body li.choose .name {
+  background-color: #3A98D8;
+}
+.menu_list .menu_body li.choose .delet-btn {
+  display: block;
+}
+.menu_list .menu_body li.choose .drap {
+  background-position: -488px -77px;
+}
+.menu_list .menu_body li:hover {
+  text-decoration: none;
+}
+.menu_list .menu_body li:hover .left-bor {
+  border-left: 2px solid #5EAEE3;
+}
+.menu_list .menu_body li:hover .delet-btn {
+  display: block;
+}
+.menu_list .menu_body li:hover .drap {
+  background-position: -488px -77px;
+}
+.menu_list .menu_body li.curr {
+  background-color: #3A98D8;
+}
+.menu_list li.current {
+  background: #3A98D8;
+}
+.menu_body::-webkit-scrollbar {
+  width: 5px;
+  height: 10px;
+}
+.menu_body::-webkit-scrollbar-button {
+  background-color: #2C333D;
+}
+.menu_body::-webkit-scrollbar-track {
+  background: #2C333D;
+}
+.menu_body::-webkit-scrollbar-track-piece {
+  background: url(http://www.lyblog.net/wp/wp-content/themes/mine/img/stripes_tiny_08.png);
+}
+.menu_body::-webkit-scrollbar-thumb {
+  background: #FFA711;
+  border-radius: 4px;
+}
+.menu_body::-webkit-scrollbar-corner {
+  background: #2C333D;
+}
+.menu_body::-webkit-scrollbar-resizer {
+  background: #2C333D;
+}
+.layui-layer-hui .layui-layer-content {
+  border: 1px solid #737988;
+  font-size: 24px;
+  color: #737988;
+  background-color: #fff;
+  padding: 10px 20px !important;
+}
+#upFilePop {
+  display: none;
+}
+.addFileClas .layui-layer-content {
+  background-color: #fff !important;
+}
+.addFileClas .layui-layer-content .cancel-file {
+  background-color: #5EAEE3;
+  display: none;
+  width: 136px;
+  height: 41px;
+  text-align: center;
+  color: #fff;
+  font-size: 16px;
+  border-radius: 20px;
+  position: absolute;
+  left: 50%;
+  margin-left: -68px;
+  cursor: pointer;
+  font-family: 微软雅黑;
+  margin-top: 26px;
+}
+.addFileClas .layui-layer-content .fa-select {
+  float: left;
+  width: 395px;
+  margin-left: 20px;
+  height: 42px;
+  overflow: hidden;
+}
+.addFileClas .layui-layer-content .fa-select .choosed-name {
+  width: 373px;
+  height: 40px;
+  line-height: 40px;
+  border: 1px solid #eee;
+  padding-left: 20px;
+}
+.addFileClas .layui-layer-content .fa-select .chosed-zK {
+  display: none;
+  border: 1px solid #eee;
+  width: 393px;
+  z-index: 10000;
+  background-color: #fff;
+  position: absolute;
+}
+.addFileClas .layui-layer-content .fa-select .chosed-zK .chosed-noAll {
+  max-height: 100px;
+  overflow: hidden;
+  overflow-y: auto;
+}
+.addFileClas .layui-layer-content .fa-select .chosed-zK .chosed-noAll .choose-zuNa {
+  max-height: 100px;
+  overflow: hidden;
+  overflow-y: auto;
+}
+.addFileClas .layui-layer-content .fa-select .chosed-zK .chosed-noAll .choose-zuNa li {
+  padding-left: 20px;
+  border-bottom: 1px solid #eee;
+}
+.addFileClas .layui-layer-content .fa-select .chosed-zK .chosed-noAll .choose-zuNa li:hover {
+  background-color: #5eaee3;
+  color: #fff;
+}
+.addFileClas .layui-layer-content .fa-select .new-zuAll {
+  background-color: #EFEFEF;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  position: relative;
+}
+.addFileClas .layui-layer-content .fa-select .new-zuAll .new-zuName {
+  height: 40px;
+  line-height: 40px;
+  width: 340px;
+  padding-left: 10px;
+  font-size: 16px;
+  font-family: 微软雅黑;
+}
+.addFileClas .layui-layer-content .fa-select .new-zuAll .addZu-img {
+  position: absolute;
+  top: 22px;
+  right: 26px;
+  cursor: pointer;
+}
+.addFileClas .layui-layer-content .dropzone.dz-clickable {
+  clear: both;
+}
+.addFileClas .dz-preview {
+  float: left;
+  margin-left: 24px !important;
+}
+.addFileClas .dz-message {
+  background: url(../images/upqj.png) center no-repeat;
+}
+.addFileClas .aginAddpic {
+  width: 120px;
+  height: 120px;
+  cursor: pointer;
+  float: left;
+  margin: 0.5em;
+  border-radius: 20px;
+  background: url(../../images/addPano.png) no-repeat;
+  display: none;
+  pointer-events: none;
+  margin-left: 24px;
+}
+.addFileClas .aginAddpic:hover {
+  background: url(../../images/addPanoclick.png) no-repeat;
+  width: 126px;
+  height: 126px;
+}
+.deletDefin {
+  background-color: #fff;
+}
+.deletDefin .layui-layer-title {
+  background-color: #fff !important;
+  font-size: 18px !important;
+}
+.deletDefin .layui-layer-content {
+  padding: 0 !important;
+}
+.deletDefin .layui-layer-btn {
+  text-align: center;
+}
+.addFileClas .layui-layer-title {
+  font-size: 20px !important;
+  color: #666 !important;
+  font-family: 微软雅黑 !important;
+  height: 42px;
+  line-height: 42px;
+  background-color: #F8F8F8;
+}
+.addFileClas .layui-layer-content {
+  padding: 20px !important;
+}
+.addFileClas .layui-layer-setwin {
+  top: 9px !important;
+}

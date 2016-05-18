@@ -1,0 +1,78 @@
+@charset "utf-8";
+img {
+  border: none;
+}
+.float-l {
+  float: left;
+}
+.float-r {
+  float: right;
+}
+.top {
+  height: 70px;
+  line-height: 70px;
+}
+.logo {
+  width: 250px;
+  background-color: #3A98D8;
+  height: 100%;
+  float: left;
+}
+.logo a {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.logo a .logo-img {
+  margin-left: 20px;
+  margin-top: 19px;
+}
+.top-right {
+  background-color: #2C333D;
+  height: 100%;
+  color: #fff;
+  font-size: 16px;
+  margin-left: 250px;
+}
+.top-right ul {
+  float: left;
+}
+.top-right ul li {
+  float: left;
+  width: 164px;
+  text-align: center;
+  margin: 0 20px;
+  height: 66px;
+  font-size: 20px;
+}
+.top-right ul li.curr {
+  border-bottom: 4px solid #40A5EA;
+}
+.top-right .top-right-btn {
+  position: absolute;
+  right: 40px;
+}
+.top-right .top-right-btn .end {
+  width: 40px;
+  height: 40px;
+  background: url(../images/end.png) no-repeat;
+  margin-top: 18px;
+  margin-right: 10px;
+  float: left;
+}
+.top-right .top-right-btn .delete {
+  width: 35px;
+  height: 35px;
+  background: url(../images/delet.png) no-repeat;
+  margin-top: 18px;
+  margin-right: 10px;
+  float: left;
+}
+.top-right .top-right-btn .view {
+  width: 35px;
+  height: 35px;
+  margin-right: 10px;
+  margin-top: 10px;
+  display: block;
+  float: left;
+}

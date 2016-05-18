@@ -1,0 +1,179 @@
+// Color variables (appears count calculates by raw css)
+@color0: #7bccc7; // Appears 2 times
+@color1: #4a4a4a; // Appears 2 times
+@color2: #ffffff; // Appears 2 times
+// Width variables (appears count calculates by raw css)
+@width5: 100%; // Appears 2 times
+@width7: 100%; // Appears 2 times
+// Height variables (appears count calculates by raw css)
+@height5: 0.7rem; // Appears 2 times
+@height7: 100%; // Appears 2 times
+.btnBrand {
+    display: none!important;
+}
+.brandDiv {
+    bottom: 0;
+    margin: auto;
+    left: 0;
+    right: 0;
+    position: absolute;
+    .layui-layer-content {
+        overflow: hidden;
+    }
+}
+.touxiang-gushineirong {
+    display: none;
+    height: 100%;
+    bottom: 0;
+    margin: auto;
+    right: 0;
+    left: 0;
+    width: @width5;
+    z-index: 10001;
+    img {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    p {
+        font-family: PingFangTC-Regular, sans-serif;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    a {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    html {
+        font-size: 20px;
+    }
+    .guanbi {
+        width: 1.2rem;
+        right: 1.3rem;
+        top: 0.4rem;
+        cursor: pointer;
+        position: absolute;
+    }
+    .tou {
+        background-color: rgba(255, 255, 255, 0.93);
+        border-radius: 4px;
+        height: 2rem;
+        margin-bottom: 0.25rem;
+        width: @width5;
+        .kaitou {
+            background-color: @color0;
+            float: left;
+            height: 0.8rem;
+            margin: 0.55rem 0.4rem 0.55rem 1rem;
+            width: 0.3rem;
+        }
+        p {
+            color: @color1;
+            float: left;
+            font-size: 0.85rem;
+            font-weight: bold;
+            margin: 0.55rem 0;
+        }
+    }
+    .jieshaoneirong {
+        width: 100%;
+        height: 23.5rem;
+        background-color: rgba(255,255,255,0.93);
+        border-radius: 4px;
+        overflow: hidden;
+        height: 100%;
+        box-sizing: border-box;
+        padding-top: 1rem;
+        .gundongtiao {
+            width: 95%;
+            height: 93%;
+            overflow-y: auto;
+            padding: 0 1.1rem 3.75rem;
+            &::-webkit-scrollbar {
+                width: 4px;
+            }
+            &::-webkit-scrollbar-thumb {
+                background: #666666;
+                border-radius: 3px;
+            }
+            img{margin-bottom: 5px;}
+        }
+        .pp-picture {
+            min-height: 10rem;
+            width: 100%;
+        }
+        .jieshao {
+            width: 100%;
+            p {
+                color: @color1;
+                font-size: 0.6rem;
+                line-height: 20px;
+                text-indent: 2em;
+                word-wrap : break-word;
+                margin: 0 0 8px 0;
+            }
+        }
+        .jishuzhichi {
+            float: right;
+            p {
+                color: #9B9B9B;
+                font-size: 0.6rem;
+                margin: 0.2rem 0;
+            }
+            a {
+                color: @color0;
+                float: right;
+                font-size: 0.6rem;
+                margin: 0.7rem 0;
+            }
+        }
+    }
+}
+@media only screen and (min-width : 320px) and (max-width : 736px){
+    .touxiang-gushineirong {
+        height: 100%;
+        width: 100%;
+        background-color: rgba(255,255,255,0.93);
+        .guanbi {
+            width: 40px;
+            display: block;
+            margin: 0 auto;
+            float: initial;
+            left: 0;
+            right: 0;
+            bottom: 10px;
+            top: auto;
+        }
+        .tou {
+            width: 100%;
+            background-color: initial;
+        }
+        .jieshaoneirong {
+            width: 100%;
+            height: 84%;
+            padding: 0;
+            background-color: initial;
+            .gundongtiao {
+                width: 100%;
+                height: 100%;
+                background-color: initial;
+                padding: 0 0.2rem;
+                img {
+                    width: 92%;
+                    margin: 0 auto 5px;
+                    display: block;
+                }
+                .jieshao {
+                    width: 92%;
+                    padding-left: 1rem;
+                    p{margin:0 0 10px 0; }
+                }
+                .jishuzhichi {
+                    margin-right: 17px;
+                }
+            }
+        }
+    }
+}

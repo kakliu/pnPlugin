@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<script type="text/javascript" src="/js/duc.common.js"></script>
+<script type="text/javascript" src="/depend/requirejs/require.js"></script>
+<script type="text/javascript" src="/depend/jquery/jquery.js" ></script>
+<script>
+	var baseUrl = getQueryString("debug")?"/v2.0":"/dist";
+	require.config({
+		baseUrl: baseUrl,
+		paths:{
+	    	'template': '/depend/template.js/template',
+	    	'css': '/depend/requirejs/css',
+	    	'text': '/depend/requirejs/text',
+	        'proxy': 'proxy/proxy',
+	        'layer': 'modul/layer',
+	        'login': 'login/login'
+		}
+	});
+	
+	requirejs(['personinfo/personinfo','/v2.0/common/head/head.js','/v2.0/common/left/left.js']);
+</script>
+</head>
+	<body> 
+		<div class="head"></div>
+		<div class="body_left"></div>	
+		<div class="body_right">
+			<div class="brbox infor"></div>
+			<div class="brbox unbind"></div>
+			<div class="brbox newmobile"></div>
+			<div class="brbox changepw"></div>
+		</div>	
+	</body>
+</html>

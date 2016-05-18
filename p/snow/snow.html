@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="/depend/jquery/jquery.js"></script>
+	<script src="/depend/switch/lc_switch.min.js"></script>
+	<link rel="stylesheet" href="snow.css">
+</head>
+<body>
+
+<div class="snow">
+    <h5 class="snowtitle">系统自带</h5>
+    <ul class="snow_list">
+        <li>
+            <label>
+                <input name="snow_type" type="radio">特效大雪</label>
+        </li>
+        <li>
+            <label>
+                <input name="snow_type" type="radio">特效小雪</label>
+        </li>
+        <li>
+            <label>
+                <input name="snow_type" type="radio">特效红包</label>
+        </li>
+        <li>
+            <label>
+                <input name="snow_type" type="radio">特效红包</label>
+        </li>
+        <li>
+            <label>
+                <input name="snow_type" type="radio">特效唯美</label>
+        </li>        <li>
+            <label>
+                <input name="snow_type" type="radio">特效唯美2</label>
+        </li>
+    </ul>
+    <hr>
+    <ul class="snow_auto">
+        <li>
+            <label>
+                <input name="snow_type" type="radio">自定义特效</label>
+        </li>
+        <li>
+		        <div class="for_img">
+					<dl class="list_photo" id="list_photo">
+					    <dd>
+					        <input type='text' readonly maxlength='9' class='plugin-map-name' value='das' />
+					        <div class='progress progress-striped active fade in'>
+					            <div class='progress-bar' /></div>
+					        </div>
+					    </dd>
+					</dl>
+
+		        	<img class="snow_photo" src="/images/t.png" alt="">
+					<div class="plugin-map-upload">
+		    			<input type="file" name="file" class="plugin-map-uploadfile">
+		    			<i class="addplus"></i>
+		    		</div>
+		    	</div>
+<!--             <div class="for_img"><img class="snow_photo" src="/images/t.png" alt=""><i ></i>
+                <div class="progress">
+                    <div class="progress-bar" aria-valuemin="0" aria-valuemax="100" style="width:80%;"></div>
+                </div>
+            </div> -->
+            <button class="snow_btn" id="reset_upload">重新上传</button>
+        </li>
+        <li>
+            <p class="comment">上传的图片需为小于1M的PNG格式</p>
+        </li>
+    </ul>
+    <div class="snow_footer">
+        <input type="checkbox" name="check-3" value="6" class="lcs_check lcs_tt1" checked="checked" autocomplete="off" /> 开启特效
+        <button class="applyall">应用到所有场景</button>
+    </div>
+</div>
+<p>  
+    <label>请选择一个文件：</label>  
+    <input type="file" id="file" />  
+    <input type="button" value="读取图像" onclick="readAsDataURL()" />  
+    <input type="button" value="读取二进制数据" onclick="readAsBinaryString()" />  
+    <input type="button" value="读取文本文件" onclick="readAsText()" />  
+</p>  
+<div id="preview"></div>  
+
+<button id="flying">button</button>
+
+<script type="text/javascript">  
+var result=document.getElementById("result");  
+var file=document.getElementById("file");  
+
+function readAsDataURL(){  
+    //检验是否为图像文件  
+    var file = document.getElementById("file").files[0];  
+    var reader = new FileReader();  
+    reader.readAsDataURL(file); 
+
+ 
+    reader.onload=function(e){  
+        var preview=document.getElementById("preview");  
+        //显示文件  
+        console.log(this);
+        preview.innerHTML='<img src="' + this.result +'" alt="" />';  
+    }  
+}  
+  
+
+</script>  
+
+
+	
+</body>
+</html>
+

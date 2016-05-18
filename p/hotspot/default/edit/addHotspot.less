@@ -1,0 +1,431 @@
+.hotsopt{
+	position: relative;
+	.hotspot-i{
+
+		//display:none;
+		width: 32px;
+	    height: 32px;
+	    background-color: rgba(47,52,65,0.8);
+	    border: solid 1px #fff;
+	    -moz-border-radius: 32px;
+	    -webkit-border-radius: 32px;
+	    border-radius: 32px;
+	    .bjaddHall{
+	    }
+	    //添加图文热点图标
+	    .icon-edit {
+		    background: url(/p/hotspot/default/images/icon.png) no-repeat;
+		    width: 34px;
+		    height: 31px;
+		    float: left;
+		    background-position: -141px -13px;
+		}
+	}
+	//三个图标样式
+	.hotspot-edit {
+	    position: absolute;
+	    left: -11px;
+    	top: -34px;
+	}
+	.hotspot-label{
+		position: absolute;
+	    left: -42px;
+    	top: 25px;
+	}
+	//连接器切换图标
+	.icon-label {
+	    background: url("/p/hotspot/default/images/icon.png");
+	    width: 34px;
+	    height: 31px;
+	    float: left;
+	    background-position: -82px -13px;
+	}
+	//删除icon
+	.hotspot-delete{
+		position: absolute;
+	    left: -10px;
+	    top: 82px;
+	}
+	.icon-delete {
+	    background: url("/p/hotspot/default/images/icon.png");
+	    width: 34px;
+	    height: 31px;
+	    float: left;
+	    background-position: -114px -12px;
+	}
+}
+//添加图文热点
+.model{
+	position: absolute;
+	z-index: 5001;
+	width: 200px;
+	border-radius: 5px;
+    overflow: hidden;
+
+	.title{    
+		width: 100%;
+		height: 40px;
+		background-color: rgba(47,52,65,0.95);
+		color: #fff;
+		font-size: 14px;
+		line-height: 40px;
+		font-family: "微软雅黑";
+		font-weight: bolder;
+		box-shadow:0 1px 0px #000;
+		padding-left:10px;
+	}
+	.contents{
+		width: 100%;
+		overflow: hidden;
+		background-color: rgba(47, 52, 65, 0.8);
+	}
+
+	.close{
+		position: absolute;
+		right: 10px;
+		top: 13px;
+		width: 12px;
+		height: 12px;
+		cursor: pointer;
+		background:url(/p/hotspot/default/images/close.png) no-repeat!important;
+	}
+}
+
+.hotspot{
+	cursor: default;
+
+	.hotspot-i{
+		& > i{
+			cursor: pointer;
+		}
+	}
+}
+//添加图文
+.hotspot-edit-style{
+	display: none;
+	.model{
+		top: 0;
+	    left: -298px;
+		text-align:left;
+		width:250px!important;
+		.contents{
+			color:#B4B4B4;
+			font-size:14px;
+			.addHot{
+				padding:0 10px;
+				box-shadow: 0 2px 0 #000;
+				cursor:pointer;
+				.addHot-title{
+					height:40px;
+					line-height:40px;
+					
+				}
+				.addHot-title-common{
+					padding-left: 10px;
+					float:left;
+					width:192px;
+					height:20px;
+					line-height:20px;
+					border-radius:2px;
+					margin-top:10px;
+					margin-left:5px;
+					box-shadow:none!important;
+					background:rgba(0,0,0,.4);
+					color:#fff;
+				}
+				.addHot-content{
+					height:170px;				
+					.textarea-content{
+	    				background:rgba(0,0,0,.4);
+						width: 192px;
+	    				height: 160px;
+	    				padding:5px 0 0 5px;
+	    				color:#fff;
+					}
+				}
+				.address{
+					height:40px;
+					line-height:40px;
+				}
+			}
+			.bottom-btn{
+				height:40px;
+				line-height: 40px;
+				ul{
+					li{
+						float:left;
+						width:40px;
+						height:40px;
+						display:table-cell;
+						line-height: 40px;
+						vertical-align: middle;
+						cursor:default;
+						img{
+							vertical-align: middle;
+						}
+						&.vedio,&.voice {opacity: .3;}
+					}
+					li.com{
+						cursor:pointer;
+						&:hover{
+							background-color:#3A97D8;
+						}
+					}
+					li.curr{
+						background-color: #3A97D8;
+					}
+				}
+				.sure{
+					width:50px;
+					height:25px;
+					line-height:25px;
+					text-align:center;
+					background:rgba(0,0,0,.4);
+					color:#fff;				
+					font-size: 14px;
+			    	font-family: 微软雅黑;
+			    	border-radius: 2px;
+			    	&:hover{
+						background-color:#3A97D8;
+			    	}
+				}
+			}
+			//文热点添加成功之后显示
+			.fontend{
+				display:none;
+				text-align:left;
+				padding:0 10px;
+				p.fontend-name{
+					height:30px;
+					line-height: 30px;
+					border-bottom:1px dashed #6f7177;
+				}				
+				.fontend-content{
+					padding:10px;
+				}
+			}
+			//图片添加成功之后显示
+			.showfopic{
+				display:none;
+				.showfopic-name{
+					height:40px;
+					line-height: 40px;
+					border-bottom:1px dashed #6f7177;
+				}
+				.showfopic-content{
+					padding:10px;
+				}
+				.show-qimg{
+					position:relative;
+					text-align:center;
+					display: table-cell;
+					vertical-align: middle;
+					//line-height:230px;
+					padding:10px;
+					img{	
+						width:230px;
+						height:230px;
+						vertical-align: middle;
+					}
+					span{
+						position: absolute;
+						right:10px;
+						bottom:10px;
+						z-index:99;
+					}
+				}
+			}
+			.addhotPicturte{	
+				.up-hotpicture{	
+					height:81px;
+					display:none;
+					border-top:1px dashed #6f7177;
+					padding-top:10px;
+					span{
+						height:70px;
+						display:block;
+						float:left;
+					}
+					.upallpic{
+						height:60px;
+						position:relative;
+						width: 200px;
+					    float: left;
+						.addHao{
+							height:60px;
+							width:60px;
+							float:left;
+							margin-right:5px;
+							position:relative;
+							margin-left:5px;
+							.alone-up{
+								filter:alpha(opacity=0); 
+								-moz-opacity:0; 
+								opacity:0;
+							}
+							.upCom{
+								position:absolute;
+								left:0;
+								top:0px;
+								width:60px;
+								height:60px;
+							}
+							.alone-btn{
+								background:url(../images/hotupimg.png) no-repeat;
+								cursor:pointer;
+							}
+						}
+						.hotfileList{
+							//float:left;
+							.showImg{
+								position:relative;
+								float: left;
+								width:60px;
+								height:60px;
+								margin-left:5px;
+								float:left;
+								margin-bottom:5px;
+								.deleteHimg{
+									position:absolute;
+									right:0;
+									top:0;
+								}
+								.setImgwh{
+									width:60px;
+									height:60px;
+								}
+
+							}
+						}							
+					}					
+				}
+			}
+		}
+	}
+}
+//添加链接器
+.hotspot-edit-link{
+	display: none;
+	.model{
+		width:290px;
+		top: 0px;
+    	left: -302px;
+		.contents{
+			.content{
+				.listIcon{
+					max-height:180px;
+				}
+				ul.getSpot:first-child{
+					display:block;
+				}
+				ul.getSpot{
+					max-height: 180px;
+				 	padding:10px 0 10px 0;
+				 	display:none;
+					li{
+						width:60px;
+						height:60px;
+						padding: 10px;
+						float:left;
+						background-color:#35383F;
+						border-radius:2px;
+						margin-left:8px;
+						text-align:center;
+						margin-bottom:10px;
+						display: table-cell;
+	    				line-height: 40px;
+	    				cursor:pointer;
+	    				img{
+	    					width:100%;
+	    					height:100%;
+	    				}
+	    				&:hover{
+	    					background-color:#3A97D8;
+	    				}
+					}
+					li.curr{
+						background-color:#3A97D8;
+					}
+				}
+				//表情包
+
+				.apply{
+					width:290px;
+					height:50px;
+					background-color:#35383F;
+					clear: both;
+					.apply_array{
+						width:50px;
+						float:left;
+						height:50px;
+						text-align:center;
+						display: table-cell;
+						vertical-align: middle;
+						line-height:50px;
+						img{
+							width:30px;
+							height:30px;
+							vertical-align: middle;
+						}
+						&:hover{
+							background-color:#1A1C1F;
+						}				
+					}
+					.curr{
+						background-color:#1A1C1F;
+					}
+					.apply_nav{
+						position:relative;
+						width:250px;
+						float:left;
+						height:50px;
+						overflow:hidden;
+						.apply_w{
+							position:absolute;
+							float:left;
+							left:0px;
+						}
+					}
+					.img_l,.img_r{
+						float:left;
+						cursor:pointer;
+						width:20px;
+						height:50px;
+						line-height:50px;
+					}
+				}
+			}
+		}
+	}
+}
+//删除
+.hotspot-delete-model{
+	display: none;
+	.model{
+		top: 0;
+	    left: -202px;
+		.content{
+			padding:15px 0;
+			text-align:center;
+			font-family:微软雅黑;
+			.cancel{
+				margin-right:20px;
+			}
+			.cancel,.sure{
+				background-color:#35383f;
+				width:60px;
+				height:24px;
+				line-height:24px;
+				color:#b4b4b4;
+				margin-top:10px;
+				border-radius:2px;
+				font-family:微软雅黑;
+				cursor:pointer;
+				&:hover{
+					background-color:#3a97d8;
+					color:#fff;
+				}
+			}
+		}
+	}
+}

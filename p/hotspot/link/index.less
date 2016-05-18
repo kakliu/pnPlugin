@@ -1,0 +1,397 @@
+/* {{{ css reset
+html5doctor.com Reset Stylesheet v1.6.1
+Last Updated: 2010-09-17
+Author: Richard Clark - http://richclarkdesign.com 
+*/
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, 
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+body {
+    line-height:1;
+}
+article,aside,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section { 
+    display:block;
+}
+nav ul {
+    list-style:none;
+}
+ul, li  {
+    list-style: none;
+}
+blockquote, q {
+    quotes:none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content:'';
+    content:none;
+}
+a {
+    margin:0;
+    padding:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+    text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+/* change colours to suit your needs */
+ins {
+    background-color:#ff9;
+    color:#000;
+    text-decoration:none;
+}
+/* change colours to suit your needs */
+mark {
+    background-color:#ff9;
+    color:#000; 
+    font-style:italic;
+    font-weight:bold;
+}
+del {
+    text-decoration: line-through;
+}
+abbr[title], dfn[title] {
+    border-bottom:1px dotted;
+    cursor:help;
+}
+table {
+    border-collapse:collapse;
+    border-spacing:0;
+}
+/* change border colour to suit your needs */
+hr {
+    display:block;
+    height:1px;
+    border:0;   
+    border-top:1px solid #cccccc;
+    margin:1em 0;
+    padding:0;
+}
+input, select {
+    vertical-align:middle;
+}
+button{
+    border: none;
+}
+/* }}} */
+.hotspot-icon(){ background: url("/p/hotspot/default/images/icon.png"); width: 22px; height: 22px; float: left;}
+.radius(@radius){
+    -moz-border-radius: @radius;      /* Gecko browsers */
+    -webkit-border-radius: @radius;   /* Webkit browsers */
+    border-radius:@radius;            /* W3C syntax */
+   }
+.shadow(@shadow){
+  -webkit-box-shadow: @shadow;  
+  -moz-box-shadow: @shadow;  
+  box-shadow: @shadow;    
+}
+input.addHot-title-title,textarea.textarea-content{
+	color:#fff;
+	padding-left:5px;
+}
+.icon-link{
+	.hotspot-icon;
+	background-position: -50px -18px;
+
+	&.curr{
+		background-position: -50px -44px;
+	}
+}
+.icon-label{
+	.hotspot-icon;
+	background-position: -86px -17px;
+
+	&.curr{
+		background-position: -86px -44px;
+	}
+}
+.icon-delete{
+	.hotspot-icon;
+	background-position: -119px -17px;
+
+	&.curr{
+		background-position: -119px -44px;
+	}
+}
+.icon-edit{
+	.hotspot-icon;
+	background-position: -147px -18px;
+
+	&.curr{
+		background-position: -147px -44px;
+	}
+}
+
+.hotspot{
+	position: relative;
+	.hotspot-link,.hotspot-edit{
+		position: absolute;
+		left: -11px;
+		top: -70px;
+	}
+	.hotspot-delete{
+		position: absolute;  
+		left: -10px;
+		top: 46px;  
+	}
+	.hotspot-label{
+		position: absolute;
+		left: -42px;
+    	top: -11px;
+	}
+	& > .hotspot-i{
+		width: 32px;
+		height: 32px;
+		background-color: rgba(47,52,65,0.8);
+		border: solid 1px #fff; 
+		.radius(32px);
+		&>i{
+			margin-left: 5px;
+			margin-top: 5px;
+		}
+		&.curr{
+			border: none; 
+			background-color: #fff;
+		}
+	}
+}
+
+.model *{
+	box-sizing: border-box;
+}
+
+.model{
+	position: absolute;
+	z-index: 5001;
+	width: 200px;
+	.radius(5px);
+    overflow: hidden;
+
+	.title{    
+		width: 100%;
+		height: 40px;
+		background-color: rgba(47,52,65,0.95);
+		color: #fff;
+		font-size: 14px;
+		line-height: 40px;
+		font-family: "微软雅黑";
+		font-weight: bolder;
+		.shadow(0 1px 0px #000);
+		padding-left:10px;
+	}
+	.contents{
+		width: 100%;
+		overflow: hidden;
+		background-color: rgba(47, 52, 65, 0.8);
+	}
+
+	.close{
+		position: absolute;
+		right: 10px;
+		top: 13px;
+		width: 12px;
+		height: 12px;
+		cursor: pointer;
+		background:url(../images/close.png) no-repeat;
+	}
+}
+
+.hotspot{
+	cursor: default;
+
+	.hotspot-i{
+		& > i{
+			cursor: pointer;
+		}
+	}
+}
+
+.hotspot-link-view {
+	position: absolute;
+    left: 92px;
+    top: 20px;
+    font-size: 16px;
+    background-color: rgba(47, 52, 65, 0.8);    
+    padding: 3px 12px;
+    color: #fff;
+    .radius(5px);
+    word-break:keep-all;           /* 不换行 */
+	white-space:nowrap; 
+}
+
+.hotspot-link-model{
+	.model{
+		top: -95px;
+	    left: -245px;
+
+		.contents{
+			.content{
+				max-height: 300px;
+				ul{
+					overflow: hidden;
+					li{
+						width: 100%;
+						height: 30px;
+						color: #B4B4B4;
+						line-height: 30px;
+						font-size: 12px;
+						.shadow(0 1px 0px #1B1B31);
+						font-family: "宋体";
+						cursor: pointer;	
+						
+						&:hover, &.curr{
+							background-color: #3A97D8;
+							color: #fff;
+						};
+					}
+				}
+
+			}
+		}
+	}
+}
+.hotspot-label-model{
+	.model{
+		width:290px;
+		top: 0px;
+    	left: -302px;
+		.contents{
+			.content{
+				.listIcon{
+					max-height:180px;
+				}
+				ul.getSpot:first-child{
+					display:block;
+				}
+				ul.getSpot{
+					max-height: 90px;
+				 	padding:10px 0 10px 0;
+				 	display:none;
+					li{
+						width:60px;
+						height:60px;
+						padding: 10px;
+						float:left;
+						background-color:#35383F;
+						border-radius:2px;
+						margin-left:8px;
+						text-align:center;
+						margin-bottom:10px;
+						display: table-cell;
+	    				line-height: 40px;
+	    				cursor:pointer;
+	    				img{
+	    					width:100%;
+	    					height:100%;
+	    				}
+	    				&:hover{
+	    					background-color:#3A97D8;
+	    				}
+					}
+					li.curr{
+						background-color:#3A97D8;
+					}
+				}
+				//表情包
+
+				.apply{
+					width:290px;
+					height:50px;
+					background-color:#35383F;
+					.apply_array{
+						width:50px;
+						float:left;
+						height:50px;
+						text-align:center;
+						display: table-cell;
+						vertical-align: middle;
+						line-height:50px;
+						img{
+							width:30px;
+							height:30px;
+							vertical-align: middle;
+						}
+						&:hover{
+							background-color:#1A1C1F;
+						}				
+					}
+					.curr{
+						background-color:#1A1C1F;
+					}
+					.apply_nav{
+						position:relative;
+						width:250px;
+						float:left;
+						height:50px;
+						overflow:hidden;
+						.apply_w{
+							position:absolute;
+							float:left;
+							left:0px;
+						}
+					}
+					.img_l,.img_r{
+						float:left;
+						cursor:pointer;
+						width:20px;
+						height:50px;
+						line-height:50px;
+					}
+				}
+			}
+		}
+	}
+}
+.hotspot-delete-model{
+	.model{
+		top: 0;
+	    left: -202px;
+		.content{
+			padding:15px 0;
+			text-align:center;
+			font-family:微软雅黑;
+			.cancel{
+				margin-right:20px;
+			}
+			.cancel,.sure{
+				background-color:#35383f;
+				width:60px;
+				height:24px;
+				line-height:24px;
+				color:#b4b4b4;
+				margin-top:10px;
+				border-radius:2px;
+				font-family:微软雅黑;
+				cursor:pointer;
+				&:hover{
+					background-color:#3a97d8;
+					color:#fff;
+				}
+			}
+		}
+	}
+}
+.mCSB_inside > .mCSB_container{
+	margin-right:0!important;
+}

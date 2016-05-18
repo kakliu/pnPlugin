@@ -1,0 +1,460 @@
+$(function(){
+	var proxy = window.proxy;
+	
+	function reload(op){
+		proxy.getPanoList(op, function(data){
+			var listContent=$(template(index, data));
+			$(".container .content-content-content").append(listContent);
+			
+			//初始化分页
+			page(data);
+			uploadFile();
+			initevent();
+		});
+	}
+	
+	function initevent(){
+		/*【全选】“全选”按钮事件,按下后选择所有的复选框，再按下取消所有的全选框*/
+		$(".container").on("click", ".choosebtn", function(){
+			if ($(this).prop("checked")){
+				$(".choose-this").prop("checked",true);
+			} else{
+				$(".choose-this").prop("checked",false);
+			}
+		})
+		
+		/*【全选-1】表单中的复选框，勾选掉之后，全选也不被选中*/
+		$(".container").on("click", ".choose-this", function(){
+			var input = $(".choose-this");
+			var i=0;
+			
+			input.each(function(a){
+				if(!($(this).prop("checked"))){
+					i=1;
+				}
+			})
+			
+			if(i > 0){
+				$(".choosebtn").prop("checked",false);
+			}
+			
+			if(i == 0){
+				$(".choosebtn").prop("checked",true);
+			}
+		})
+		
+		$(".container .list li .list-img-bottom").mouseover(function(event){
+		  	$(this).children(".bottom-icon").show();
+			$(this).children(".botom-bg").show();		
+		}).mouseout(function(){
+		  	$(this).children(".bottom-icon").hide();
+			$(this).children(".botom-bg").hide();
+		})
+	}
+	
+	//下架
+	function unrelease(lis){
+		
+	}
+	
+	//发布
+	function release(lis){
+		lis.
+	}
+	
+	/**
+	 * 上传文件
+	 */
+	function uploadFile(){
+	    // 弹出框
+	    $(".container").on("click",".first-upload",function(){
+		    layer.open({
+			    type: 0,
+			    title: "添加全景图",
+			    closeBtn: 1,
+			    shadeClose: true,
+			    skin: 'yourclass',
+			    btn: false,
+			    move: false,
+			    area: ['730px', '540px'],
+			    // icon :0,图标
+			    content: '<div class="layer-contianer">\
+				    <div class="layer-content">\
+					    <span>项目名称/NAME</span>\
+					    <input type="text" id="pName" class="input-write">\
+				    </div>\
+				    <form action="/" class="dropzone" enctype="multipart/form-data" id="myDropzone" method="post">\
+					</form>\
+					<div>\
+					  <button type="submit" id="submit-all" disabled="disabled" class="up-file">上传全景图</button>\
+					</div>\
+				    </div>\
+					<script type="text/javascript" src="v2.0/index/upimg2.js"></script>'
+			});
+		})
+	}
+	
+	/**
+	 * 分页
+	 */
+	function page(data){
+		$("div.holder").jPages({
+	        containerID  : "itemContainer",
+			first: '首页',
+			last: '尾页',
+			previous: '上页',
+			next: '下页',
+	        perPage: 14,
+	        startPage: 1,
+	        startRange: 2,
+	        midRange: 3,
+	        endRange: 2,
+			animation: 'wobble',
+			keyBrowse: true,
+			callback    : function( pages, items ){
+				/* lazy load current images */
+				items.showing.find("img").trigger("turnPage");
+				/* lazy load next page images */
+				items.oncoming.find("img").trigger("turnPage");
+			}
+	    });
+    }
+	
+	$.ajax({
+		type: "POST",
+        url: "/pano/query",
+        dataType: "json",
+        data:{
+        	type:2
+        },
+        success: function(result){
+        	data=result;
+        	if(data!=""){
+			    var listContent=$(template(index,data));
+			   $(".container .content-content-content").append(listContent);
+	        	//翻页
+	        	function page(){
+					$("div.holder").jPages({
+				        containerID  : "itemContainer",
+						first: '首页',
+						last: '尾页',
+						previous: '上页',
+						next: '下页',
+				        perPage: 14,
+				        startPage: 1,
+				        startRange: 2,
+				        midRange: 3,
+				        endRange: 2,
+						animation: 'wobble',
+						keyBrowse: true,
+						callback    : function( pages, items ){
+							/* lazy load current images */
+							items.showing.find("img").trigger("turnPage");
+							/* lazy load next page images */
+							items.oncoming.find("img").trigger("turnPage");
+						}
+				    });
+			    } 
+	        	page();
+			    // 弹出框
+			    $(".container").on("click",".first-upload",function(){
+				    layer.open({
+					    type: 0,
+					    title: "添加全景图",
+					    closeBtn: 1,
+					    shadeClose: true,
+					    skin: 'yourclass',
+					    btn:false,
+					    move: false,
+					    area: ['730px', '540px'],
+					    // icon :0,图标
+					    content: '<div class="layer-contianer">\
+						    <div class="layer-content">\
+							    <span>项目名称/NAME</span>\
+							    <input type="text" id="pName" class="input-write">\
+						    </div>\
+						    <form action="/" class="dropzone" enctype="multipart/form-data" id="myDropzone" method="post">\
+							</form>\
+							<div>\
+							  <button type="submit" id="submit-all" disabled="disabled" class="up-file">上传全景图</button>\
+							</div>\
+						    </div>\
+							<script type="text/javascript" src="v2.0/index/upimg2.js"></script>'
+					});
+				})
+				/*【全选】“全选”按钮事件,按下后选择所有的复选框，再按下取消所有的全选框*/
+				$(".container").on("click",".choosebtn",function(){
+					if ($(this).prop("checked")){
+						$(".choose-this").prop("checked",true);
+					} else{
+						$(".choose-this").prop("checked",false);
+					}
+				})
+				/*【全选-1】表单中的复选框，勾选掉之后，全选也不被选中*/
+				$(".container").on("click",".choose-this",function(){
+					var input=$(".choose-this");
+					var i=0;
+					input.each(function(a){
+						if(!($(this).prop("checked"))){
+							i=1;
+						}
+					})
+					if(i>0){
+						$(".choosebtn").prop("checked",false);
+					}
+					if(i==0){
+						$(".choosebtn").prop("checked",true);
+					}
+				})
+				// 底部划出icon
+				function showHide(){
+					$(".container .list li .list-img-bottom").on("mouseover mouseout",function(event){
+						 if(event.type == "mouseover"){
+						  	$(this).children(".bottom-icon").show();
+							$(this).children(".botom-bg").show();		
+						 }else if(event.type == "mouseout"){
+						  	$(this).children(".bottom-icon").hide();
+							$(this).children(".botom-bg").hide();
+						 }
+					})
+				}				
+				showHide();
+				//单击搜索
+				function searckList(){
+					var search=$(".search").val();
+					var status=$(".content-content-top").children().children("input:checked").attr("status");
+					$.ajax({
+						type: "POST",
+				        url: "/pano/query",
+				        dataType: "json",
+				        data:{
+							searchName:search,
+							status:status
+				        },
+				        success: function(result){
+				        	data=result;
+				        	if(data!=""){
+				    			$(".content-content-content").empty();
+							    var listContent=$(template(index,data));
+							    $(".container .content-content-content").append(listContent);
+							    page();
+							    showHide();
+							}
+						}
+					})
+				}
+				$(".search-all").on("click",".icon-search",function(){
+					searckList();					
+				})
+				
+				//头部发布
+				$(".container").on("click",".publish",function(){
+					var del=$("input.choose-this:checked").length;
+					if(del>0){
+						var setstatus=$("input.choose-this:checked").length;
+					 	var numArr = []; // 定义一个空数组
+				        var check = $('.list li').find('input.choose-this:checked'); // 获取所有文本框
+				        for (var i = 0; i < check.length; i++) {
+				        	//var temp = {};
+				        	//temp.id = check.eq(i).parent().attr("data-id");
+				            numArr.push(check.eq(i).parent().attr("data-id")); // 将文本框的值添加到数组中
+				            
+				        }
+					    $.ajax({
+							type: "POST",
+					        url: "/pano/release",
+					        dataType: "json",
+					        traditional: true,
+					        data:{
+					        	id : numArr,
+					        },
+					        success: function(result){
+					        	if (!result.success) {
+					        		alert(result.errMsg);
+					        		return ;
+					        	}
+					        	else{
+						        	layer.msg('发布成功', {
+									    time: 1000 //1秒关闭（如果不配置，默认是3秒）
+									}, function(){
+									    location.reload();
+									}); 
+								}
+					        }
+			        	})
+					}
+					else{
+						layer.msg('请选择要发布的商品', {
+						    time: 1000 //1秒关闭（如果不配置，默认是3秒）
+						}, function(){
+						    //do something
+						}); 
+					}
+				})
+				//头部下架
+				$(".container").on("click",".quit",function(){
+					var del=$("input.choose-this:checked").length;
+					if(del>0){
+						var setstatus=$("input.choose-this:checked").length;
+					 	var numArr = []; // 定义一个空数组
+				        var check = $('.list li').find('input.choose-this:checked'); // 获取所有文本框
+				        for (var i = 0; i < check.length; i++) {
+				        	//var temp = {};
+				        	//temp.id = check.eq(i).parent().attr("data-id");
+				            numArr.push(check.eq(i).parent().attr("data-id")); // 将文本框的值添加到数组中
+				            
+				        }
+					    $.ajax({
+							type: "POST",
+					        url: "/pano/unrelease",
+					        dataType: "json",
+					        traditional: true,
+					        data:{
+					        	id : numArr,
+					        },
+					        success: function(result){
+					        	if (!result.success) {
+					        		alert(result.errMsg);
+					        		return ;
+					        	}
+					        	else{
+						        	layer.msg('下架成功', {
+									    time: 1000 //1秒关闭（如果不配置，默认是3秒）
+									}, function(){
+									    location.reload();
+									}); 
+								}
+					        }
+			        	})
+					}
+					else{
+						layer.msg('请选择要下架的商品', {
+						    time: 1000 //1秒关闭（如果不配置，默认是3秒）
+						}, function(){
+						    //do something
+						}); 
+					}
+				})
+				//单击单个项目里的发布或未发布时
+				$(".container").on("click",".undercarriage",function(){
+					var current=this;
+					var id=$(this).attr("data-id");
+					var status=$(this).attr("status");
+					if(status=="0"){
+						$.ajax({
+							type: "POST",
+					        url: "/pano/release",
+					        dataType: "json",
+					        data:{
+								id:id
+					        },
+					        success: function(result){
+					        	if(result.success){
+						        	$(current).text("下架");
+						        	$(current).attr("status","1");
+						        	$(current).parents(".list-img-bottom").siblings(".fbcommon").html("已发布").css({"background-color":"#5eaee3","color":"#fff"});
+						        }
+						        else{
+						        	layer.msg(result.errMsg);
+						        }
+					        }
+						})
+					}
+					else{
+						$.ajax({
+							type: "POST",
+					        url: "/pano/unrelease",
+					        dataType: "json",
+					        data:{
+								id:id
+					        },
+					        success: function(result){
+					        	$(current).text("发布");
+					        	$(current).attr("status","0");
+					        	$(current).parents(".list-img-bottom").siblings(".fbcommon").html("未发布").css({"background-color":"#D7D7D7","color":"#fff"});
+					        }
+						})
+					}
+				})
+				//搜索时按下回车键时
+				$(".search").keyup(function(){
+			        if(event.keyCode == 13){
+			            searckList();
+			        }
+			    });
+			    //筛选已发布的或者未发布的
+			    $(".content-content-top").children("label").children("input").click(function(){
+			    	$(this).parent().addClass("curr");
+			    	$(this).parent().siblings().removeClass("curr");
+			    	if($(this).prop("checked","checked")){
+			    		var status=$(".content-content-top").children().children("input:checked").attr("status");
+						$.ajax({
+							type: "POST",
+					        url: "/pano/query",
+					        dataType: "json",
+					        data:{
+								status:status
+					        },
+					        success: function(result){
+					        	data=result;
+					        	if(data!=""){
+					    			$(".content-content-content").empty();
+								    var listContent=$(template(index,data));
+								    $(".container .content-content-content").append(listContent);
+								    page();
+								    showHide();
+								}
+							}
+						})
+			    	}			    	
+			    });
+				// 删除选中商品
+				$("body").find(".delet").click(function(){
+					var del=$("input.choose-this:checked").length;
+					if(del>0){
+					 	var numArr = []; // 定义一个空数组
+				        var check = $('.list li').find('input.choose-this:checked'); // 获取所有文本框
+				        for (var i = 0; i < check.length; i++) {
+				        	//var temp = {};
+				        	//temp.id = check.eq(i).parent().attr("data-id");
+				            numArr.push(check.eq(i).parent().attr("data-id")); // 将文本框的值添加到数组中
+				            
+				        }
+					    $.ajax({
+							type: "POST",
+					        url: "/pano/delete",
+					        dataType: "json",
+					        traditional: true,
+					        data:{
+					        	id : numArr,
+					        },
+					        success: function(result){
+					        	if (!result.success) {
+					        		alert(result.errMsg);
+					        		return ;
+					        	}
+					        	else{
+						        	layer.msg('删除成功', {
+									    time: 1000 //1秒关闭（如果不配置，默认是3秒）
+									}, function(){
+									    location.reload();
+									}); 
+								}
+					        }
+			        	})
+					}
+					else{
+						layer.msg('请选择删除的商品', {
+						    time: 1000 //1秒关闭（如果不配置，默认是3秒）
+						}, function(){
+						    //do something
+						}); 
+					}
+				})
+			}
+			else{
+				alert(data.errMsg);
+			}
+		}
+	})
+})

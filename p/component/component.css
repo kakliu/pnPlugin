@@ -1,0 +1,262 @@
+@charset "utf-8";
+.plugin-compoent {
+  display: none;
+}
+.pano .plugin-switch .layui-layer-title {
+  font-size: 14px;
+  text-align: left;
+  border-bottom: 1px solid #999;
+  background: rgba(47, 52, 65, 0.9);
+}
+.pano .plugin-switch .layui-layer-content .plugin-compoent .pTitle {
+  display: none;
+}
+.pano .plugin-switch .layui-layer-content .plugin-compoent ul {
+  padding: 0 30px;
+}
+.pano .plugin-switch .layui-layer-content .plugin-compoent ul li {
+  height: 60px;
+  line-height: 60px;
+  color: #a1a1a1;
+  font-size: 14px;
+}
+.pano .plugin-switch .layui-layer-content .plugin-compoent ul li .plugin-compoent-li-left {
+  float: left;
+}
+.pano .plugin-switch .layui-layer-content .plugin-compoent ul li .plugin-img {
+  float: left;
+  margin-top: 17px;
+}
+.pano .plugin-switch .layui-layer-content .plugin-compoent ul li .plugin-leftRight {
+  height: 59px;
+  border-bottom: 1px solid #000;
+  float: right;
+  width: 240px;
+}
+.pano .plugin-switch .layui-layer-content .plugin-compoent ul li .plugin-compoent-li-right {
+  float: right;
+  position: ABSOLUTE;
+  width: 56px;
+  height: 30px;
+  opacity: 0;
+  z-index: 999;
+  top: 17px;
+  left: 0;
+}
+.lcs_wrap {
+  display: inline-block;
+  direction: ltr;
+  height: 100%;
+  vertical-align: middle;
+  float: right;
+  position: relative;
+}
+.lcs_switch {
+  display: inline-block;
+  position: relative;
+  width: 56px;
+  height: 30px;
+  border-radius: 30px;
+  background: #ddd;
+  overflow: hidden;
+  cursor: pointer;
+  top: 10px;
+  left: 0;
+  -webkit-transition: all 0.2s ease-in-out;
+  -ms-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+.lcs_cursor {
+  display: inline-block;
+  position: absolute;
+  top: 3px;
+  width: 24px;
+  height: 24px;
+  border-radius: 100%;
+  background: #fff;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 3px 4px 0 rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  -webkit-transition: all .2s linear;
+  -ms-transition: all .2s linear;
+  transition: all .2s linear;
+}
+.lcs_label {
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+  font-size: 12px;
+  letter-spacing: 1px;
+  line-height: 18px;
+  color: #fff;
+  font-weight: bold;
+  position: absolute;
+  width: 33px;
+  top: 5px;
+  overflow: hidden;
+  text-align: center;
+  opacity: 0;
+  -webkit-transition: all 0.2s ease-in-out 0.1s;
+  -ms-transition: all 0.2s ease-in-out 0.1s;
+  transition: all 0.2s ease-in-out 0.1s;
+}
+.lcs_label.lcs_label_on {
+  left: -70px;
+  z-index: 6;
+}
+.lcs_label.lcs_label_off {
+  right: -70px;
+  z-index: 5;
+}
+/* on */
+.lcs_switch.lcs_on {
+  background: #3A97D8;
+  box-shadow: 0 0 2px #579022 inset;
+}
+.lcs_switch.lcs_on .lcs_cursor {
+  left: 30px;
+}
+.lcs_switch.lcs_on .lcs_label_on {
+  left: 10px;
+  opacity: 1;
+}
+/* off */
+.lcs_switch.lcs_off {
+  background: #b2b2b2;
+  box-shadow: 0px 0px 2px #a4a4a4 inset;
+}
+.lcs_switch.lcs_off .lcs_cursor {
+  left: 3px;
+}
+.lcs_switch.lcs_off .lcs_label_off {
+  right: 10px;
+  opacity: 1;
+}
+/* disabled */
+.lcs_switch.lcs_disabled {
+  opacity: 0.65;
+  filter: alpha(opacity=65);
+  cursor: default;
+}
+.view-switch {
+  background: #fff;
+  position: absolute;
+  left: inherit;
+  right: 100px !important;
+  bottom: 280px;
+  top: auto;
+}
+.view-switch .layui-layer-setwin {
+  width: 20px;
+  height: 20px;
+}
+.view-switch .layui-layer-setwin .layui-layer-close2 {
+  background: url(../../v2.0/store/images/closePop.png) no-repeat;
+  width: 100%;
+  height: 100%;
+}
+.view-switch li {
+  color: #666;
+}
+.view-switch .plugin-leftRight {
+  border-bottom: 1px solid #999;
+}
+.view-switch li:last-child .plugin-leftRight {
+  border-bottom: none !important;
+}
+.view-switch .lcs_switch.lcs_on {
+  background: #7BCCC7;
+}
+.view-switch .lcs_switch.lcs_off {
+  background: none;
+}
+.view-switch .layui-layer-setwin {
+  right: 18px;
+  top: 18px;
+}
+@media only screen and (min-width: 320px) and (max-width: 736px) {
+  .layerComponent {
+    position: absolute;
+    bottom: 0;
+    width: 94%!important;
+    left: 3% !important;
+    margin: auto;
+    background: rgba(255, 255, 255, 0.93);
+    border-radius: 5px 5px 0 0;
+    padding: 0 0 0px 0;
+  }
+  .layerComponent .layui-layer-content {
+    overflow: hidden;
+  }
+  .layerComponent i.closeCompoent {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    background: url(/images/close1.png) no-repeat;
+    background-size: cover;
+    bottom: 10px;
+    right: 0;
+    left: 0;
+    margin: auto;
+  }
+  .pano .plugin-switch .layui-layer-title {
+    font-size: 14px;
+    text-align: left;
+    border-bottom: 1px solid #999;
+    background: rgba(47, 52, 65, 0.9);
+  }
+  .pano .plugin-switch .layui-layer-content .plugin-compoent {
+    padding: 0 0 10px 0;
+    overflow: hidden;
+  }
+  .pano .plugin-switch .layui-layer-content .plugin-compoent .pTitle {
+    display: block;
+    padding: 15px 30px 15px 40px;
+    font-size: 16px;
+    font-weight: 100;
+  }
+  .pano .plugin-switch .layui-layer-content .plugin-compoent .pTitle:before {
+    width: 5px;
+    height: 18px;
+    background: #7BCCC7;
+    content: '';
+    position: absolute;
+    left: 30px;
+  }
+  .pano .plugin-switch .layui-layer-content .plugin-compoent ul {
+    padding: 0 30px 30px;
+    overflow: hidden;
+  }
+  .pano .plugin-switch .layui-layer-content .plugin-compoent ul li {
+    height: 67px;
+    line-height: 67px;
+    color: #444;
+    font-size: 14px;
+    border-top: 1px solid #fff;
+    position: relative;
+    padding: 0 0 0 50px;
+  }
+  .pano .plugin-switch .layui-layer-content .plugin-compoent ul li .plugin-compoent-li-left {
+    float: left;
+  }
+  .pano .plugin-switch .layui-layer-content .plugin-compoent ul li .plugin-img {
+    top: 20px;
+    left: 0;
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    margin-top: 0;
+  }
+  .pano .plugin-switch .layui-layer-content .plugin-compoent ul li .plugin-leftRight {
+    height: 59px;
+    border-bottom: 0;
+    width: 100%;
+  }
+  .pano .plugin-switch .layui-layer-content .plugin-compoent ul li .plugin-compoent-li-right {
+    float: right;
+    position: ABSOLUTE;
+    width: 56px;
+    height: 30px;
+    opacity: 0;
+    z-index: 999;
+    top: 17px;
+    left: 0;
+  }
+}

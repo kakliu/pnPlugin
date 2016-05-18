@@ -1,0 +1,176 @@
+.lianxi-jiemian {
+    position: relative;
+    display: none;
+    background-color: rgba(0,0,0,0);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10000;
+    .gushineirong {
+        width: 25rem;
+        height: 136px;
+        margin-top: 21%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        img,
+        p,
+        a {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        p {
+            font-family: PingFangTC-Regular, sans-serif;
+        }
+        html {
+            font-size: 20px;
+        }
+         .closea {
+                width: 1.2rem;
+                margin-right: 1.3rem;
+                margin-top: 0.4rem;
+                float: right;
+                cursor: pointer;
+            }
+
+        .tou {
+            width: 100%;
+            height: auto;
+            height: 2rem;
+            background-color: rgba(255,255,255,0.93);
+            border-radius: 4px;
+            margin-bottom: 0.25rem;
+            .kaitou {
+                margin: 0.55rem 0.4rem 0.55rem 1rem;
+                background-color: #7BCCC7;
+                float: left;
+                width: 0.3rem;
+                height: 17px;
+                color: #4A4A4A;
+            }
+            p {
+                margin: 0.55rem 0;
+                font-size: 17px;
+                color: #4A4A4A;
+                float: left;
+                font-weight: bold;
+                font-family: PingFangTC-Regular,sans-serif;
+            }
+        }
+        .xinxijiemian {
+            width: 100%;
+            background-color: rgba(255,255,255,0.93);
+            border-radius: 4px;
+            overflow: hidden;
+            .gundongtiao {
+                width: 100%;
+                ul {
+                    overflow: hidden;
+                    margin-left: 0.5rem;
+                    width: 95%;
+                    padding-left: 6px;
+                    li {
+                        float: left;
+                        width: 97%;
+                        border-bottom: 1px solid rgba(0,0,0,0.09);
+                        padding: 1rem 0;
+                        p {
+                            font-size: 14px;
+                            font-family: PingFangSC-Light;
+                            word-wrap : break-word;
+                            white-space: nowrap;
+                            width:88%;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                        }
+                        img {
+                            float: left;
+                            width: 17px;
+                            margin:0 0.5rem 0 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media only screen and (min-width : 320px) and (max-width : 736px) {
+    .contactDiv {top:auto!important;bottom:0;width:94%!important;} 
+    .layui-layer{box-shadow: none;}
+    .lianxi-jiemian {
+        font-size: 20px;
+        -moz-border-radius: 5px 5px 0 0;
+        -webkit-border-radius: 5px 5px 0 0;
+        background-color: rgba(255,255,255,0);
+        border-radius: 5px 5px 0 0;
+        bottom: 0;
+        margin: auto;
+        width: 100%;
+        height: auto;
+        left: 0;
+        right: 0;
+        top: auto;
+        .gushineirong {
+            top: auto;
+            width: 100%;
+            height: 170px;
+            .closea {
+                    position: absolute;
+                    bottom: 10px;
+                    left: 0;
+                    right: 0;
+                    top: auto;
+                    margin: auto;
+                    width: 40px;
+                }
+            .tou {
+                padding: 0.4rem 0 0.4rem 0;
+                margin: 0;
+                border-radius: 4px 4px 0 0;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.09);
+                background-color: rgba(255,255,255,0.93);
+                width: 100%;
+            }
+            .xinxijiemian {
+                border-radius: 0;
+                background-color: rgba(255,255,255,0.93);
+                width: 100%;
+                height: 100%;
+                .gundongtiao {
+                width: 100%;
+                ul {
+                    overflow: hidden;
+                    margin-bottom: 50px;
+                    width: 100%;
+                    margin-left: 0;
+                    li {
+                        float: left;
+                        width: 94%;
+                        border-bottom: 1px solid rgba(0,0,0,0.09);
+                        padding: 0;
+                        p {
+                            font-size: 14px;
+                            float: left;
+                            margin: 10px 0;
+                            font-family: PingFangSC-Light;
+                            text-overflow: initial;
+                            white-space: normal;
+                        }
+                        img {
+                            width: 0.8rem;
+                            float: left;
+                            margin: 10px;
+                        }
+                    }
+                }
+            }
+            }
+        }
+    }
+}

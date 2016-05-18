@@ -1,0 +1,181 @@
+img,
+a,
+p,
+body,
+html,
+select,
+option,
+ul,
+li,
+dl,
+dd,
+span,
+input,
+select,
+i {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+body,
+html {
+  height: 100%;
+  color: #313131;
+  font-family: "Microsoft YaHei";
+  background-color: #f2f3f8;
+  overflow-x: hidden;
+}
+a {
+  text-decoration: none;
+}
+li {
+  list-style: none;
+}
+h1,
+h2,
+h3,
+h4 {
+  font-weight: normal;
+}
+input,
+textarea,
+button {
+  outline: none;
+  resize: none;
+  font-family: "Microsoft Yahei";
+}
+.show {
+  display: block !important;
+}
+.hidden {
+  display: none !important;
+}
+.head {
+  width: 100%;
+  height: 70px;
+  background-color: #0F2434;
+  position: fixed;
+  top: 0px;
+  left: 0;
+  z-index: 100;
+}
+.head .logo {
+  width: 250px;
+  height: 70px;
+  background-color: #3A98D8;
+  float: left;
+}
+.head .logo img {
+  margin: 20px 0 0 24px;
+}
+.head_right {
+  float: right;
+}
+.head_right .head_search {
+  float: left;
+  position: relative;
+}
+.head_right .head_search input {
+  width: 224px;
+  height: 26px;
+  line-height: 26px;
+  background-color: #979797;
+  border-radius: 36px;
+  margin-top: 22px;
+  padding: 0 10px;
+}
+.head_right .head_search .head_searchpic {
+  width: 15px;
+  height: 15px;
+  display: block;
+  position: absolute;
+  top: 28px;
+  right: 15px;
+  background: url(../../../images/srarch_ico.png) no-repeat;
+  cursor: pointer;
+}
+.personal {
+  height: 70px;
+  line-height: 70px;
+  font-size: 13px;
+  color: #5EAEE3;
+  float: left;
+  margin-left: 28px;
+}
+.logout {
+  height: 70px;
+  line-height: 70px;
+  float: left;
+  margin: 0 35px 0 28px;
+}
+.logout a {
+  font-size: 13px;
+  color: #979797;
+}
+.logout a label {
+  cursor: pointer;
+}
+.logout a:hover {
+  color: #FFFFFF;
+}
+.logout a:hover .signout {
+  background: url(../../../images/signouton.png) no-repeat;
+}
+.logout .signout {
+  width: 16px;
+  height: 18px;
+  vertical-align: middle;
+  display: block;
+  background: url(../../../images/signout.png) no-repeat;
+  display: inline-block;
+  margin-left: 5px;
+}
+.body_left {
+  width: 250px;
+  height: 100%;
+  background-color: #0F2434;
+  position: fixed;
+  top: 70px;
+  left: 0;
+  z-index: 100;
+}
+.body_left ul {
+  margin-top: 80px;
+}
+.body_left ul li {
+  height: 80px;
+  line-height: 80px;
+  font-size: 18px;
+  border-bottom: 1px solid #62717F;
+  position: relative;
+}
+.body_left ul li span {
+  width: 10px;
+  height: 80px;
+  background-color: #3A98D8;
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: none;
+}
+.body_left ul li a {
+  width: 250px;
+  height: 80px;
+  display: block;
+  color: #FFFFFF;
+}
+.body_left ul li img {
+  float: left;
+  margin: 25px 20px 0 30px;
+}
+.body_left ul li p {
+  float: left;
+}
+.body_left ul li.cur span {
+  display: block !important;
+}
+.body_right {
+  margin-top: 68px;
+  float: right;
+  background-color: #F8F8F8;
+}

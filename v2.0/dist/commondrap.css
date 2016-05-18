@@ -1,0 +1,100 @@
+@charset "utf-8";
+.float-l {
+  float: left;
+}
+.float-r {
+  float: right;
+}
+.layui-layer-dialog {
+  border-radius: 3px;
+}
+.layui-layer-title {
+  text-align: center;
+  padding: 0 20px;
+  font-size: 20px;
+  color: #666;
+  border-bottom: none;
+}
+.layer-contianer {
+  margin: 10px 40px 0 40px;
+}
+.layer-contianer .layer-content {
+  margin-bottom: 30px;
+  height: 40px;
+  line-height: 40px;
+  font-size: 16px;
+  color: #666;
+}
+.layer-contianer .layer-content .input-write {
+  width: 395px;
+  height: 38px;
+  border-radius: 4px;
+  border: 1px solid #E2E2E2;
+  float: right;
+  padding-left: 10px;
+}
+.layer-contianer .layer-content .input-write:focus {
+  border: 1px solid #5EAEE3;
+  border-radius: 4px;
+}
+.layer-contianer .layer-center {
+  background-color: #FDFDFD;
+  height: 440px;
+  border: 1px dashed #E2E2E2;
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  width: 880px;
+}
+.layer-contianer .up-file {
+  width: 136px;
+  height: 41px;
+  text-align: center;
+  color: #fff;
+  font-size: 16px;
+  background-color: #ddd;
+  border-radius: 20px;
+  position: absolute;
+  left: 50%;
+  margin-left: -68px;
+  cursor: pointer;
+  font-family: 微软雅黑;
+  margin-top: 26px;
+}
+.layer-contianer .hide {
+  opacity: 0;
+}
+.layui-layer-dialog .layui-layer-content {
+  overflow: hidden;
+  font-size: 14px;
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+}
+.layui-layer-setwin a {
+  background-position: 0 0px;
+  width: 14px;
+  height: 14px;
+  margin: 6px;
+}
+.dropzone {
+  border: 1px dashed #E2E2E2;
+  background-color: #FDFDFD;
+  overflow: hidden;
+  overflow-y: auto;
+  max-height: 325px;
+  padding: 0;
+}
+.dz-message {
+  background: url(../images/upqj.png) center no-repeat;
+  width: 100%;
+  height: 284px;
+}
+.dz-message span {
+  display: none;
+}
+.dropzone .dz-preview .dz-error-message {
+  background-color: #fff;
+}
+.dropzone .dz-message {
+  margin: 0;
+}

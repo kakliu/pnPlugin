@@ -1,0 +1,77 @@
+@charset "utf-8";
+/* wrap */
+.wrap {
+  width: 52px;
+  height: 57px;
+  position: fixed;
+  left: 200px;
+  top: 200px;
+}
+.icon_menu {
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  z-index: 10;
+  cursor: pointer;
+}
+.icon_menu span {
+  diplay: none;
+}
+.btn {
+  width: 33px;
+  height: 33px;
+  z-index: 1;
+  position: absolute;
+  bottom: 5px;
+  right: 6px;
+  cursor: pointer;
+  background-color: #2F3441;
+  border-radius: 50%;
+  border: 1px solid #fff;
+}
+.btn span {
+  display: block;
+  width: 22px;
+  height: 24px;
+  font-size: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -12px;
+  margin-left: -11px;
+  overflow: hidden;
+  background: url(../img/icon.png) no-repeat;
+}
+.btn1 span {
+  background-position: -49px -39px;
+}
+.btn2 span {
+  background-position: -87px -37px;
+}
+.btn3 span {
+  background-position: -119px -36px;
+}
+.btn {
+  transition: bottom .5s,right .5s;
+}
+.btn1.close,
+.btn2.close,
+.btn3.close,
+.btn4.close {
+  bottom: 5px;
+  right: 4px;
+}
+.btn1.open {
+  bottom: 75px;
+  right: 47px;
+}
+.btn2.open {
+  bottom: 11px;
+  right: 87px;
+}
+.btn3.open {
+  bottom: -47px;
+  right: 47px;
+}

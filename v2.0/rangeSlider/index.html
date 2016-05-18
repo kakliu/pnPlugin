@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>jQuery可选择详细的价钱区间值代码 - xw素材网</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="Content-Language" content="zh-CN" />
+	<meta id="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1, user-scalable=no" name="viewport" />
+	<meta content="yes" name="apple-mobile-web-app-capable">
+	<meta content="black" name="apple-mobile-web-app-status-bar-style">
+	<meta content="telephone=no" name="format-detection">
+	<meta name="keywords" content="">
+	<meta name="description" content="" />
+	<link rel="stylesheet" href="ion.rangeSlider/css/ion.rangeSlider.css">
+	<link rel="stylesheet" href="ion.rangeSlider/css/ion.rangeSlider.skinHTML5.css">
+	<link rel="stylesheet" href="rang.css">
+	<script type="text/javascript" src="jquery.min.js"></script>
+	<script type="text/javascript" src="./rangeSlider.js"></script>
+</head>
+<body>
+		<div class="index">
+			<input id="range_44" />
+		</div>
+		<div class="recent">
+			<div class="recent-descr">限制最近</div>
+			<input type="text" class="recent-num" readonly="readonly" >
+		</div>
+		<div class="farthest">
+			<div class="farthest-descr">限制最远</div>
+			<input type="text" class="farthest-num" readonly="readonly" >
+		</div>
+	<script>
+		$(document).ready(function () {
+			var $range = $("#range_44"),
+			$result = $("#result_44");
+			var track = function (data) {
+				delete data.input;
+				delete data.slider;
+				if (JSON) {
+					$result.html(JSON.stringify(data, null, 2));
+				} else {
+					$result.html(data.toString());
+				}
+			};
+			$range.ionRangeSlider({
+				type: "three",
+				min: 20,
+				max: 120,
+				from: 100,
+				centent:80,
+				to: 300,
+				step: 1,
+				onStart: changeval,
+				onChange: changeval,
+				onFinish: track
+			});
+
+			function changeval(data){
+				var min=$(".irs-from").html();
+				$(".recent-num").val(min);
+			}
+		});
+	</script>
+</body>
+</html>

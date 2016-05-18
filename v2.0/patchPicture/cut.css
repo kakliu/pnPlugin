@@ -1,0 +1,125 @@
+@charset "utf-8";
+.containers {
+	position: relative;
+	width: 400px;
+	margin: 40px auto 0 auto;
+	position: relative;
+	font-family: 微软雅黑;
+	font-size: 12px;
+}
+.containers p {
+	line-height: 12px;
+	line-height: 0px;
+	height: 0px;
+	margin: 10px;
+	color: #bbb
+}
+.action {
+	clear: both;
+	width: 400px;
+	height: 30px;
+	padding-top:10px;
+}
+.cropped {
+	text-align: center;
+	width:180px;
+	height:180px;
+	float:left;
+}
+.imageBox {
+	position: relative;
+	height: 180px;
+	width: 180px;
+	border: 1px solid #aaa;
+	background: #fff;
+	overflow: hidden;
+	background-repeat: no-repeat;
+	cursor: move;
+	float: left; 
+}
+.imageBox .thumbBox {
+	border-radius: 50%;
+	position: absolute;
+	width: 180px;
+	height: 180px;
+	box-sizing: border-box;
+	border: 1px solid rgb(102, 102, 102);
+	box-shadow: 0 0 0 1000px rgba(0, 0, 0, 0.5);
+	background: none repeat scroll 0% 0% transparent;
+}
+.imageBox .spinner {
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	text-align: center;
+	line-height: 400px;
+	background: rgba(0,0,0,0.7);
+}
+.Btnsty_peyton{
+   width: 30px;
+  display: inline-block;
+  margin-bottom: 10px;
+  height: 30px;
+  line-height: 30px;
+  font-size: 12px;
+  color: #FFFFFF;
+  background-color: #3A98D8;
+  border-radius: 3px;
+  text-decoration: none;
+  cursor: pointer;
+}
+/*选择文件上传*/
+.new-contentarea {
+	width: 165px;
+	overflow:hidden;
+	margin: 0 auto;
+	position:relative;float:left;
+}
+.new-contentarea label {
+	width:100%;
+	height:100%;
+	display:block;
+}
+.new-contentarea input[type=file] {
+	width:188px;
+	height:60px;
+	background:#333;
+	margin: 0 auto;
+	position:absolute;
+	right:50%;
+	margin-right:-94px;
+	top:0;
+	right/*\**/:0px\9;
+	margin-right/*\**/:0px\9;
+	width/*\**/:10px\9;
+	opacity:0;
+	filter:alpha(opacity=0);
+	z-index:2;
+}
+a.upload-img,#upload-file{
+	width:90px;
+	display: inline-block;
+	height:30px;
+	line-height: 30px;
+	font-size: 16px;
+	color: #FFFFFF;
+	background-color: #3A98D8;
+	border-radius: 2px;
+	text-decoration:none;
+	cursor:pointer;
+    text-align:center;
+}
+#upload-file{	
+	filter:alpha(opacity=0); /*IE滤镜，透明度50%*/
+	-moz-opacity:0; /*Firefox私有，透明度50%*/
+	opacity:0;
+	z-index:2;
+}
+a.upload-img:hover{
+	background-color: #ec7e70;
+}
+
+.tc{text-align:center;}
+/*www.jq22.com*/

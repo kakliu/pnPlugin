@@ -1,0 +1,57 @@
+@charset "utf-8";
+html,
+body,
+div,
+p,
+ul,
+li,
+span,
+img,
+input,
+textarea,
+button,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: 微软雅黑;
+  background: #fcfdfe;
+}
+body,
+html {
+  height: 100%;
+}
+input,
+textarea,
+button,
+img {
+  border: none;
+  resize: none;
+}
+button:focus {
+  border: none;
+}
+ul li {
+  list-style-type: none;
+  cursor: pointer;
+}
+button {
+  cursor: pointer;
+}
+a {
+  text-decoration: none;
+}
+i,
+span {
+  display: inline-block;
+  float: left;
+}
+input {
+  outline: none;
+}

@@ -1,0 +1,298 @@
+@charset "utf-8";
+
+// Color variables (appears count calculates by raw css)
+@color0: #7bccc7; // Appears 2 times
+@color1: #4a4a4a; // Appears 2 times
+@color2: #ffffff; // Appears 2 times
+
+// Width variables (appears count calculates by raw css)
+@width5: 37rem; // Appears 2 times
+@width7: 100%; // Appears 2 times
+
+// Height variables (appears count calculates by raw css)
+@height5: 0.7rem; // Appears 2 times
+@height7: 100%; // Appears 2 times
+
+.float-l {
+    float: left;
+}
+.float-r {
+    float: right;
+}
+.pos(r) {
+    position: relative;
+}
+.pos(a) {
+    position: absolute;
+}
+.pos(f) {
+    position: fixed;
+}
+.flo(l) {
+    float: left;
+}
+.flo(r) {
+    float: right;
+}
+.toolbar-all {
+    .pos(a);
+    right: 1rem;
+    bottom: 95px;
+    z-index: 9999;
+    .showClass {
+        width: 38px;
+        .curr{
+            img:first-child{
+                display:none;
+            }
+            img:last-child{
+                display:block;
+            }
+        }
+        .currShow{
+            display:block;
+        }
+        li {
+            width: 38px;
+            height: 38px;
+            border: 1px solid rgba(255, 255, 255, .7);
+            box-sizing: border-box;
+            background-color: rgba(0, 0, 0, .7);
+            border-radius: 50%;
+            background-size: 20px auto;
+            background-position: center center;
+            background-image: url("/v2.0/store/images/themeA/scene.png");
+            background-repeat: no-repeat;
+            .pos(r);
+            margin-top: 22px;
+            img {
+                width: 100%;
+                height: 100%;
+                display: none;
+            }
+            &.btnScene {
+                background-image: url("/v2.0/store/images/themeA/scene.png");
+            }
+            &.btnComment {
+                position: fixed;
+                bottom: 1rem;
+                right: 1rem;
+                background-image: url("/v2.0/store/images/themeA/pinlun.png");
+                background-color: #fff;
+                img {
+                    width:0;height:0;
+                }
+            }
+            &.btnContact {
+                background-image: url("/v2.0/store/images/themeA/lianxi.png");
+            }
+            &.btnCommodity {
+                background-image: url("/v2.0/store/images/themeA/shangp.png");
+            }
+            &.btnActivity {
+                background-image: url("/v2.0/store/images/themeA/sale.png");
+            }
+            &.btnVR {
+                background-image: url("/v2.0/store/images/themeA/VR.png");
+            }
+            &.btnMap {
+                background-image: url("/v2.0/store/images/themeA/map.png");
+            }
+            &.btnComponent {
+                background-image: url("/v2.0/store/images/themeA/sub.png");
+            }
+            &:hover {
+                background-color: rgba(0, 0, 0, 1);
+                &.btnScene {
+                    background-image: url("/v2.0/store/images/themeA/sceneCurr.png");
+                }
+                &.btnComment {
+                    background-color: #fff;
+                }
+                &.btnContact {
+                    background-image: url("/v2.0/store/images/themeA/lianxiCurr.png");
+                }
+                &.btnCommodity {
+                    background-image: url("/v2.0/store/images/themeA/shangpCurr.png");
+                }
+                &.btnActivity {
+                    background-image: url("/v2.0/store/images/themeA/saleCurr.png");
+                }
+                &.btnVR {
+                    background-image: url("/v2.0/store/images/themeA/VRCurr.png");
+                }
+                &.btnMap {
+                    background-image: url("/v2.0/store/images/themeA/mapCurr.png");
+                }
+                &.btnComponent {
+                    background-image: url("/v2.0/store/images/themeA/subCurr.png");
+                }
+            }
+        }
+    }
+    .store-toolbar {
+        height: 0;
+        overflow: hidden;
+    }
+    .btnMore {
+        width: 40px;
+        height: 40px;
+        border: 1px solid rgba(255, 255, 255, .7);
+        box-sizing: border-box;
+        background-color: rgba(0, 0, 0, .7);
+        border-radius: 50%;
+        background-size: 20px auto;
+        background-position: center center;
+        background-image: url("/v2.0/store/images/themeA/more.png");
+        background-repeat: no-repeat;
+        margin-top: 20px;
+        cursor: pointer;
+        .pos(r);
+        &.curr {
+            background-image: url("/v2.0/store/images/themeA/moreCurr.png");
+            background-size: auto 20px;
+        }
+    }
+    .curr {
+        img:first-child {
+            display: none;
+        }
+        img:last-child {
+            display: block;
+        }
+    }
+}
+
+.touxiang {
+    height: 50px;
+    left: 1rem;
+    position: absolute;
+    top: 2rem;
+    z-index: 10000;
+    line-height: 50px;
+    img {
+        -moz-border-radius: 8px;
+        -webkit-border-radius: 8px;
+        border-radius: 8px;
+        cursor: pointer;
+        height:  100%; 
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        width: 50px;
+    }
+    p {
+        font-family: PingFangTC-Regular, sans-serif;
+        list-style: none;
+        position: absolute;
+        left:55px;
+        top:0;
+        font-size: 1.1rem;
+        color: rgba(255,255,255,1);
+        word-wrap: break-word;
+        white-space: nowrap;
+        overflow: hidden;
+        max-width:200px;
+        text-overflow: ellipsis;
+    }
+    a {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    html {
+        font-size: 20px;
+    }
+}
+
+.vote {
+    bottom: 1rem;
+    left: 1rem;
+    position: absolute;
+    z-index: 10000;
+    .gif {
+        display: none;
+    }
+    img {
+        cursor: pointer;
+        float: left;
+        height: 38px;
+        width: 38px;
+    }
+    .guanzhu {
+        float: left;
+        margin-left: 20px;
+        .liulan {
+            p {
+                color: @color2;
+                float: left;
+                font-size: 0.6rem;
+                font-weight: bold;
+                margin-left: 0.35rem;
+            }
+            img {
+                height: @height5;
+                width: 1rem;
+            }
+        }
+        .shouyexiaozan {
+            margin-top: 1.5rem;
+            p {
+                color: @color2;
+                float: left;
+                font-size: 0.6rem;
+                font-weight: bold;
+                margin-left: 0.5rem;
+            }
+            img {
+                height: @height5;
+                margin-left: 2px;
+                width: 0.75rem;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width:320px) and (max-width:736px) {
+  div,ul,li,a,input,p,span,dd,dl {
+    appearance:none;
+    -webkit-appearance:none;
+    outline:0;
+	-webkit-user-select:none;
+	user-select:none;
+	-webkit-tap-highlight-color:rgba(0,0,0,0);
+  }
+
+
+	#panoView { height:100%;width:100%;overflow:hidden;}
+    .toolbar-all {
+        right: 1rem;
+        bottom: 80px;
+        .showClass {
+            li {
+                &.btnComment {
+                    right: 1rem;
+                }
+            }
+        }
+    }
+}
+
+@keyframes pullup {
+	0% { -webkit-transform: translateY(100%); transform: translateY(100%) }
+	100% { -webkit-transform: translateY(0); transform: translateY(0) }
+}
+@-webkit-keyframes pullup {
+	0% { -webkit-transform: translateY(100%); transform: translateY(100%) }
+	100% { -webkit-transform: translateY(0); transform: translateY(0) }
+}
+.myanim-b { animation:pullup .3s ease-in-out 0s forwards;-webkit-animation:pullup .3s ease-in-out 0s forwards;}
+@keyframes pulldown {
+	0% { transform: translateY(0); -webkit-transform: translateY(0);}
+	100% { transform: translateY(100%);-webkit-transform: translateY(100%); }
+}
+@-webkit-keyframes pulldown {
+	0% { -webkit-transform: translateY(0);transform: translateY(0);}
+	100% { -webkit-transform: translateY(100%);transform: translateY(100%);}
+}
+.myanim-b0 { animation:pulldown .3s ease-in-out 0s forwards;-webkit-animation:pulldown .3s ease-in-out 0s forwards;}

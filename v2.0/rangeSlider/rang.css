@@ -1,0 +1,53 @@
+.index{width: 190px;margin: 0 auto;height: 55px;}
+.irs-line,.irs-bar{
+	height:3px!important;
+}
+.irs-slider{
+	background:url(ion.rangeSlider/img/rang.png) no-repeat;
+	border:none!important;
+	border-radius:0!important;
+	cursor: pointer!important;
+}
+.type_last,.to,.irs-slider{top:38px!important;}
+.centent{top:15px!important;}
+.irs-bar{border-radius: 3px;}
+.irs-line{
+	width:188px;
+}
+.from,.to{
+	background:url(/v2.0/images/rangm.png) no-repeat;
+	width:9px!important;
+	height:12px!important;
+
+}
+.from:hover,.to:hover{
+	background:url(/v2.0/images/rangm.png) no-repeat;
+}
+.centent{
+	background:url(/v2.0/images/rang.png) no-repeat;
+
+	width:12px!important;
+	height:16px!important;
+}
+.irs-from, .irs-to, .irs-single,.irs-centent,.irs-min,.irs-grid,.irs-max{display:none!important;}
+.centent:hover{
+	background:url(/v2.0/images/rang.png) no-repeat;
+}
+//限制最近限制最遠
+.distance{
+}
+.recent{
+	float:left;
+	font-size: 12px;
+	margin-left: 10px;
+}
+.recent-num,.farthest-num{
+	width:30px;
+	margin-top: 6px;
+	text-align:center;
+}
+.farthest{
+	float:right;
+	font-size: 12px;
+	margin-right: 10px;
+}

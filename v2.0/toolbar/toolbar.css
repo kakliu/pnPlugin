@@ -1,0 +1,140 @@
+@charset "utf-8";
+.float-l {
+  float: left;
+}
+.float-r {
+  float: right;
+}
+i {
+  background: url(../images/icon.png) no-repeat;
+  display: block;
+  float: left;
+}
+.plugin_layer {
+  left: inherit!important;
+  right: 265px!important;
+  top: 30px!important;
+}
+.toolbar {
+  width: 200px;
+  float: right;
+  position: absolute;
+  top: 20px;
+  right: 40px;
+  z-index: 999999999;
+}
+.toolbar > li {
+  background-color: #2F3441;
+  width: 100%;
+  height: 40px;
+  margin-top: 10px;
+  position: relative;
+  border-radius: 2px;
+  overflow: hidden;
+}
+.toolbar > li .toolbar-button {
+  padding-left: 50px;
+  font-size: 16px;
+  color: #fff;
+  text-align: left;
+  line-height: 40px;
+}
+.toolbar > li .toolbar-content {
+  position: ABSOLUTE;
+  background-color: rgba(47, 52, 65, 0.8);
+  display: none;
+  left: 0;
+  width: 100%;
+}
+.toolbar > li i {
+  width: 22px;
+  height: 22px;
+  position: absolute;
+  left: 15px;
+  top: 9px;
+}
+.toolbar li.curr {
+  background-color: #3A97D8;
+}
+.toolbar .set i {
+  background-position: -209px -14px;
+  width: 22px;
+  height: 22px;
+  top: 9px;
+  position: absolute;
+  left: 15px;
+}
+.toolbar .ji-ju i {
+  background-position: -239px -15px;
+  width: 22px;
+  height: 18px;
+  top: 9px;
+  position: absolute;
+  left: 15px;
+}
+.toolbar .add-link i {
+  background-position: -268px -16px;
+  width: 22px;
+  height: 19px;
+  top: 9px;
+  position: absolute;
+  left: 15px;
+}
+.toolbar .add-spot {
+  margin-top: 10px;
+  background-color: #2F3441;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 0 0 2px 2px;
+}
+.toolbar .add-spot i {
+  background-position: -297px -15px;
+  width: 22px;
+  height: 19px;
+  position: absolute;
+  left: 15px;
+  top: 9px;
+}
+.toolbar .add-spot.curr .choose-add-style {
+  display: block;
+}
+.toolbar .add-spot {
+  position: relative;
+}
+.toolbar .add-spot .choose-add-style {
+  position: ABSOLUTE;
+  background-color: #2F3441;
+  display: none;
+  left: 0;
+}
+.toolbar .add-spot span {
+  position: relative;
+  width: 50px;
+  height: 50px;
+}
+.toolbar .add-spot span i {
+  margin-top: 9px;
+}
+.toolbar .add-spot i.font {
+  background-position: -340px -22px;
+  width: 25px;
+  height: 22px;
+}
+.toolbar .add-spot i.write {
+  background-position: -374px -22px;
+  width: 25px;
+  height: 22px;
+}
+.toolbar .add-spot .sound {
+  background-position: -411px -22px;
+  width: 25px;
+  height: 22px;
+}
+.toolbar .add-spot .vedio {
+  background-position: -445px -22px;
+  width: 25px;
+  height: 22px;
+}
+.toolbar .add-style span.curr {
+  background-color: #3A97D8;
+}

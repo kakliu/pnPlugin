@@ -1,0 +1,139 @@
+@charset "utf-8";
+.float-l{
+	float:left;
+}
+.float-r{
+	float:right;
+}
+.pos(r){
+	position:relative;
+}
+.pos(a){
+	position:absolute;
+}
+.pos(f){
+	position:fixed;
+}
+.flo(l){
+	float:left;
+}
+.flo(r){
+	float:right;
+}
+i{background:url(../images/icon.png)  no-repeat;display:block;float:left;}
+.toolbar{
+	width: 200px;
+    float: right;
+    margin-right: 40px;
+	li{
+		background-color:#2F3441;
+		width:150px;
+		height:40px;
+		line-height:40px;
+		margin-top:10px;
+		font-size:16px;
+		color:#fff;
+		text-align:left;
+		.pos(r);
+		padding-left:50px;
+		border-radius:2px;
+	    
+	}
+	li.curr{
+		background-color:#3A97D8;
+	}
+	.set{
+		i{
+			background-position:-209px -14px;;
+			width:22px;
+			height:22px;
+			top: 9px;
+	    	.pos(a);
+	    	left:15px;
+		}
+	}
+	.ji-ju{
+		i{
+			background-position: -239px -15px;
+    		width: 22px;
+			height:18px;
+			top: 9px;
+	    	.pos(a);
+	    	left:15px;
+		}
+	}
+	.add-link{
+		i{
+			background-position: -268px -16px;
+		    width: 22px;
+		    height: 19px;
+			top: 9px;
+	    	.pos(a);
+	    	left:15px;
+		}
+	}
+	.add-spot{
+		margin-top:10px;
+		background-color:#2F3441;
+		height:40px;
+		line-height:40px;
+		border-radius:0 0 2px 2px;
+		padding-left:50px;
+		width:150px;
+		i{
+			background-position: -297px -15px;
+		    width: 22px;
+		    height: 19px;
+		    position: absolute;
+		    left: 15px;
+		    top: 9px;
+		}
+	}
+	.add-spot.curr{
+		.choose-add-style{
+			display:block;
+		}
+	}
+	.add-spot{
+		position:relative;
+		.choose-add-style{
+		    position: ABSOLUTE;
+		    background-color: #2F3441;
+			display:none;
+			left:0;
+		}
+		span{	
+			position: relative;
+		    width: 50px;
+		    height: 50px;
+		    i{
+		        margin-top: 9px;
+		    }
+		}
+		i.font{
+			background-position: -340px -22px;
+			width:25px;
+			height:22px;
+		}
+		i.write{
+			background-position: -374px -22px;
+		    width:25px;
+			height:22px;
+		}
+		.sound{
+			background-position: -411px -22px;
+			width:25px;
+			height:22px;
+		}
+		.vedio{
+			background-position: -445px -22px;
+			width:25px;
+			height:22px;
+		}
+	}
+	.add-style{
+		span.curr{	
+		background-color:#3A97D8;
+		}
+	}
+}

@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+<title></title>
+<script type="text/javascript" src="/js/duc.common.js"></script>
+<script type="text/javascript" src="/depend/requirejs/require.js"></script>
+<script type="text/javascript" src="/depend/jquery/jquery.js" ></script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=A4Ird5cqHwkcn4kCZdVqBcZc"></script>
+<script>
+	var baseUrl = getQueryString("debug")?"/v2.0":"/dist";
+	require.config({
+		baseUrl: baseUrl,
+		paths:{
+	    	'template': '/depend/template.js/template',
+	    	'css': '/depend/requirejs/css',
+	    	'text': '/depend/requirejs/text',
+	        'proxy': 'proxy/proxy',
+	        'layer': 'modul/layer',
+	        'countdown': 'modul/jquery.downCount',
+	        'login': 'login/login',
+	        'pages': 'modul/jquery.page'
+		}
+	});
+	
+	requirejs(['manage/manage','/v2.0/common/head/head.js','/v2.0/common/left/left.js']);
+</script>
+</head>
+	<body> 
+		<div class="head"></div>
+		<div class="body_left"></div>	
+		<div class="body_right">
+			<div class="brbox manage"></div>
+			<!--<div class="brbox addaccount">
+				<div class="ac_top">
+					<ul>
+						<li class="cur">添加已有账号<span></span></li>
+						<li>创建新账号<span></span></li>
+					</ul>
+					<a href="javascript:;" class="back">返回</a>
+				</div>
+				<div class="ac_tab ac_add"></div>
+				<div class="ac_tab ac_create"></div>
+			</div>-->
+			<div class="brbox makeinfo">
+				<div class="dialog_bg">
+					<div class="dg_bind">
+						<div class="title">
+							<p>绑定全景</p>
+							<div class="db_close" id="db_close"></div>
+						</div>
+						<div class="bind_box">
+							<div class="search">
+								<input type="text" placeholder="" class="ipt_search" />
+								<div class="srarch_ico"></div>
+								<a href="javascript:;" class="btn_search" id="cj_search">搜索</a>
+							</div>
+							<div class="bind_empty">
+								<img src="../../images/bind_empty.png" />
+								<p>未找到符合条件的全景</p>
+							</div>
+							<div class="bind_viewlist" id="bind_viewlist">
+				
+							</div>
+						</div>
+						<div class="tbottom">
+							<div class="check">
+								<a href="javascript:;">点击申请绑定即表示同意分享作品所有权（点击下载pdf）</a>
+							</div>
+							<a href="javascript:;" class="btn_bind" id="btn_apply">申请绑定</a>
+						</div>
+					</div>
+				</div>
+				
+				<div class="makedetails"></div>
+			</div>
+		</div>	
+	</body>
+</html>

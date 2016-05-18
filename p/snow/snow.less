@@ -1,0 +1,78 @@
+// Color variables (appears count calculates by raw css)
+@black: #000000; 
+@white: #ffffff; 
+@gray: #b4b4b4;
+@blue: #3A98D8;
+@arial: "Microsoft YaHei", "微软雅黑", STXihei, "华文细黑", serif;
+@height1: 20px; 
+
+.snow { background:rgba(0, 0, 0, 0);color:@white;text-align:left;
+	ul,li,h5,hr { padding:0;margin:0;list-style: none;}
+	.snowtitle { color:#999;font:14px/20px @arial; padding:17px 20px 7px 20px;}
+	.snow_list { font-size:0;
+		li {width:50%;display:inline-block;font:14px/20px @arial;padding:1px 20px; box-sizing: border-box; 
+			label { display:block;
+				input {margin-right:5px;}
+			}
+		}
+	}
+	.snow_auto {
+		label { display:block;
+			input {margin-right:5px;}
+		}	
+	}
+	hr {heigth:0;border:0;border-top:1px dashed rgba(255,255,255,.2); margin:10px 0;}
+	.snow_auto { padding:0 20px;font:14px/20px @arial;
+		.snow_comment { font-size:12px;color:rgba(255,255,255,.5); padding:10px 0;}
+		.snow_photo {width:90px;height:90px; background:rgba(0,0,0,.4);position: absolute;}
+		.for_img { position: relative;width:90px;height:90px;margin-top:7px;
+			i { display:block;width:90px;height:90px;position: relative;top:0;background:none;z-index: 1;
+				&:before { content:"";width:60px;border:0;height:2px;background:rgba(255,255,255,.3); position: absolute;top:44px;left:15px;}
+				&:after { content:"";width:2px;border:0;height:60px;background:rgba(255,255,255,.3); position: absolute;left:44px;top:15px;}
+			}
+			input[type="file"] {position: absolute;width:90px;height:90px;top:0;z-index:2;opacity:0;}
+			.progress { position: absolute;left:10px;bottom:10px;}
+			.list_photo { position: absolute;width:90px;height:90px; margin:0;padding:0;
+				dd {padding:0;margin:0;
+					input { display:none;}
+				}
+			}
+		}
+		.plugin-map-upload { width:90px;height:90px;}
+	}
+	.snow_footer { border-top: 1px solid @black; padding:13px 20px;font:14px/20px @arial; 
+		button {position: absolute;right:20px; border:0; font:12px/20px @arial; color:@white; background:none;
+			&[disabled] { opacity: .5;}
+		}
+	}
+	.snow_btn { background:rgba(0,0,0,0);border:1px solid rgba(255,255,255,.5); color:rgba(255,255,255,.5); width:90px;height:24px; margin:10px 0 0 0; border-radius:3px; }
+	.lcs_wrap { float:none;}
+	.lcs_switch {top:0;}
+
+
+	//进度条
+	.progress { width: 70px; background-color: #e6e6e6; border-radius: 3px; height: 5px;
+		.progress-bar {height:5px;width:0%; background:@blue;border-radius: 2px;}
+	}
+
+	//复选框
+	.lcs_wrap { direction: ltr; display: inline-block; height: @height1; vertical-align: middle;
+		input { display: none; }
+	}
+	.lcs_switch { -ms-transition: all .2s ease-in-out; -webkit-transition: all .2s ease-in-out; background: #dddddd; border-radius: 30px; cursor: pointer; display: inline-block; height: @height1; overflow: hidden; position: relative; transition: all .2s ease-in-out; width:38px; }
+	.lcs_cursor { -ms-transition: all .2s linear; -webkit-transition: all .2s linear; background: @white; border-radius: 100%; box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 3px 4px 0 rgba(0, 0, 0, 0.1); display: inline-block; height: 16px; position: absolute; top: 2px; transition: all .2s linear; width: 16px; z-index: 10; }
+	.lcs_label { -ms-transition: all .2s ease-in-out .1s; -webkit-transition: all .2s ease-in-out .1s; color: @white; font-family: "Trebuchet MS", Helvetica, sans-serif; font-size: 12px; font-weight: bold; letter-spacing: 1px; line-height: 18px; opacity: 0; overflow: hidden; position: absolute; text-align: center; top: 5px; transition: all .2s ease-in-out .1s; width: 33px; }
+	.lcs_label.lcs_label_on { left: -33px; z-index: 6; }
+	.lcs_label.lcs_label_off { right: -33px; z-index: 5; }
+	.lcs_switch.lcs_on { background: @blue; box-shadow: 0 0 2px @blue inset;
+		.lcs_cursor { left: 20px; }
+		.lcs_label_on { left: 10px; opacity: 1; }
+	}
+	.lcs_switch.lcs_off { background:rgba(0,0,0,0); box-shadow: 0px 0px 2px #a4a4a4 inset;
+		.lcs_cursor { left: 3px; }
+		.lcs_label_off { opacity: 1; right: 10px; }
+	}
+	.lcs_switch.lcs_disabled { cursor: default; filter: alpha(opacity=65); opacity: 0.65; }
+	.hide { display:none;}
+}
+

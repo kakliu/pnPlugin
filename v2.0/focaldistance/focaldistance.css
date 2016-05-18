@@ -1,0 +1,27 @@
+.setdistance {
+  min-width: 220px!important;
+  box-shadow: none!important;
+}
+.setdistance .layui-layer-title {
+  background-color: rgba(47, 52, 65, 0.9);
+  color: #fff!important;
+  margin-top: 0!important;
+}
+.setdistance .layui-layer-content {
+  width: 100%;
+  box-sizing: border-box;
+  background-color: rgba(47, 52, 65, 0.8);
+  overflow: hidden!important;
+}
+.setdistance .layui-layer-setwin a {
+  background: url(../images/icon.png) -178px -22px no-repeat !important;
+  width: 12px !important;
+  height: 12px !important;
+}
+#distance {
+  display: none;
+}
+.setdistance {
+  position: absolute;
+  right: 300px!important;
+}

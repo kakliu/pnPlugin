@@ -1,0 +1,175 @@
+.commodityDiv {
+  bottom: 0;
+  margin: auto;
+  left: 0;
+  right: 0;
+  position: absolute;
+}
+.commodityDiv .layui-layer-content {
+  overflow: hidden;
+}
+.liwu-gushineirong {
+  display: none;
+  overflow: hidden;
+  height: 100%;
+  width: 38rem;
+  margin: 13% auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  z-index: 10001;
+}
+.liwu-gushineirong p {
+  font-family: PingFangTC-Regular, sans-serif;
+}
+.liwu-gushineirong .tou {
+  width: 100%;
+  height: 2rem;
+  background-color: rgba(255, 255, 255, 0.93);
+  border-radius: 4px;
+}
+.liwu-gushineirong .tou p {
+  margin: 0.55rem 0;
+  font-size: 17px;
+  color: #4A4A4A;
+  float: left;
+  font-weight: bold;
+  font-family: PingFangTC-Regular, sans-serif;
+}
+.liwu-gushineirong .tou .kaitou {
+  background-color: #7BCCC7;
+  margin: 0.55rem 0.4rem 0.55rem 1.65rem;
+  float: left;
+  width: 0.3rem;
+  height: 17px;
+}
+.liwu-gushineirong .xinxijiemian {
+  width: 100%;
+  height: 23.5rem;
+  background-color: rgba(255, 255, 255, 0.93);
+  border-radius: 4px;
+  overflow: hidden;
+  height: 100%;
+  box-sizing: border-box;
+  padding-top: 1rem;
+}
+.liwu-gushineirong .xinxijiemian .gundongtiao {
+  height: 93%;
+  width: 100%;
+  overflow-y: auto;
+  padding: 0 1rem 1rem;
+}
+.liwu-gushineirong .xinxijiemian .gundongtiao::-webkit-scrollbar {
+  width: 4px;
+}
+.liwu-gushineirong .xinxijiemian .gundongtiao::-webkit-scrollbar-thumb {
+  background: #666666;
+  border-radius: 3px;
+}
+.liwu-gushineirong .xinxijiemian .shangpxinxi {
+  width: 16.75rem;
+  margin-left: 1rem;
+  display: inline-block;
+  background-color: #FFFFFF;
+  margin-bottom: 1rem;
+}
+.liwu-gushineirong .xinxijiemian .shangpxinxi p {
+  font-size: 16px;
+  padding: 0.5rem 21px;
+}
+.liwu-gushineirong .xinxijiemian .shangpxinxi .img1 {
+  width: 1.1rem;
+  height: 1rem;
+  float: right;
+  margin-top: 0.5rem;
+  cursor: pointer;
+  background-size: 100% 100%;
+  background-image: url("/images/shangpdianzan.png");
+  display: none;
+}
+.liwu-gushineirong .xinxijiemian .shangpxinxi .img2 {
+  width: 1.1rem;
+  height: 1rem;
+  float: right;
+  margin-top: 0.5rem;
+  cursor: pointer;
+  background-size: 100% 100%;
+  background-image: url("/images/shangpdianji.png");
+  display: none;
+}
+.liwu-gushineirong .xinxijiemian .shangpxinxi .pp-picture {
+  width: 16.75rem;
+  float: inherit;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  height: 16.75rem;
+}
+.liwu-gushineirong .xinxijiemian .shangpxinxi .jiage {
+  color: #D65060;
+  float: left;
+}
+.liwu-gushineirong .xinxijiemian .shangpxinxi .guanzhushu {
+  float: right;
+  display: block;
+  margin-left: 0.4rem;
+  display: none;
+}
+.liwu-gushineirong .closea {
+  width: 1.2rem;
+  right: 1.3rem;
+  top: 0.4rem;
+  position: absolute;
+  cursor: pointer;
+}
+@media only screen and (min-width: 320px) and (max-width: 736px) {
+  .liwu-gushineirong {
+    height: 100%;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.93);
+  }
+  .liwu-gushineirong .closea {
+    width: 40px;
+    position: absolute;
+    display: block;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    top: auto;
+    bottom: 10px;
+  }
+  .liwu-gushineirong .tou {
+    width: 100%;
+    background-color: initial;
+    padding-top: 10px;
+  }
+  .liwu-gushineirong .xinxijiemian {
+    width: 100%;
+    height: 85%;
+    background-color: initial;
+    padding-top: 10px;
+  }
+  .liwu-gushineirong .xinxijiemian .gundongtiao {
+    width: 100%;
+    height: 96%;
+    padding: 0 0.75rem 0.75rem 0;
+    text-align: center;
+  }
+  .liwu-gushineirong .xinxijiemian .gundongtiao .shangpxinxi {
+    margin: 0 auto 6px;
+    overflow: hidden;
+    background-color: initial;
+    width: 87%;
+  }
+  .liwu-gushineirong .xinxijiemian .gundongtiao .shangpxinxi p {
+    padding: 0.5rem 0;
+  }
+  .liwu-gushineirong .xinxijiemian .gundongtiao .shangpxinxi .xinxineirong {
+    text-align: left;
+  }
+  .liwu-gushineirong .xinxijiemian .gundongtiao .shangpxinxi .pp-picture {
+    width: 100%;
+    height: auto;
+  }
+}

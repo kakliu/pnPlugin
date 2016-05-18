@@ -1,0 +1,1 @@
+var component = "<div class='plugin-compoent'></div>"

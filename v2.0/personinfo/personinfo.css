@@ -1,0 +1,450 @@
+.infor {
+  margin: 40px;
+  background-color: #FFFFFF;
+  position: relative;
+  border: 1px solid #e2e2e2;
+}
+.if_title {
+  height: 80px;
+  line-height: 80px;
+  border-bottom: 1px solid #E2E2E2;
+  font-size: 20px;
+  color: #0F2434;
+  font-weight: bold;
+  padding-left: 30px;
+}
+.if_box {
+  width: 435px;
+  height: 230px;
+  margin: 0 auto;
+  margin-top: 120px;
+}
+.if_box .bar {
+  width: 435px;
+  height: 30px;
+  line-height: 30px;
+  margin-bottom: 40px;
+}
+.if_box .bar .ghmobile {
+  display: none;
+}
+.if_box .bar .bnewmobile {
+  display: none;
+}
+.if_box .bar span {
+  width: 140px;
+  font-size: 20px;
+  color: #666666;
+  text-align: right;
+  float: left;
+}
+.if_box .bar label {
+  font-size: 20px;
+  color: #999999;
+  float: left;
+  margin-left: 23px;
+}
+.if_box .bar a {
+  font-size: 14px;
+  color: #3A98D8;
+  float: left;
+  margin-left: 37px;
+}
+.if_box .bar a:hover {
+  text-decoration: underline;
+}
+.if_box .bar .revise {
+  margin-left: 83px;
+}
+.unbind {
+  margin: 40px;
+  background-color: #FFFFFF;
+  position: relative;
+  display: none;
+  border: 1px solid #e2e2e2;
+}
+.ub_title {
+  height: 80px;
+  line-height: 80px;
+  border-bottom: 1px solid #E2E2E2;
+  font-size: 20px;
+  color: #0F2434;
+  font-weight: bold;
+  padding-left: 30px;
+}
+.ub_box {
+  width: 700px;
+  margin: 0 auto;
+  margin-top: 120px;
+}
+.ub_box .bar {
+  width: 700px;
+  height: 38px;
+  line-height: 38px;
+  margin-bottom: 40px;
+}
+.ub_box .bar span {
+  width: 140px;
+  font-size: 20px;
+  color: #666666;
+  text-align: right;
+  float: left;
+}
+.ub_box .bar .ipt {
+  width: 342px;
+  position: relative;
+  float: left;
+  margin-left: 25px;
+  margin-right: 21px;
+}
+.ub_box .bar input {
+  width: 330px;
+  height: 26px;
+  line-height: 26px;
+  border: 1px solid #979797;
+  border-radius: 2px;
+  padding: 5px;
+}
+.ub_box .bar input:focus {
+  border: 1px solid #3A98D8;
+}
+.ub_box .bar .empty {
+  display: none;
+  width: 18px;
+  height: 18px;
+  background: url(../../../images/ipt_reset.png) no-repeat;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+.ub_box .bar .tip {
+  font-size: 12px;
+  color: #D0021B;
+  position: absolute;
+  left: 5px;
+  bottom: -38px;
+  display: none;
+}
+.ub_box .bar .piccode {
+  width: 123px;
+  float: left;
+}
+.ub_box .bar .sendbefore {
+  width: 120px;
+  height: 36px;
+  text-align: center;
+  color: #FFFFFF;
+  background-color: #C6C6C6;
+  font-size: 16px;
+  border-radius: 40px;
+  display: block;
+  float: left;
+  border: none;
+  cursor: pointer;
+}
+.ub_box .bar .send {
+  background-color: #3A98D8;
+}
+.ub_box .bar .send:hover {
+  background-color: #2E79AC;
+}
+.ub_box .remind {
+  font-size: 14px;
+  color: #999999;
+  display: inline-block;
+  margin-left: 165px;
+}
+.ub_box .nextbtn {
+  margin-top: 160px;
+  padding-bottom: 70px;
+}
+.ub_box .next {
+  width: 200px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  background-color: #C6C6C6;
+  color: #FFFFFF;
+  font-size: 16px;
+  border-radius: 40px;
+  margin-left: 165px;
+  margin-bottom: 10px;
+  background-color: #3A98D8;
+  display: block;
+}
+.ub_box .next:hover {
+  background-color: #2E79AC;
+}
+.ub_box .cancel {
+  font-size: 16px;
+  color: #3A98D8;
+  margin-left: 250px;
+}
+.newmobile {
+  margin: 40px;
+  background-color: #FFFFFF;
+  position: relative;
+  display: none;
+  border: 1px solid #e2e2e2;
+}
+.nm_title {
+  height: 80px;
+  line-height: 80px;
+  border-bottom: 1px solid #E2E2E2;
+  font-size: 20px;
+  color: #0F2434;
+  font-weight: bold;
+  padding-left: 30px;
+}
+.nm_box {
+  width: 700px;
+  margin: 0 auto;
+  margin-top: 120px;
+}
+.nm_box .bar {
+  width: 700px;
+  height: 38px;
+  line-height: 38px;
+  margin-bottom: 40px;
+}
+.nm_box .bar span {
+  width: 140px;
+  font-size: 20px;
+  color: #666666;
+  text-align: right;
+  float: left;
+}
+.nm_box .bar .ipt {
+  width: 342px;
+  position: relative;
+  float: left;
+  margin-left: 25px;
+  margin-right: 21px;
+}
+.nm_box .bar input {
+  width: 330px;
+  height: 26px;
+  line-height: 26px;
+  border: 1px solid #979797;
+  border-radius: 2px;
+  padding: 5px;
+}
+.nm_box .bar input:focus {
+  border: 1px solid #3A98D8;
+}
+.nm_box .bar .empty {
+  display: none;
+  width: 18px;
+  height: 18px;
+  background: url(../../../images/ipt_reset.png) no-repeat;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+.nm_box .bar .tip {
+  font-size: 12px;
+  color: #D0021B;
+  position: absolute;
+  left: 5px;
+  bottom: -38px;
+  display: none;
+}
+.nm_box .bar .piccode {
+  width: 123px;
+  float: left;
+}
+.nm_box .bar .sendbefore {
+  width: 120px;
+  height: 36px;
+  text-align: center;
+  color: #FFFFFF;
+  background-color: #C6C6C6;
+  font-size: 16px;
+  border-radius: 40px;
+  display: block;
+  float: left;
+  border: none;
+  cursor: pointer;
+}
+.nm_box .bar .send {
+  background-color: #3A98D8;
+}
+.nm_box .bar .send:hover {
+  background-color: #2E79AC;
+}
+.nm_box .remind {
+  font-size: 14px;
+  color: #999999;
+  display: inline-block;
+  margin-left: 165px;
+}
+.nm_box .nextbtn {
+  margin-top: 160px;
+  padding-bottom: 70px;
+}
+.nm_box .next {
+  width: 200px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  background-color: #3A98D8;
+  color: #FFFFFF;
+  font-size: 16px;
+  border-radius: 40px;
+  margin-left: 165px;
+  display: block;
+  margin-bottom: 10px;
+}
+.nm_box .next:hover {
+  background-color: #2E79AC;
+}
+.nm_box .cancel {
+  font-size: 16px;
+  color: #3A98D8;
+  margin-left: 250px;
+}
+.changepw {
+  margin: 40px;
+  background-color: #FFFFFF;
+  position: relative;
+  border: 1px solid #e2e2e2;
+  display: none;
+}
+.cp_title {
+  height: 80px;
+  line-height: 80px;
+  border-bottom: 1px solid #E2E2E2;
+  font-size: 20px;
+  color: #0F2434;
+  font-weight: bold;
+  padding-left: 30px;
+}
+.cp_box {
+  width: 700px;
+  margin: 0 auto;
+  margin-top: 120px;
+}
+.cp_box .bar {
+  width: 700px;
+  height: 38px;
+  line-height: 38px;
+  margin-bottom: 40px;
+}
+.cp_box .bar span {
+  width: 140px;
+  font-size: 20px;
+  color: #666666;
+  text-align: right;
+  float: left;
+}
+.cp_box .bar .ipt {
+  width: 342px;
+  position: relative;
+  float: left;
+  margin-left: 25px;
+  margin-right: 21px;
+}
+.cp_box .bar input {
+  width: 330px;
+  height: 26px;
+  line-height: 26px;
+  border: 1px solid #979797;
+  border-radius: 2px;
+  padding: 5px;
+}
+.cp_box .bar input:focus {
+  border: 1px solid #3A98D8;
+}
+.cp_box .bar .empty {
+  display: none;
+  width: 18px;
+  height: 18px;
+  background: url(../../../images/ipt_reset.png) no-repeat;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+.cp_box .bar .tip {
+  font-size: 12px;
+  color: #D0021B;
+  position: absolute;
+  left: 5px;
+  bottom: -38px;
+  display: none;
+}
+.cp_box .bar .piccode {
+  float: left;
+}
+.cp_box .bar .sendbefore {
+  width: 120px;
+  height: 36px;
+  line-height: 36px;
+  text-align: center;
+  color: #FFFFFF;
+  background-color: #C6C6C6;
+  font-size: 16px;
+  border-radius: 40px;
+  display: block;
+  float: left;
+}
+.cp_box .bar .countdown {
+  width: 120px;
+  height: 36px;
+  line-height: 36px;
+  text-align: center;
+  color: #FFFFFF;
+  background-color: #C6C6C6;
+  font-size: 16px;
+  border-radius: 40px;
+  display: none;
+  float: left;
+}
+.cp_box .bar .send {
+  width: 120px;
+  height: 36px;
+  line-height: 36px;
+  text-align: center;
+  color: #FFFFFF;
+  background-color: #3A98D8;
+  font-size: 16px;
+  border-radius: 40px;
+  display: none;
+  float: left;
+}
+.cp_box .bar .send:hover {
+  background-color: #2E79AC;
+}
+.cp_box .remind {
+  font-size: 14px;
+  color: #999999;
+  display: inline-block;
+  margin-left: 165px;
+}
+.cp_box .nextbtn {
+  margin-top: 160px;
+  padding-bottom: 70px;
+}
+.cp_box .next {
+  width: 200px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  background-color: #3A98D8;
+  color: #FFFFFF;
+  font-size: 16px;
+  border-radius: 40px;
+  margin-left: 165px;
+  display: block;
+  margin-bottom: 10px;
+}
+.cp_box .next:hover {
+  background-color: #2E79AC;
+}
+.cp_box .cancel {
+  font-size: 16px;
+  color: #3A98D8;
+  margin-left: 250px;
+}

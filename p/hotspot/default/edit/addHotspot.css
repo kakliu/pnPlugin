@@ -1,0 +1,400 @@
+.hotsopt {
+  position: relative;
+}
+.hotsopt .hotspot-i {
+  width: 32px;
+  height: 32px;
+  background-color: rgba(47, 52, 65, 0.8);
+  border: solid 1px #fff;
+  -moz-border-radius: 32px;
+  -webkit-border-radius: 32px;
+  border-radius: 32px;
+}
+.hotsopt .hotspot-i .icon-edit {
+  background: url(/p/hotspot/default/images/icon.png) no-repeat;
+  width: 34px;
+  height: 31px;
+  float: left;
+  background-position: -141px -13px;
+}
+.hotsopt .hotspot-edit {
+  position: absolute;
+  left: -11px;
+  top: -34px;
+}
+.hotsopt .hotspot-label {
+  position: absolute;
+  left: -42px;
+  top: 25px;
+}
+.hotsopt .icon-label {
+  background: url("/p/hotspot/default/images/icon.png");
+  width: 34px;
+  height: 31px;
+  float: left;
+  background-position: -82px -13px;
+}
+.hotsopt .hotspot-delete {
+  position: absolute;
+  left: -10px;
+  top: 82px;
+}
+.hotsopt .icon-delete {
+  background: url("/p/hotspot/default/images/icon.png");
+  width: 34px;
+  height: 31px;
+  float: left;
+  background-position: -114px -12px;
+}
+.model {
+  position: absolute;
+  z-index: 5001;
+  width: 200px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.model .title {
+  width: 100%;
+  height: 40px;
+  background-color: rgba(47, 52, 65, 0.95);
+  color: #fff;
+  font-size: 14px;
+  line-height: 40px;
+  font-family: "微软雅黑";
+  font-weight: bolder;
+  box-shadow: 0 1px 0px #000;
+  padding-left: 10px;
+}
+.model .contents {
+  width: 100%;
+  overflow: hidden;
+  background-color: rgba(47, 52, 65, 0.8);
+}
+.model .close {
+  position: absolute;
+  right: 10px;
+  top: 13px;
+  width: 12px;
+  height: 12px;
+  cursor: pointer;
+  background: url(/p/hotspot/default/images/close.png) no-repeat !important;
+}
+.hotspot {
+  cursor: default;
+}
+.hotspot .hotspot-i > i {
+  cursor: pointer;
+}
+.hotspot-edit-style {
+  display: none;
+}
+.hotspot-edit-style .model {
+  top: 0;
+  left: -298px;
+  text-align: left;
+  width: 250px!important;
+}
+.hotspot-edit-style .model .contents {
+  color: #B4B4B4;
+  font-size: 14px;
+}
+.hotspot-edit-style .model .contents .addHot {
+  padding: 0 10px;
+  box-shadow: 0 2px 0 #000;
+  cursor: pointer;
+}
+.hotspot-edit-style .model .contents .addHot .addHot-title {
+  height: 40px;
+  line-height: 40px;
+}
+.hotspot-edit-style .model .contents .addHot .addHot-title-common {
+  padding-left: 10px;
+  float: left;
+  width: 192px;
+  height: 20px;
+  line-height: 20px;
+  border-radius: 2px;
+  margin-top: 10px;
+  margin-left: 5px;
+  box-shadow: none!important;
+  background: rgba(0, 0, 0, 0.4);
+  color: #fff;
+}
+.hotspot-edit-style .model .contents .addHot .addHot-content {
+  height: 170px;
+}
+.hotspot-edit-style .model .contents .addHot .addHot-content .textarea-content {
+  background: rgba(0, 0, 0, 0.4);
+  width: 192px;
+  height: 160px;
+  padding: 5px 0 0 5px;
+  color: #fff;
+}
+.hotspot-edit-style .model .contents .addHot .address {
+  height: 40px;
+  line-height: 40px;
+}
+.hotspot-edit-style .model .contents .bottom-btn {
+  height: 40px;
+  line-height: 40px;
+}
+.hotspot-edit-style .model .contents .bottom-btn ul li {
+  float: left;
+  width: 40px;
+  height: 40px;
+  display: table-cell;
+  line-height: 40px;
+  vertical-align: middle;
+  cursor: default;
+}
+.hotspot-edit-style .model .contents .bottom-btn ul li img {
+  vertical-align: middle;
+}
+.hotspot-edit-style .model .contents .bottom-btn ul li.vedio,
+.hotspot-edit-style .model .contents .bottom-btn ul li.voice {
+  opacity: .3;
+}
+.hotspot-edit-style .model .contents .bottom-btn ul li.com {
+  cursor: pointer;
+}
+.hotspot-edit-style .model .contents .bottom-btn ul li.com:hover {
+  background-color: #3A97D8;
+}
+.hotspot-edit-style .model .contents .bottom-btn ul li.curr {
+  background-color: #3A97D8;
+}
+.hotspot-edit-style .model .contents .bottom-btn .sure {
+  width: 50px;
+  height: 25px;
+  line-height: 25px;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  font-size: 14px;
+  font-family: 微软雅黑;
+  border-radius: 2px;
+}
+.hotspot-edit-style .model .contents .bottom-btn .sure:hover {
+  background-color: #3A97D8;
+}
+.hotspot-edit-style .model .contents .fontend {
+  display: none;
+  text-align: left;
+  padding: 0 10px;
+}
+.hotspot-edit-style .model .contents .fontend p.fontend-name {
+  height: 30px;
+  line-height: 30px;
+  border-bottom: 1px dashed #6f7177;
+}
+.hotspot-edit-style .model .contents .fontend .fontend-content {
+  padding: 10px;
+}
+.hotspot-edit-style .model .contents .showfopic {
+  display: none;
+}
+.hotspot-edit-style .model .contents .showfopic .showfopic-name {
+  height: 40px;
+  line-height: 40px;
+  border-bottom: 1px dashed #6f7177;
+}
+.hotspot-edit-style .model .contents .showfopic .showfopic-content {
+  padding: 10px;
+}
+.hotspot-edit-style .model .contents .showfopic .show-qimg {
+  position: relative;
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+  padding: 10px;
+}
+.hotspot-edit-style .model .contents .showfopic .show-qimg img {
+  width: 230px;
+  height: 230px;
+  vertical-align: middle;
+}
+.hotspot-edit-style .model .contents .showfopic .show-qimg span {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  z-index: 99;
+}
+.hotspot-edit-style .model .contents .addhotPicturte .up-hotpicture {
+  height: 81px;
+  display: none;
+  border-top: 1px dashed #6f7177;
+  padding-top: 10px;
+}
+.hotspot-edit-style .model .contents .addhotPicturte .up-hotpicture span {
+  height: 70px;
+  display: block;
+  float: left;
+}
+.hotspot-edit-style .model .contents .addhotPicturte .up-hotpicture .upallpic {
+  height: 60px;
+  position: relative;
+  width: 200px;
+  float: left;
+}
+.hotspot-edit-style .model .contents .addhotPicturte .up-hotpicture .upallpic .addHao {
+  height: 60px;
+  width: 60px;
+  float: left;
+  margin-right: 5px;
+  position: relative;
+  margin-left: 5px;
+}
+.hotspot-edit-style .model .contents .addhotPicturte .up-hotpicture .upallpic .addHao .alone-up {
+  filter: alpha(opacity=0);
+  -moz-opacity: 0;
+  opacity: 0;
+}
+.hotspot-edit-style .model .contents .addhotPicturte .up-hotpicture .upallpic .addHao .upCom {
+  position: absolute;
+  left: 0;
+  top: 0px;
+  width: 60px;
+  height: 60px;
+}
+.hotspot-edit-style .model .contents .addhotPicturte .up-hotpicture .upallpic .addHao .alone-btn {
+  background: url(../images/hotupimg.png) no-repeat;
+  cursor: pointer;
+}
+.hotspot-edit-style .model .contents .addhotPicturte .up-hotpicture .upallpic .hotfileList .showImg {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  margin-left: 5px;
+  float: left;
+  margin-bottom: 5px;
+}
+.hotspot-edit-style .model .contents .addhotPicturte .up-hotpicture .upallpic .hotfileList .showImg .deleteHimg {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.hotspot-edit-style .model .contents .addhotPicturte .up-hotpicture .upallpic .hotfileList .showImg .setImgwh {
+  width: 60px;
+  height: 60px;
+}
+.hotspot-edit-link {
+  display: none;
+}
+.hotspot-edit-link .model {
+  width: 290px;
+  top: 0px;
+  left: -302px;
+}
+.hotspot-edit-link .model .contents .content .listIcon {
+  max-height: 180px;
+}
+.hotspot-edit-link .model .contents .content ul.getSpot:first-child {
+  display: block;
+}
+.hotspot-edit-link .model .contents .content ul.getSpot {
+  max-height: 180px;
+  padding: 10px 0 10px 0;
+  display: none;
+}
+.hotspot-edit-link .model .contents .content ul.getSpot li {
+  width: 60px;
+  height: 60px;
+  padding: 10px;
+  float: left;
+  background-color: #35383F;
+  border-radius: 2px;
+  margin-left: 8px;
+  text-align: center;
+  margin-bottom: 10px;
+  display: table-cell;
+  line-height: 40px;
+  cursor: pointer;
+}
+.hotspot-edit-link .model .contents .content ul.getSpot li img {
+  width: 100%;
+  height: 100%;
+}
+.hotspot-edit-link .model .contents .content ul.getSpot li:hover {
+  background-color: #3A97D8;
+}
+.hotspot-edit-link .model .contents .content ul.getSpot li.curr {
+  background-color: #3A97D8;
+}
+.hotspot-edit-link .model .contents .content .apply {
+  width: 290px;
+  height: 50px;
+  background-color: #35383F;
+  clear: both;
+}
+.hotspot-edit-link .model .contents .content .apply .apply_array {
+  width: 50px;
+  float: left;
+  height: 50px;
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+  line-height: 50px;
+}
+.hotspot-edit-link .model .contents .content .apply .apply_array img {
+  width: 30px;
+  height: 30px;
+  vertical-align: middle;
+}
+.hotspot-edit-link .model .contents .content .apply .apply_array:hover {
+  background-color: #1A1C1F;
+}
+.hotspot-edit-link .model .contents .content .apply .curr {
+  background-color: #1A1C1F;
+}
+.hotspot-edit-link .model .contents .content .apply .apply_nav {
+  position: relative;
+  width: 250px;
+  float: left;
+  height: 50px;
+  overflow: hidden;
+}
+.hotspot-edit-link .model .contents .content .apply .apply_nav .apply_w {
+  position: absolute;
+  float: left;
+  left: 0px;
+}
+.hotspot-edit-link .model .contents .content .apply .img_l,
+.hotspot-edit-link .model .contents .content .apply .img_r {
+  float: left;
+  cursor: pointer;
+  width: 20px;
+  height: 50px;
+  line-height: 50px;
+}
+.hotspot-delete-model {
+  display: none;
+}
+.hotspot-delete-model .model {
+  top: 0;
+  left: -202px;
+}
+.hotspot-delete-model .model .content {
+  padding: 15px 0;
+  text-align: center;
+  font-family: 微软雅黑;
+}
+.hotspot-delete-model .model .content .cancel {
+  margin-right: 20px;
+}
+.hotspot-delete-model .model .content .cancel,
+.hotspot-delete-model .model .content .sure {
+  background-color: #35383f;
+  width: 60px;
+  height: 24px;
+  line-height: 24px;
+  color: #b4b4b4;
+  margin-top: 10px;
+  border-radius: 2px;
+  font-family: 微软雅黑;
+  cursor: pointer;
+}
+.hotspot-delete-model .model .content .cancel:hover,
+.hotspot-delete-model .model .content .sure:hover {
+  background-color: #3a97d8;
+  color: #fff;
+}

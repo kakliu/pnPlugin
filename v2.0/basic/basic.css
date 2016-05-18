@@ -1,0 +1,341 @@
+@charset "utf-8";
+.float-l {
+  float: left;
+}
+.float-r {
+  float: right;
+}
+@-webkit-keyframes progress-bar-stripes {
+  from {
+    background-position: 40px 0;
+  }
+  to {
+    background-position: 0 0;
+  }
+}
+@keyframes progress-bar-stripes {
+  from {
+    background-position: 40px 0;
+  }
+  to {
+    background-position: 0 0;
+  }
+}
+.progress {
+  height: 20px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  background-color: #f5f5f5;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+.progress-bar {
+  float: left;
+  width: 0;
+  height: 100%;
+  font-size: 12px;
+  line-height: 20px;
+  color: #fff;
+  text-align: center;
+  background-color: #428bca;
+  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+  transition: width .6s ease;
+}
+.progress-striped .progress-bar,
+.progress-bar-striped {
+  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-size: 40px 40px;
+}
+.progress.active .progress-bar,
+.progress-bar.active {
+  -webkit-animation: progress-bar-stripes 2s linear infinite;
+  animation: progress-bar-stripes 2s linear infinite;
+}
+.progress-bar[aria-valuenow="1"],
+.progress-bar[aria-valuenow="2"] {
+  min-width: 30px;
+}
+.progress-bar[aria-valuenow="0"] {
+  min-width: 30px;
+  color: #777;
+  background-color: transparent;
+  background-image: none;
+  box-shadow: none;
+}
+.progress-bar-success {
+  background-color: #5cb85c;
+}
+.progress-striped .progress-bar-success {
+  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+}
+.progress-bar-info {
+  background-color: #5bc0de;
+}
+.progress-striped .progress-bar-info {
+  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+}
+.progress-bar-warning {
+  background-color: #f0ad4e;
+}
+.progress-striped .progress-bar-warning {
+  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+}
+.progress-bar-danger {
+  background-color: #d9534f;
+}
+.progress-striped .progress-bar-danger {
+  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+}
+.fade {
+  opacity: 0;
+  transition: opacity .15s linear;
+}
+.fade.in {
+  opacity: 1;
+}
+.content {
+  text-align: center;
+}
+.content .content-content {
+  display: none;
+  overflow: auto;
+}
+.content .content-content .group-rights {
+  color: #737373;
+  text-align: left;
+  width: 650px;
+  margin: 0px auto;
+  font-size: 16px;
+  display: block;
+}
+.content .content-content h3 {
+  font-size: 20px;
+  margin-top: 30px;
+  border-left: 5px solid #5EAEE3;
+  padding-left: 20px;
+}
+.content .content-content .basci-info {
+  margin-left: 30px;
+}
+.content .content-content .basci-info .project-cover {
+  position: relative;
+  height: 100px;
+}
+.content .content-content .basci-info #fileList {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  left: 94px;
+  background: url(../images/upcover.png) no-repeat;
+}
+.content .content-content .basci-info #fileList img {
+  width: 100%;
+  height: 100%;
+}
+.content .content-content .basci-info #fileElem {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  left: 94px;
+  opacity: 0;
+}
+.content .content-content .basci-info .upload-warm {
+  color: #7A7A7A;
+  font-size: 10px;
+  position: absolute;
+  top: 100px;
+  left: 94px;
+  filter: alpha(opacity=49);
+  /*IE滤镜，透明度50%*/
+  -moz-opacity: 0.49;
+  /*Firefox私有，透明度50%*/
+  opacity: 0.49;
+  /*其他，透明度50%*/
+}
+.content .content-content span {
+  display: block;
+  width: 84px;
+  text-align: right;
+  float: left;
+}
+.content .content-content .common-iput {
+  padding-left: 10px;
+  border: 1px solid #979797;
+  margin-left: 10px;
+  border-radius: 2px;
+}
+.content .content-content .project-name {
+  clear: both;
+  line-height: 36px;
+}
+.content .content-content .project-name .project-name-ipt {
+  width: 513px;
+  height: 34px;
+  color: #000;
+}
+.content .content-content .wc-top {
+  margin-top: 30px;
+  line-height: 36px;
+}
+.content .content-content .wc-top .select_box {
+  position: relative;
+  border: 1px solid #979797;
+  border-radius: 2px;
+  z-index: 10;
+  width: 525px;
+  float: left;
+  margin-left: 9px;
+  height: 38px;
+}
+.content .content-content .wc-top .select_box .selecton {
+  height: 28px;
+  line-height: 28px;
+  padding: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #999999;
+  text-align: left;
+  padding-left: 20px;
+}
+.content .content-content .wc-top .select_box .select_b {
+  width: 18px;
+  height: 9px;
+  background: url(../../../images/select_before.png) no-repeat;
+  position: absolute;
+  top: 13px;
+  right: 13px;
+  cursor: pointer;
+}
+.content .content-content .wc-top .select_box .select_a {
+  width: 18px;
+  height: 9px;
+  background: url(../../../images/select_after.png) no-repeat;
+  position: absolute;
+  top: 13px;
+  right: 13px;
+  cursor: pointer;
+}
+.content .content-content .wc-top .select_box .select_list {
+  width: 525px;
+  position: absolute;
+  top: 38px;
+  left: -1px;
+  border: 1px solid #979797;
+  background-color: #FFFFFF;
+  display: none;
+}
+.content .content-content .wc-top .select_box .select_list li {
+  height: 36px;
+  line-height: 36px;
+  text-align: left;
+  padding-left: 20px;
+  font-size: 14px;
+  color: #999999;
+  border-bottom: 1px solid #f4f4f4;
+  z-index: 10;
+  cursor: pointer;
+}
+.content .content-content .wc-top .select_box .select_list li:hover {
+  background-color: #40A5EA;
+  color: #FFFFFF;
+}
+.content .content-content .wc-top .select_box .select_list li.cur {
+  background-color: #40A5EA;
+  color: #FFFFFF;
+}
+.content .content-content .project-style {
+  height: 38px;
+}
+.content .content-content .project-remark .project-name-textarea {
+  color: #000;
+  width: 513px;
+  height: 34px;
+  height: 110px;
+  padding-left: 10px;
+  border: 1px solid #979797;
+}
+.content .content-content .share-set {
+  margin-left: 30px;
+}
+.content .content-content .share-set .publish-sf {
+  margin: 0 10px;
+}
+.content .content-content .share-set .erwei {
+  width: 100px;
+  height: 100px;
+  margin-left: 10px;
+  float: left;
+}
+.content .content-content .common-iput {
+  width: 355px;
+  height: 34px;
+}
+.content .content-content .copycommon {
+  width: 100px;
+  height: 36px;
+  line-height: 36px;
+  text-align: center;
+  border-radius: 40px;
+  color: #7A7A7A;
+  font-size: 14px;
+  font-family: 微软雅黑;
+  float: right;
+  background-color: #E9E9E9;
+  border: 1px solid #B6B6B6;
+  margin-right: 10px;
+  cursor: pointer;
+}
+.content .content-content .creat {
+  width: 70px!important;
+  margin-right: 0!important;
+  padding: 0 7px;
+}
+.content .content-content .save {
+  clear: both;
+  width: 126px;
+  height: 40px;
+  background-color: #3A98D8;
+  font-size: 16px;
+  color: #fff;
+  font-family: 微软雅黑;
+  text-align: center;
+  line-height: 40px;
+  border-radius: 40px;
+  margin-top: 40px;
+  margin-left: 127px;
+  margin-bottom: 30px;
+}
+.content .content-content .save:hover {
+  background-color: #2E79AC;
+}
+.content .backtops {
+  width: 40px;
+  height: 40px;
+  background: url(../images/backt_1.png) no-repeat;
+  display: block;
+  position: fixed;
+  right: 30px;
+  cursor: pointer;
+  bottom: 10%;
+  z-index: 0;
+  display: none;
+}
+.content .backtops:hover {
+  background: url(../images/backt_2.png) no-repeat;
+}
+#msg {
+  margin-left: 10px;
+  color: green;
+  border: 1px solid #3c3;
+  background: url(../images/checkmark.png) no-repeat 2px 3px;
+  padding: 3px 6px 3px 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+.layui-layer-hui .layui-layer-content {
+  border: 1px solid #737988;
+  font-size: 24px;
+  color: #737988;
+  background-color: #fff;
+}

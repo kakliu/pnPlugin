@@ -1,0 +1,421 @@
+.layui-layer-photos .layui-layer-content {
+  overflow: hidden;
+  height: inherit !important;
+}
+.layui-layer-imgprev {
+  background-position: -5px -5px;
+}
+.layui-layer-imgnext {
+  background-position: -5px -50px;
+}
+.layui-layer-imgbar {
+  text-align: center;
+}
+.layui-layer-setwin .layui-layer-close2 {
+  background: url(/p/hotspot/default/images/Shape.png) no-repeat !important;
+  width: 62px!important;
+  height: 62px!important;
+  right: -44px !important;
+  top: -42px !important;
+  display: block!important;
+}
+.layui-layer-imgtit {
+  position: absolute;
+}
+.layui-layer-imgtit em {
+  font-size: 20px;
+  padding-left: 0!important;
+}
+.hotspot-viewEdit .hotspot-viewEdit-model {
+  display: block!important;
+}
+.hotspot-viewEdit .icon-viewEdit {
+  background: url(/p/hotspot/default/images/icon.png) no-repeat;
+  width: 22px;
+  height: 22px;
+  float: left;
+  background-position: -147px -18px;
+}
+.hotspot-viewEdit .model {
+  text-align: left;
+  width: 155px;
+  border-radius: 2px;
+}
+.hotspot-viewEdit .model .title,
+.hotspot-viewEdit .model .close {
+  display: none;
+}
+.hotspot-viewEdit .model .contents {
+  color: #666;
+  font-size: 12px;
+  background: none!important;
+}
+.hotspot-viewEdit .model .contents .content {
+  padding-left: 10px;
+}
+.hotspot-viewEdit .model .contents .hotspot-view-yWidth {
+  width: 252px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.9);
+}
+.hotspot-viewEdit .model .contents .hotspot-view-yWidth .hotTitle {
+  font-size: 14px;
+}
+.hotspot-viewEdit .model .contents .hotspot-view-Width {
+  width: 155px;
+  height: 30px;
+  text-align: left;
+  background: rgba(255, 255, 255, 0.9);
+}
+.hotspot-viewEdit .model .contents .hotspot-viewPsre i.hotspot-view-icon-show {
+  background: url(/p/hotspot/default/images/view-icon.png) no-repeat;
+}
+.hotspot-viewEdit .model .contents .hotspot-viewPsre .hotspot-view-icon-show {
+  display: block;
+  width: 17px;
+  height: 17px;
+  position: absolute;
+  right: 3px;
+  top: 8px;
+  cursor: pointer;
+}
+.hotspot-viewEdit .model .contents .hotspot-viewPsre .hotspot-view-icon-show:hover {
+  background-position: 0px -19px;
+}
+.hotspot-viewEdit .model .contents .hotspot-viewPsre .hotTitle {
+  height: 33px;
+  line-height: 33px;
+  padding-left: 5px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.hotspot-viewEdit .model .contents .hotspot-viewPsre .hotContent {
+  text-align: left;
+  padding: 7px 15px;
+}
+.hotspot-viewEdit .model .contents .hotspot-viewPsre .hotPictureShow {
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  width: 10000%;
+}
+.hotspot-viewEdit .model .contents .hotspot-viewPsre .hotPictureShow .picSum {
+  position: absolute;
+  left: 210px;
+  bottom: 10px;
+  color: #7bccc7;
+}
+.hotspot-viewEdit .model .contents .hotspot-viewPsre .hotPictureShow .bg_img {
+  display: table-cell;
+  vertical-align: middle;
+  width: 242px;
+}
+.hotspot-viewEdit .model .contents .hotspot-viewPsre .hotPictureShow .bg_img .setImgwh {
+  max-width: 230px;
+  max-height: 230px;
+  border-radius: 2px;
+  margin: 0px auto;
+}
+.hotspot-viewEdit .model .contents .hotspot-viewPsre .hotspot-view-detail {
+  color: #58B3AD;
+  border: 1px solid #58B3AD;
+  display: inline-block;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  margin-bottom: 10px;
+}
+.hotspot-view-icon-square {
+  width: 8px;
+  height: 14px;
+  background: url(/p/hotspot/default/images/square.png) no-repeat;
+  position: absolute;
+  left: 2px;
+  top: 7px;
+}
+@media only screen and (min-width: 320px) and (max-width: 736px) and (-webkit-min-device-pixel-ratio: 2) {
+  .hotspot {
+    height: 0;
+    transform-origin: 0 0;
+    transition: all 0.5s ease-in 0.1s;
+    transform: scale(1.5, 1.5);
+  }
+  .hotspot .hotspot-viewEdit .hotspot-viewEdit-model {
+    display: block!important;
+  }
+  .hotspot .hotspot-viewEdit .icon-viewEdit {
+    background: url(/p/hotspot/default/images/icon.png) no-repeat;
+    width: 22px;
+    height: 22px;
+    float: left;
+    background-position: -147px -18px;
+  }
+  .hotspot .hotspot-viewEdit .model {
+    text-align: left;
+    width: 170px!important;
+    border-radius: 2px;
+  }
+  .hotspot .hotspot-viewEdit .model .title,
+  .hotspot .hotspot-viewEdit .model .close {
+    display: none;
+  }
+  .hotspot .hotspot-viewEdit .model .contents {
+    color: #666;
+    font-size: 12px;
+    background: none !important;
+    height: 0px;
+    transition: all 0.3s ease-in 0.3s;
+  }
+  .hotspot .hotspot-viewEdit .model .contents .hotspot-view-icon-square {
+    transition: all 0.3s ease-in 0;
+    opacity: 0;
+  }
+  .hotspot .hotspot-viewEdit .model .contents .content {
+    padding-left: 10px;
+  }
+  .hotspot .hotspot-viewEdit .model .contents .hotspot-view-Width {
+    width: 160px;
+    height: 0;
+    text-align: left;
+    background: rgba(255, 255, 255, 0.1);
+  }
+  .hotspot .hotspot-viewEdit .model .contents .hotspot-view-Width .hotTitle {
+    font-size: 14px;
+    padding: 0;
+    box-sizing: border-box;
+    text-indent: 10px;
+  }
+  .hotspot .hotspot-viewEdit .model .contents .hotspot-view-Width .hotContent {
+    background: rgba(255, 255, 255, 0.9);
+  }
+  .hotspot .hotspot-viewEdit .model .contents .hotspot-view-Width .hotContent:empty {
+    display: none;
+  }
+  .hotspot .hotspot-viewEdit .model .contents .hotspot-view-Width .hotspot-view-detailAll {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 10px 0 0 0;
+  }
+  .hotspot .hotspot-viewEdit .model .contents .hotspot-view-Width .hotspot-view-detailAll:empty {
+    display: none;
+  }
+  .hotspot .hotspot-viewEdit .model .contents .hotspot-viewPsre {
+    height: 0;
+  }
+  .hotspot .hotspot-viewEdit .model .contents .hotspot-viewPsre .hotspot-view-icon-show {
+    display: none;
+  }
+  .hotspot .hotspot-viewEdit .model .contents .hotspot-viewPsre .hotTitle {
+    height: 33px;
+    width: 0px;
+    transition: all 0.3s ease-in 0.1s;
+    line-height: 33px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    border-bottom: 1px solid #eee;
+    background: #ffffff;
+    box-sizing: border-box;
+  }
+  .hotspot .hotspot-viewEdit .model .contents .hotspot-viewPsre .hotContent {
+    text-align: left;
+    padding: 10px;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+  .hotspot .hotspot-viewEdit .model .contents .hotspot-viewPsre .hotPictureShow {
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    width: 160px;
+    padding: 10px 10px 0;
+    box-sizing: border-box;
+    background: rgba(255, 255, 255, 0.9);
+  }
+  .hotspot .hotspot-viewEdit .model .contents .hotspot-viewPsre .hotPictureShow:empty {
+    margin: 0;
+    padding: 0;
+  }
+  .hotspot .hotspot-viewEdit .model .contents .hotspot-viewPsre .hotPictureShow .picSum {
+    position: absolute;
+    left: 210px;
+    bottom: 10px;
+    color: #7bccc7;
+  }
+  .hotspot .hotspot-viewEdit .model .contents .hotspot-viewPsre .hotPictureShow .bg_img {
+    display: table-cell;
+    vertical-align: middle;
+    width: 140px;
+    display: none;
+  }
+  .hotspot .hotspot-viewEdit .model .contents .hotspot-viewPsre .hotPictureShow .bg_img:first-child {
+    display: block;
+  }
+  .hotspot .hotspot-viewEdit .model .contents .hotspot-viewPsre .hotPictureShow .bg_img .setImgwh {
+    max-width: 140px;
+    max-height: 140px;
+    border-radius: 2px;
+    margin: 0px auto;
+  }
+  .hotspot .hotspot-viewEdit .model .contents .hotspot-viewPsre .hotspot-view-detail {
+    color: #58B3AD;
+    border: 1px solid #58B3AD;
+    display: inline-block;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    margin-bottom: 10px;
+  }
+  .hotspot.pactive {
+    height: auto;
+    overflow: visible;
+  }
+  .hotspot.pactive .hotspot-viewEdit .model .contents {
+    height: 350px;
+  }
+  .hotspot.pactive .hotspot-viewEdit .model .contents .hotspot-view-icon-square {
+    opacity: 1;
+  }
+  .hotspot.pactive .hotspot-viewEdit .model .contents .hotspot-view-Width {
+    width: 160px;
+    height: auto;
+    text-align: left;
+    background: rgba(255, 255, 255, 0);
+  }
+  .hotspot.pactive .hotspot-viewEdit .model .contents .hotspot-view-Width .hotTitle {
+    font-size: 14px;
+    box-sizing: border-box;
+  }
+  .hotspot.pactive .hotspot-viewEdit .model .contents .hotspot-viewPsre .hotTitle {
+    height: 33px;
+    width: 160px;
+  }
+  .hotspot.pactive .hotspot-viewEdit .model .contents .hotspot-viewPsre .hotPictureShow .bg_img .setImgwh {
+    display: block;
+  }
+  .commentPhotos {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000001;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    color: rgba(255, 255, 255, 0.5);
+  }
+  .commentPhotos #photowrapper {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+  }
+  .commentPhotos .close {
+    position: absolute;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    background: url(/images/close_whit.png) no-repeat;
+    background-size: 50% 50%;
+    z-index: 101;
+    right: 10px;
+    top: 10px;
+    background-position: center center;
+  }
+  .commentPhotos header {
+    position: absolute;
+    top: 0;
+    height: 64px;
+    font: 16px/40px arial;
+    text-align: center;
+    z-index: 100;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+  }
+  .commentPhotos header .dot {
+    width: 100%;
+    text-align: center;
+    font: 14px/16px arial;
+    height: 16px;
+    margin-top: -5px;
+  }
+  .commentPhotos footer {
+    position: absolute;
+    bottom: 0;
+    padding: 10px;
+    z-index: 99;
+    font: 12px/1.5 arial;
+    width: 100%;
+    box-sizing: border-box;
+    background: rgba(0, 0, 0, 0.5);
+  }
+  .commentPhotos ul {
+    position: absolute;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 98;
+    font-size: 0;
+    z-index: 1;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-text-size-adjust: none;
+    -moz-text-size-adjust: none;
+    -ms-text-size-adjust: none;
+    -o-text-size-adjust: none;
+    text-size-adjust: none;
+  }
+  .commentPhotos ul li {
+    height: 100%;
+    position: relative;
+    display: inline-block;
+  }
+  .commentPhotos ul li img {
+    max-width: 100%;
+    max-height: 100%;
+    margin: auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
+  .commentPhotos dl {
+    display: none;
+    position: absolute;
+    top: 40px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: 101;
+    width: 64px;
+    height: 16px;
+    margin: 0px auto;
+    background-size: 24px 16px;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAUBAMAAABohZD3AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3QUGCDYztyDUJgAAAB1pVFh0Q29tbWVudAAAAAAAQ3JlYXRlZCB3aXRoIEdJTVBkLmUHAAAAGFBMVEUAAADNzc3Nzc3Nzc3Nzc3Nzc3Nzc3///8aWwwLAAAABnRSTlMAX5Ks3/nRD0HIAAAAAWJLR0QHFmGI6wAAAFtJREFUGFdjYGBgEHYNMWRAAJE0IHCEc5nSwEABxleD8JOgXMY0KBCA8FlgfAcIXwzGT4TwzWD8ZAjfDcZPgfDDYPxU7Hx09ejmoduH7h5096L7B8O/6OGBGl4APYg8TQ0XAScAAAAASUVORK5CYII=);
+  }
+  .commentPhotos dl #dotty {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #777;
+  }
+}
+@keyframes animShow {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: auto;
+  }
+}
