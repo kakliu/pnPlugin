@@ -54,8 +54,9 @@
             }
         }
 
-        loadJS("logger", "/common/logger.js");
-        loadJS("embedpano", "/krpano/embedpano.js");
+        // addScript("/common/logger.js");
+        loadJS("jquery","jquery.js")
+        loadJS("myJS","/viewer/krpano.js")
     };
 
     //创建全景
@@ -92,6 +93,7 @@
             }
         };
 
+
         this.element = $("#" + kOption.target);
 
         //防止无改div
@@ -102,7 +104,6 @@
         this.element.css({width: this.option.width, height: this.option.height});
         $("body, html").css({width: this.option.width, height: this.option.height, margin: 0, padding: 0});
 
-        logger.info(kOption);
         embedpano(kOption);
     };
 
@@ -113,9 +114,11 @@
         target: "pano" + new Date().getTime(),
         vars: {
             "plugin[yt_pano].url": "/plugin.js",
-            "plugin[yt_pano].keep": "true"
+            "plugin[yt_pano].keep": "true",
+            "plugin[yt_pano].width": "100%",
+            "plugin[yt_pano].height": "100%"
         },
-        swf: "/krpano/krpano.swf",
+        swf: "/viewer/krpano.swf",
         xml: undefined,
         initvars: {},
         onready: undefined,

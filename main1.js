@@ -13,9 +13,16 @@
         this.createPano(option);
     }
 
-
-
     yp.extend = yp.prototype;
+    yp.callback = function(obj) {
+      console.log("18--",this.krpano);
+      if(typeof obj === 'object'){
+        for(var fn in obj){
+          obj[fn] = obj[fn].bind(window)
+        }
+      };
+      return obj;
+    }
 
     yp.extend.init = function () {
       function loadJS(id,url){
@@ -94,24 +101,26 @@
         kOption.onerror = this.option.onerror;
         kOption.html5 = "prefer";
         kOption.onready = function (krpano) {
-            self.krpano = krpano;
+          window.krpano = self.krpano = krpano;
             if (typeof self.option.onready === "function") {
                 self.option.onready();
             }
         };
+        $(function(){
+          self.element = $("#" + kOption.target);
 
-        this.element = $("#" + kOption.target);
+          //防止无改div
+          if (!self.element[0]) {
+              self.element = $("<div/>").appendTo("body").attr("id", kOption.target);
+          }
 
-        //防止无改div
-        if (!this.element[0]) {
-            this.element = $("<div/>").appendTo("body").attr("id", kOption.target);
-        }
+          self.element.css({width: self.option.width, height: self.option.height});
+          $("body, html").css({width: self.option.width, height: self.option.height});
 
-        this.element.css({width: this.option.width, height: this.option.height});
-        $("body, html").css({width: this.option.width, height: this.option.height});
+          console.info(kOption);
+          embedpano(kOption);
+        })
 
-        console.info(kOption);
-        embedpano(kOption);
     }
 
     yp.DEFAULT_OPTION = {
@@ -120,7 +129,7 @@
         id: "krpanoSWFObject",
         target: "pano" + new Date().getTime(),
         vars: {},
-        swf: "/krpano/krpano.swf",
+        swf: "/viewer/krpano.swf",
         xml: undefined,
         initvars: {},
         onready: undefined,
@@ -135,7 +144,3 @@
     window.YP = yp;
     window.YP.extend = yp.extend;
 })(window)
-
-    YP.prototype.a = function(){
-        console.log(this.krpano)
-    }
