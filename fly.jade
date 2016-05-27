@@ -3,10 +3,15 @@ html(lang="en")
 head
     meta(charset="UTF-8")
     title Document
-    script(src="main1.js")
+    link(rel="stylesheet", href="viewer/view.scss")
+    script(src="jquery.js")
+    script(src="require.js")
+    script(src="main.js")
+    script(src="my.js")
     script.
-        var pano = new YP({"xml":"b.xml","target":"pano"})
-        console.log(2);
-body
+        var yp = new YP({xml:"b.xml",target:"flying"})
 
-    
+
+
+
+body

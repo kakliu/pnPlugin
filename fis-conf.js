@@ -24,11 +24,17 @@ fis.match('/app/js/**.js', {
   isMod: true
 })
 
-fis.match('**.es', {
-    parser: fis.plugin('babel-5.x', {
-        sourceMaps: true
-    }),
-    rExt: 'js'
+// fis.match('**.es', {
+//     parser: fis.plugin('babel-5.x', {
+//         sourceMaps: true
+//     }),
+//     rExt: 'js'
+// });
+
+fis.set('project.fileType.text', 'es');
+fis.match('*.es', {
+    rExt: '.js',
+    parser: fis.plugin('es6-babel', {})
 });
 
 fis.media('prod')
