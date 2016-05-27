@@ -1,0 +1,53 @@
+<krpano>
+	<skin_settings showlog='false' logger_level="debug"/>
+
+	<layer name="skin_loadingtext"  keep="true" url="%SWFPATH%/plugins/textfield.swf" align="center" x="5" y="-5" html="loading..." visible="false" autoheight="true" background="false" border="false" enabled="false" css="text-align:center; color:#FFFFFF; font-family:Arial; font-weight:bold; font-size:22px; font-style:italic;" textshadow="2" />
+
+	<!-- Skin  -->
+	<events name="skin_events" keep="true"
+	        onxmlcomplete="set(events[skin_events].onxmlcomplete, null); skin_startup();"
+	        onnewpano=""
+	        onremovepano="skin_showloading(true);"
+	        onloadcomplete="skin_showloading(false);"
+	        />
+
+	<!-- Skin Actions -->
+
+	<action name="skin_startup">
+		<!-- log日志是否开启 -->
+		if(skin_settings.showlog == true,
+			showlog(true);
+		);
+
+		skin_load_scene(get(skin_settings.startscene));
+
+		set(control.mousetype, drag2d);
+		set(control.touchtype, drag2d);
+
+		if(skin_settings.isEdit != true
+    	,
+	       	if(skin_settings.switch_spin == on
+	       	,
+	       		spin_onstart();
+	       	);
+
+	       	if(skin_settings.switch_starview == on
+	       	,
+	       		starview_onstart();
+	       	);
+       	);
+	</action>
+
+	<action name="skin_load_scene">
+		loadscene(%1,null,MERGE,BLEND(1));
+	</action>
+
+	<action name="skin_load_pano">
+		loadpano(%1,skin_settings.isEdit=true);
+	</action>
+
+	<action name="skin_showloading">
+		set(layer[skin_loadingtext].visible, %1);
+	</action>
+
+</krpano>

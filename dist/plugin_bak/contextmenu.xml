@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<krpano>
+	<!-- context menu -->
+	<contextmenu fullscreen="false">
+		<item name="kr" caption="【数联网】" onclick="openurl(http://www.duc.cn)"/>
+		<item name="cc" caption="切换控制方式" onclick="skin_changecontrolmode();" separator="true" />
+		<item name="fs" caption="全屏" onclick="switch(fullscreen)"/>
+		<item name="nv" caption="正常视角" onclick="skin_view_normal();" showif="view.vlookatrange == 180" separator="true" />
+		<item name="fv" caption="鱼眼视角" onclick="skin_view_fisheye();" showif="view.vlookatrange == 180" devices="flash|webgl" />
+		<item name="sv" caption="立体视角" onclick="skin_view_stereographic();" showif="view.vlookatrange == 180" devices="flash|webgl" />
+		<item name="av" caption="建筑视角" onclick="skin_view_architectural();" showif="view.vlookatrange == 180" />
+		<item name="lp" caption="小行星视角" onclick="skin_view_littleplanet();" showif="view.vlookatrange == 180" devices="flash|webgl" />
+		<!--<item name="my" caption="漫游地图" onclick="skin_maps_swithmap();" visible="false"/>  -->
+	</contextmenu>
+	
+	<!-- 右键自定义按钮全屏切换字样 -->
+	<events onenterfullscreen="set(contextmenu.item[fs].caption ,退出全屏);" onexitfullscreen ="set(contextmenu.item[fs].caption ,全屏);"/>
+
+	<action name="skin_changecontrolmode">
+		switch(control.mousetype, moveto, drag2d);
+		switch(control.touchtype, moveto, drag2d);
+	</action>
+
+	<action name="skin_view_look_straight">
+		if(view.vlookat LT -80 OR view.vlookat GT +80,
+			tween(view.vlookat, 0.0, 1.0, easeInOutSine);
+			tween(view.fov,     100, distance(150,0.8));
+		  );
+	</action>
+
+	<action name="skin_view_normal">
+		skin_view_look_straight();
+		tween(view.architectural, 0.0, distance(1.0,0.5));
+		tween(view.pannini,       0.0, distance(1.0,0.5));
+		tween(view.fisheye,       0.0, distance(1.0,0.5));
+	</action>
+
+	<action name="skin_view_fisheye">
+		skin_view_look_straight();
+		tween(view.architectural, 0.0,  distance(1.0,0.5));
+		tween(view.pannini,       0.0,  distance(1.0,0.5));
+		tween(view.fisheye,       0.35, distance(1.0,0.5));
+	</action>
+
+	<action name="skin_view_architectural">
+		skin_view_look_straight();
+		tween(view.architectural, 1.0, distance(1.0,0.5));
+		tween(view.pannini,       0.0, distance(1.0,0.5));
+		tween(view.fisheye,       0.0, distance(1.0,0.5));
+	</action>
+
+	<action name="skin_view_stereographic">
+		skin_view_look_straight();
+		tween(view.architectural, 0.0, distance(1.0,0.5));
+		tween(view.pannini,       0.0, distance(1.0,0.5));
+		tween(view.fisheye,       1.0, distance(1.0,0.8));
+	</action>
+
+	<action name="skin_view_pannini">
+		skin_view_look_straight();
+		tween(view.architectural, 0.0, distance(1.0,0.5));
+		tween(view.pannini,       1.0, distance(1.0,0.8));
+		if(view.fisheye LT 0.1,
+			tween(view.fisheye, 1.0, distance(1.0,0.8));
+		  );
+	</action>
+
+	<action name="skin_view_littleplanet">
+		tween(view.architectural, 0.0, distance(1.0,0.5));
+		tween(view.pannini,       0.0, distance(1.0,0.5));
+		tween(view.fisheye,       1.0, distance(1.0,0.8));
+		tween(view.fov,           150, distance(150,0.8));
+		tween(view.vlookat,        90, distance(100,0.8));
+		add(new_hlookat, view.hlookat, 123.0);
+		tween(view.hlookat, get(new_hlookat), distance(100,0.8));
+	</action>
+	
+	<!-- 
+		缩放图片
+			name: layername
+			boolean: 是否居中
+	 -->
+	<action name="picture_resize">
+		callwith(get(layer[%1].parent), 
+			div(aspect, layer[%1].imagewidth, layer[%1].imageheight);
+			mul(new_width, layer[get(name)].pixelwidth, 1);
+			div(new_height, new_width, aspect);
+			mul(max_height, layer[get(name)].pixelheight, 1);
+			
+			if(new_height GT max_height,
+				copy(new_height, max_height);
+				mul(new_width, new_height, aspect);
+			);
+			
+			roundval(new_width);
+			roundval(new_height);
+			copy(layer[%1].width, new_width);
+			copy(layer[%1].height, new_height);
+			
+			if(%2 == true,
+				sub(new_x, layer[get(name)].pixelwidth, new_width);
+				div(new_x, 2);
+				copy(layer[%1].x, new_x);
+				
+				sub(new_y, layer[get(name)].pixelheight, new_height);
+				div(new_y, 2);
+				copy(layer[%1].y, new_y);
+			);
+			
+		);
+	</action>
+</krpano>

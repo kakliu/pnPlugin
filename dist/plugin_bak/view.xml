@@ -1,0 +1,8 @@
+<krpano>	
+	<!-- 视角重设的方法，%1是view的name，%2是fov，%3fovmin，%4fovmax -->
+	<action name="viewreset" >
+		tween(view[%1].fov,%2);
+		set(view[%1].fovmin,%3);
+		set(view[%1].fovmax,%4);
+	</action>
+</krpano>

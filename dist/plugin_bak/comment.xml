@@ -1,0 +1,251 @@
+<krpano> 
+	<!-- 评论插件热点样式 -->
+	<style name="spritesheet1" crop="103|9|60|92" scale="0.7" zorder="1001" onup2="" onmove="" 
+		url="%SWFPATH%/skin/commentskin/spritesheet.png" onloaded="skin_hotspot_load_label_handler(get(skin_settings.comment_add_label_style));skin_comment_onload_pic(get(name));" ondoneed="skin_hotspot_load_label_handler(get(skin_settings.comment_done_label_style));skin_comment_onload_pic(get(name));"/>
+		
+	<style name="spritesheet2" crop="103|9|60|92" scale="0.7" onup2="" onmove="" 
+	    ondown="mousedown();skin_hotspot_ondown_handler(get(ismove));" onup="mouseup();"
+	    ismove="false" issave="true"
+		url="%SWFPATH%/skin/commentskin/spritesheet.png" zorder="1001" onloaded="skin_hotspot_load_label_handler();skin_comment_onload_pic(get(name));"/>
+		
+	<style name="new_spotd1111" crop="0|0|128|128" scale="0.5"
+		url="%SWFPATH%/skin/hotspotskin/gif/new_spotd1_gif.png" zorder="1001" onclick="skin_hotspot_add_handler('拖动标记到想要评论的地方','./testResources/2.jpg','spritesheet1','comment_hotspot','skin_comment_add_label_default');" />
+	
+	<!--  -->
+	
+	<!-- 评论后台显示专用样式 -->
+	<style name="comment_default" crop="103|9|60|92" scale="0.7" onup2="" onmove=""
+		ondown="mousedown();skin_hotspot_ondown_handler(get(ismove));" onup="mouseup();"
+		url="%SWFPATH%/skin/commentskin/spritesheet.png" zorder="1001" 
+		onloaded="skin_hotspot_load_label_handler();skin_comment_onload_pic(get(name));"/>
+	
+	<style name="new_spotd1112" zorder="1001" crop="0|0|128|128" scale="0.5" url="%SWFPATH%/skin/hotspotskin/gif/new_spotd1_gif.png" />
+	
+	<skin_settings comment_hotspotcount="0" 
+				   comment_add_label_style="skin_comment_add_label_default"
+				   comment_done_label_style="skin_comment_done_label_default"
+				   comment_default_style="spritesheet1"
+				   comment_add_off="true"
+				   comment_move_off="true"
+	/>
+	
+	<!-- 评论标签的默认皮肤 -->
+	 <style name="skin_comment_add_label_default" 
+	 		align="bottom"
+	 		edge="bottom"
+	 		x="0"
+	 		y="-30"
+	 		background="true"
+	 		backgroundcolor="0xFFDEAD"
+	 		backgroundalpha="0.8"
+	 		border="false"
+	 		padding="6 12"
+	 		wordwrap="false"
+	 		roundedge="2"
+	 		origin="cursor"
+	 		textshadow="1"
+	 		textshadowrange="6.0"
+	 		textshadowangle="90"
+	 		enabled="true" 
+	 		bgcapture="true" 
+	 		ondown="callwith(get(plugin[get(name)].parent), ondown);"
+	 		onup="callwith(get(plugin[get(name)].parent), onup);"
+	 />
+	 <!-- 评论完成后的默认皮肤 -->
+	 <style name="skin_comment_done_label_default" 
+	 		type="container"
+	 		align="lefttop"
+	 		edge="lefttop"
+	 		x="50"
+	 		y="6"
+	 		autowidth="auto"
+	 		wordwrap="false"
+	 		background="true"
+	 		backgroundcolor="0x333333"
+	 		backgroundalpha="0.5"
+	 		border="false"
+	 		padding="8"
+	 		roundedge="2"
+	 		origin="cursor"
+	 		textshadow="1"
+	 		textshadowrange="6.0"
+	 		textshadowangle="90"
+	 		enabled="true" 
+	 		bgcapture="true" 
+	 		ondown="callwith(get(plugin[get(name)].parent), ondown);"
+	 		onup="callwith(get(plugin[get(name)].parent), onup);"
+	 />
+	 
+	<events name="skin_comment_events" keep="true" onnewscene="set(events[skin_map_events].onresize,null); skin_common_load_scene();"/>
+	
+	<!-- 评论头像的圆形皮肤 -->
+	<style name="skin_comment_pic_bg" type="container" width="60" height="60" x="0" y="0" scale="0.7" align="lefttop" bgroundedge="30" bgalpha="0.7" bgcolor="0x000000" capture="false" maskchildren="true" />
+	
+	<!-- 评论的头像 -->
+	<style name="skin_comment_pic" onloaded="skin_comment_pic_resize(get(name), true)" capture="false"/>
+	
+	<!-- 防止切换后热点消失 -->
+	<action name="skin_common_load_scene">
+		for(set(i,0), i LT skin_settings.comment_hotspotcount, inc(i),
+			txtadd(hotspot_name, "hotspot_", get(i));
+			txtadd(scene_parent, "scene[", get(xml.scene), "]");
+			
+			if(hotspot[get(hotspot_name)].scene_name != null and scene_parent == hotspot[get(hotspot_name)].scene_name,
+				set(hotspot[get(hotspot_name)].visible, true);
+				set(hotspot[get(hotspot_name)].zorder, 2);
+			,
+				set(hotspot[get(hotspot_name)].visible, false);
+			)
+		);
+	</action>
+	
+	<!-- 
+		title: 标题
+		image: 图片
+		style: 样式 默认spritesheet
+		
+		解决if判断一致失败问题, 使用copy重新定义变量,
+		%1:标签内容，%2：热点图片，%3：热点的样式，%4:热点类型，%5：标签样式，%6热点的id
+	 -->
+	<action name="skin_comment_add">
+		copy(scc, skin_settings.comment_currhotspot);
+		if(skin_settings.comment_add_off==true,
+			if(scc != null,
+				copy(hotspot[get(skin_settings.comment_currhotspot)].ath, view.hlookat);
+				copy(hotspot[get(skin_settings.comment_currhotspot)].atv, view.vlookat);
+				<!-- 当切换场景后,显示至当前全景中 -->
+				txtadd(hotspot[get(hotspot_name)].scene_name, "scene[", get(xml.scene), "]");
+				set(hotspot[get(hotspot_name)].visible, true);
+			,
+				set(skin_comment_style, get(skin_settings.comment_default_style));
+				if(%3 != null, set(skin_comment_style, %3));
+				txtadd(hotspot_name, "hotspot_", get(skin_settings.comment_hotspotcount));
+				add(skin_settings.comment_hotspotcount, 1);
+				addhotspot(get(hotspot_name));
+				set(skin_settings.comment_currhotspot, get(hotspot_name));
+				set(hotspot[get(hotspot_name)].keep, true);
+				set(hotspot[get(hotspot_name)].id, %6);
+				set(hotspot[get(hotspot_name)].hotspotType, %4);
+				set(hotspot[get(hotspot_name)].issave, false);
+				set(hotspot[get(hotspot_name)].ismove, true);
+				copy(hotspot[get(hotspot_name)].ath, view.hlookat);
+				copy(hotspot[get(hotspot_name)].atv, view.vlookat);
+				set(hotspot[get(hotspot_name)].tooltipvalue, %1);
+				set(hotspot[get(hotspot_name)].tipstyle, %5);
+				set(hotspot[get(hotspot_name)].ondown, skin_hotspot_ondown_handler(get(ismove)););
+				hotspot[get(hotspot_name)].loadstyle(get(skin_comment_style));
+				set(hotspot[get(hotspot_name)].commonpic, %2);
+				txtadd(hotspot[get(hotspot_name)].scene_name, "scene[", get(xml.scene), "]");
+				set(hotspot[get(hotspot_name)].onloaded, skin_hotspot_load_label_handler();skin_comment_onload_pic(get(name)););
+			);
+		);
+	</action>
+	
+	<!-- 
+		清理所有评论热点所有子类
+	 -->
+	<action name="comment_remove">
+		if(%1 != null,
+			txtadd(layer_bg_name, "layer_common_bg_", %1);
+			txtadd(layer_pic_name, "layer_common_pic_", %1);
+			txtadd(layer_pic_name, "layer_common_pic_", %1);
+			txtadd(tooltipnamestr, 'tooltip_', %1);
+			
+			removehotspot(%1);
+			removelayer(get(layer_bg_name));
+			removelayer(get(layer_pic_name));
+			removeplugin(get(tooltipnamestr));
+			
+			if(skin_settings.comment_currhotspot == %1,
+				delete(skin_settings.comment_currhotspot);
+			)
+		)
+	</action>
+	
+	<action name="skin_comment_onload_pic">
+		if(%1 != null,txtadd(param,"%1"););
+		txtadd(layer_bg_name, "layer_common_bg_", get(param));
+		txtadd(layer_pic_name, "layer_common_pic_", get(param));
+	
+		addlayer(get(layer_bg_name));
+		copy(layer[get(layer_bg_name)].name, layer_bg_name);
+		txtadd(layer[get(layer_bg_name)].parent, "hotspot[",get(param),"]");
+		layer[get(layer_bg_name)].loadstyle(skin_comment_pic_bg);
+		
+		addlayer(get(layer_pic_name));
+		txtadd(layer[get(layer_pic_name)].parent, "layer[", get(layer_bg_name), "]");
+		copy(layer[get(layer_pic_name)].url, hotspot[get(param)].commonpic);
+		layer[get(layer_pic_name)].loadstyle(skin_comment_pic);
+		
+		copy(currscene, hotspot[get(param)].scene_name);
+		
+		if(currscene != null,
+			set(layer[get(layer_pic_name)].keep, true);
+			set(layer[get(layer_bg_name)].keep, true);
+		);
+		delete(param);
+	</action>
+	
+	<!-- 
+		缩放图片
+			name: layername
+			boolean: 是否居中
+	 -->
+	<action name="skin_comment_pic_resize">
+		callwith(get(layer[%1].parent), 
+			div(aspect, layer[%1].imagewidth, layer[%1].imageheight);
+			mul(new_width, layer[get(name)].pixelwidth, 1.5);
+			div(new_height, new_width, aspect);
+			mul(max_height, layer[get(name)].pixelheight, 1.5);
+			
+			if(new_height GT max_height,
+				copy(new_height, max_height);
+				mul(new_width, new_height, aspect);
+			);
+			
+			roundval(new_width);
+			roundval(new_height);
+			copy(layer[%1].width, new_width);
+			copy(layer[%1].height, new_height);
+			
+			if(%2 == true,
+				sub(new_x, layer[get(name)].pixelwidth, new_width);
+				div(new_x, 2);
+				copy(layer[%1].x, new_x);
+				
+				sub(new_y, layer[get(name)].pixelheight, new_height);
+				div(new_y, 2);
+				copy(layer[%1].y, new_y);
+			);
+			
+		);
+	</action>
+	
+	<action name="skin_comment_save">
+		if(%1 != null,
+			txtadd(tooltipnamestr, 'tooltip_', get(skin_settings.comment_currhotspot));
+			removeplugin(get(tooltipnamestr));
+			set(hotspot[get(hotspot_name)].tooltipvalue, %1);
+			set(hotspot[get(hotspot_name)].tipstyle, %2);
+			callwith(hotspot[get(hotspot_name)], ondoneed);
+			
+			set(hotspot[get(hotspot_name)].ismove, false);
+			set(hotspot[get(hotspot_name)].issave, true);
+			delete(skin_settings.comment_currhotspot);
+		,
+		);
+	</action>
+	
+	<action name="skin_hotspot_move_off">
+		if(hotspot[%1].ismove==true,
+			set(hotspot[%1].ismove, false);
+		,	set(hotspot[%1].ismove, true););
+	</action>
+	
+	<action name="skin_comment_all_move_off">
+		if(skin_settings.comment_move_off==true,
+			set(skin_settings.comment_move_off, false);
+		,	set(skin_settings.comment_move_off, true););
+	</action>
+	
+</krpano>

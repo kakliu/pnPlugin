@@ -1,0 +1,8 @@
+<krpano>
+    <include url="%SWFPATH%/skin/plugin/applicationContext.xml"/>
+    <include url="%SWFPATH%/skin/plugin/contextmenu.xml"/>
+    <include url="%SWFPATH%/skin/plugin/hotspot.xml"/>
+    <include url="%SWFPATH%/skin/plugin/view.xml"/>
+    <include url="%BASEDIR%/getIconXml"/>
+    <include url="%SWFPATH%/skin/plugin/config.xml"/>
+</krpano>

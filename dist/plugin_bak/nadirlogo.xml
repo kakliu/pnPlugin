@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<krpano>
+	<skin_settings nadirlogo="true"
+				   nadirlgo_bg_url="%SWFPATH%/testResources/nadirbg.png"
+				   nadirlogo_default_url="%SWFPATH%/yutong2.png"
+				   nadirlogo_default_open_url="http://yuntongzi.com/html/yuyue.html"
+				   nadirlogo_url="%SWFPATH%/yutong2.png"
+				   nadirlogo_open_url="http://yuntongzi.com/html/yuyue.html"
+				   nadirlogo_wait="2"
+	/>
+
+	<events name="skin_nadirlogo_events" keep="true"
+			onnewscene="
+					if(skin_settings.nadirlogo == true,skin_nadirlogo_onstart(););
+					if(panonadirurl,
+						copy(skin_settings.nadirlogo_open_url,panonadirurl);
+					);
+					if(scene[get(xml.scene)].nadir_type == 2,
+						skin_set_nadir(a,a,2);
+						,
+
+						if(scene[get(xml.scene)].nadir_type == 1,
+							skin_set_nadir(get(scene[get(xml.scene)].nadir_logo),get(scene[get(xml.scene)].nadir_link),1);
+							copy(panonadirlogo,skin_settings.nadirlogo_url);
+							copy(panonadirurl,skin_settings.nadirlogo_open_url);
+							copy(skin_settings.nadirlogo_url,panonadirlogo);
+						);
+
+					);"
+	/>
+
+	<events name="nadirlogorotation" keep="true" onviewchange="if(skin_settings.nadirlogo == true,
+																	if(hotspot[skin_nadirlogo_nadirlogo].rotatewithview,
+																		set(hotspot[skin_nadirlogo_nadirlogo].rotate,get(view.hlookat))
+																	);
+																);"/>
+
+	<hotspot name="skin_nadirlogo_nadirlogo" width="50" height="50" style="nadirStyle" link="http://www.baidu.com" logo="%SWFPATH%/DUC2.png"/>
+
+	<!-- 补地图片样式 -->
+	<style name="nadirStyle" width="50" height="50" onloaded="set(skin_settings.nadirlogo_status, true);"
+		   keep="true" visible="false" capture="false" ath="0" atv="90" distorted="true" scale="1.0" rotate="0.0" rotatewithview="true" children="true"/>
+
+	<!--
+		设置默认值
+	 -->
+	<action name="skin_nadirlogo_onstart">
+		if(skin_settings.nadirlogo_url != "",
+		skin_nadirlogo_set_nadirlogo(get(skin_settings.nadirlogo_url));
+		,
+		skin_nadirlogo_set_nadirlogo(get(skin_settings.nadirlogo_default_url));
+		);
+
+		skin_nadirlogo_swith_visible(get(skin_settings.nadirlogo));
+
+		<!-- 防止加载失败,加载失败后 使用nadirlogo_default_url -->
+		delayedcall(get(skin_settings.nadirlogo_wait),
+		if(skin_settings.nadirlogo_status != true,
+		skin_nadirlogo_set_nadirlogo(get(skin_settings.nadirlogo_default_url));
+		);
+		);
+	</action>
+
+	<!--
+		切换显示
+			{boolean}  true 显示,false 隐藏
+	 -->
+	<action name="skin_nadirlogo_swith_visible">
+		if(%1 == true,
+		set(hotspot[skin_nadirlogo_nadirlogo].visible, true);
+		,
+		if(%1 == false,
+		set(hotspot[skin_nadirlogo_nadirlogo].visible, false);
+		,
+		if(%1 == null and hotspot[skin_nadirlogo_nadirlogo].visible == false,
+		set(hotspot[skin_nadirlogo_nadirlogo].visible, true);
+		,
+		set(hotspot[skin_nadirlogo_nadirlogo].visible, false);
+		);
+		)
+		);
+	</action>
+
+	<action name="skin_nadirlogo_resize">
+		set(hotspot[skin_nadirlogo_nadirlogo].visible, true);
+		skin_nadirlogo_set_nadirlogo(get(skin_settings.nadirlogo_default_url), get(skin_settings.nadirlogo_default_open_url));
+		skin_nadir_onload_pic(skin_nadirlogo_nadirlogo);
+	</action>
+	<!--
+		设置底部图片
+			{string}  底部图片
+			{string}  openurl
+	 -->
+	<action name="skin_nadirlogo_set_nadirlogo">
+		set(skin_settings.nadirlogo,true);
+		set(skin_settings.nadirlogo_url, %1);
+		set(hotspot[skin_nadirlogo_nadirlogo].url, get(skin_settings.nadirlgo_bg_url));
+		set(hasnadirlink,%2);
+		if(hasnadirlink,
+		set(skin_settings.nadirlogo_open_url, %2);
+		);
+		skin_nadir_onload_pic(skin_nadirlogo_nadirlogo);
+	</action>
+
+	<!-- 地图圆形皮肤 -->
+	<style name="skin_nadir_pic_bg" type="container" width="550" height="550" x="0" y="0" scale="0.7" align="center" bgroundedge="275" bgalpha="0" bgcolor="0x000000" capture="false" maskchildren="true" />
+
+	<!-- 评论的头像 -->
+	<style name="skin_nadir_pic" onloaded="skin_nadir_pic_resize(get(name),true)" capture="false"/>
+
+	<style name="nadir" onloaded="skin_nadir_onload_pic(get(name));"/>
+
+	<!-- 设置补地图片和超链接，%1为图片地址，%2为超链接地址 -->
+	<action name="skin_set_nadir">
+		if(%3 == 2
+		,
+		set(hotspot[skin_nadirlogo_nadirlogo].visible, false);
+		set(skin_settings.nadirlogo,false);
+		);
+		if(%3 == 1,
+		showlog();
+		trace("flying------+++");
+		set(hotspot[skin_nadirlogo_nadirlogo].visible, true);
+		skin_nadirlogo_set_nadirlogo(%1,%2);
+		);
+		if(%3 == 0,
+		skin_nadirlogo_resize();
+		);
+	</action>
+
+	<action name="skin_nadir_onload_pic">
+		if(%1 != null,txtadd(param,"%1"););
+		txtadd(layer_bg_name, "layer_common_bg_", get(param));
+		txtadd(layer_pic_name, "layer_common_pic_", get(param));
+
+		addlayer(get(layer_bg_name));
+		copy(layer[get(layer_bg_name)].name, layer_bg_name);
+		txtadd(layer[get(layer_bg_name)].parent, "hotspot[",get(param),"]");
+		layer[get(layer_bg_name)].loadstyle(skin_nadir_pic_bg);
+
+		addlayer(get(layer_pic_name));
+		txtadd(layer[get(layer_pic_name)].parent, "layer[", get(layer_bg_name), "]");
+		copy(layer[get(layer_pic_name)].url, skin_settings.nadirlogo_url);
+		layer[get(layer_pic_name)].loadstyle(skin_nadir_pic);
+		delete(param);
+
+		set(hotspot[skin_nadirlogo_nadirlogo].onclick,"if(skin_settings.nadirlogo_open_url != null AND skin_settings.nadirlogo_open_url != '' AND skin_settings.isEdit != true,openurl(get(skin_settings.nadirlogo_open_url)));");
+	</action>
+
+	<!--
+		缩放图片
+			name: layername
+			boolean: 是否居中
+	 -->
+	<action name="skin_nadir_pic_resize">
+		callwith(get(layer[%1].parent),
+		div(aspect, layer[%1].imagewidth, layer[%1].imageheight);
+		mul(new_width, layer[get(name)].pixelwidth, 1);
+		div(new_height, new_width, aspect);
+		mul(max_height, layer[get(name)].pixelheight, 1);
+		if(new_height GT max_height,
+		copy(new_height, max_height);
+		mul(new_width, new_height, aspect);
+		);
+
+		roundval(new_width);
+		roundval(new_height);
+		copy(layer[%1].width, new_width);
+		copy(layer[%1].height, new_height);
+
+		if(%2 == true,
+		sub(new_x, layer[get(name)].pixelwidth, new_width);
+		div(new_x, 2);
+		copy(layer[%1].x, new_x);
+
+		sub(new_y, layer[get(name)].pixelheight, new_height);
+		div(new_y, 2);
+		copy(layer[%1].y, new_y);
+		);
+
+		);
+	</action>
+
+</krpano>

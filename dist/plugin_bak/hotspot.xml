@@ -1,0 +1,225 @@
+﻿<krpano>
+	<!-- 热点全局设置 -->
+	<skin_settings hotspotcount="0" 
+				   hotspot_label_style="skin_tooltip_default"
+				   hotspot_onmouseup=""
+				   plugincount="0"
+				   hotspotlinkissave="true"
+				   hotspotspotissave="true"
+	/>
+	
+	<events name="hostspot_event" keep="true" onnewscene="
+		for(set(i,0), i LT hotspot.count, inc(i),
+			if(hotspot[get(i)].hotspot_type == spot, 
+				set(hotspot[get(i)].visbile, false);
+			);
+		);
+	"/>
+	
+	<plugin name="skin_plugin_hotspot" url="/krpano/pluginHotspot.js" keep="true" />
+	
+	<plugin name="skin_plugin_hotspot_link_scene" js="/p/hotspot/default/edit/addHotspot.js" keep="true" plugintype="plugin_hotspot"  icon="/v2.0/images/icon.png" nickname="添加热点"/>
+	<plugin name="skin_plugin_hotspot_spot" js="/p/hotspot/link/addLink.js" keep="true" plugintype="plugin_hotspot" icon="/v2.0/images/icon.png" nickname="添加连接器"/>
+	
+	<style name="cleanstyle" crop="" scale="" url="" framewidth="" frametime="0.1" frameheight="" frame="" lastframe=""/>
+	
+	<style name="defaultgifstyle" url="/krpano/skin/hotspotskin/spot1.png"/>
+	
+	<style name="hotspot_default_style" 
+		   onclick=""
+		   onmove2=""
+		   onup2=""
+		   onup="mouseup();"
+		   onloaded=""
+		   ondown="mousedown();if(skin_settings.isEdit==true,skin_hotspot_ondown_handler(true););"
+		   
+	/>
+	
+	<!-- 删除热点 -->
+	<action name="skin_hotspot_remove">
+		if(%1 != null
+		,
+			copy(pluginnamet,hotspot[%1].pluginname);
+			removehotspot(%1);
+			removeplugin(get(pluginnamet));
+			saveHotspot();
+		);
+	</action>
+	
+	<!-- 注册热点拖拽 -->
+	<action name="skin_hotspot_ondown_handler">
+		if(skin_settings.comment_move_off==true OR %1==true
+		,
+			skin_hotspot_drag();
+		);
+	</action>
+	
+	<!-- 热点拖拽方法 -->
+	<action name="skin_hotspot_drag">
+	<![CDATA[
+		txtadd(label,'tooltip_',get(name));
+		if(%1 != dragging
+		,
+			spheretoscreen(ath, atv, hotspotcenterx, hotspotcentery);
+			sub(drag_adjustx, mouse.stagex, hotspotcenterx); 
+			sub(drag_adjusty, mouse.stagey, hotspotcentery); 
+			skin_hotspot_drag(dragging);
+		,
+			if(plugin[get(label)].pressed OR pressed OR presse == true
+			,
+				sub(dx, mouse.stagex, drag_adjustx);
+				sub(dy, mouse.stagey, drag_adjusty);
+				screentosphere(dx, dy, ath, atv);
+				copy(print_ath, ath);
+				copy(print_atv, atv);
+				roundval(print_ath, 3);
+				roundval(print_atv, 3);
+				delayedcall(0,skin_hotspot_drag(dragging));
+				if(hotspot[get(name)].onmove2
+				,
+					callwith(hotspot[get(name)],onmove2);
+				);
+				
+				onDefaultEvent(hotspot_onmousemove);
+			  );
+		);
+	]]>
+	</action>
+	<!-- txtadd(hotspot_type,get(hotspot[get(name)].hotspot_type));txtadd(type,'comment_hotspot_type'); -->
+	<!-- 热点鼠标抬起时，zorder减10 -->
+	<action name="mouseup">
+		sub(spot_zoder,get(num),1);
+		set(count,get(spot_zoder));
+		set(hotspot[get(name)].zorder, get(count));
+		if(hotspot[get(name)].onup2
+		,
+			callwith(hotspot[get(name)], onup2);
+		);
+		if(dragx != mouse.stagex OR dragy != mouse.stagey,
+			onDefaultEvent(hotspot_onmouseup);
+		);
+	</action>
+	
+	<action name="onDefaultEvent">
+		if(%1 != null
+		,
+			if(skin_settings.%1
+			, 
+				copy(hotspot[get(name)].%1, skin_settings.%1);
+				callwith(hotspot[get(name)], %1); 
+			);
+		);
+	</action>
+	<!-- onDefaultEvent(hotspot_onmousedown); -->
+	<!-- 热点鼠标按下时，zorder加10 -->
+	<action name="mousedown">
+		add(zorders,hotspot[get(name)].zorder,1);
+		set(num,get(zorders));
+		set(hotspot[get(name)].zorder, get(num));
+		copy(dragx,mouse.stagex);
+		copy(dragy,mouse.stagey);
+	</action>
+	
+	<!-- 更新热点图标,%1是热点名称，%2是图标样式 -->
+	<action name="loadIcon">
+		getStyle(%1,%2);
+	</action>
+	
+	<action name="addEditHotspotAction">
+		
+		txtadd(hotspotname,"hotspot_",get(xml.scene),get(skin_settings.hotspotcount));
+		add(skin_settings.hotspotcount, 1);
+		
+		txtadd(plugin_name,"edit_plugin_",get(xml.scene),get(skin_settings.plugincount));
+		add(skin_settings.plugincount, 1);
+		
+		txtadd(pluginparent,'hotspot[',get(hotspotname),']');
+		
+		addhotspot(get(hotspotname));
+		set(hotspot[get(hotspotname)].hotspot_type,%1);
+		copy(hotspot[get(hotspotname)].ath,view.hlookat);
+		copy(hotspot[get(hotspotname)].atv,view.vlookat);
+		set(hotspot[get(hotspotname)].zorder,100);
+		set(hotspot[get(hotspotname)].align, centent);
+		set(hotspot[get(hotspotname)].keep, true);
+		set(hotspot[get(hotspotname)].pluginname,get(plugin_name));
+		set(hotspot[get(hotspotname)].ondown, skin_hotspot_ondown_handler(true);mousedown(););
+		set(hotspot[get(hotspotname)].onup,mouseup(););
+		set(hotspot[get(hotspotname)].scenename,get(xml.scene));
+		set(hotspot_name,get(hotspotname));
+		getStyle(get(hotspotname),%2);
+		addplugin(get(plugin_name));
+		set(plugin[get(plugin_name)].keep,true);
+		set(plugin[get(plugin_name)].url,%BASEDIR%/krpano/plugin.js);
+		set(plugin[get(plugin_name)].parent,get(pluginparent));
+		set(plugin[get(plugin_name)].scenename,get(xml.scene));
+		set(plugin[get(plugin_name)].hotspotname,get(pluginparent));
+		set(plugin[get(plugin_name)].plugintype,plugin_hotspot);
+		set(plugin[get(plugin_name)].align,center);
+		set(plugin[get(plugin_name)].edge,center);
+		if(%3
+		,
+			set(plugin[get(plugin_name)].js,%3);
+		,
+			set(plugin[get(plugin_name)].js,http://ypano.duc.cn/p/hotspot/default/edit/index.js);
+		);
+		callwith(hotspot[get(hotspotname)],%4);
+	</action>
+	
+	<!-- 编辑热点 ,%1是hotspot_type,%2是图标样式,%3是plugin：%BASEDIR%/hotspot/default/edit/index.js,%4-->
+	<action name="addEditHotspot">
+		if(%1 == 'spot'
+		,
+			if(skin_settings.hotspotspotissave == true
+			,
+				set(skin_settings.hotspotspotissave,false);
+				txtadd(spotname,'hotspot_',get(xml.scene),get(skin_settings.hotspotcount));
+				set(spoteditname,get(spotname));
+				addEditHotspotAction(%1,%2,%3,%4);,
+				callwith(hotspot[get(spoteditname)],%4);
+				copy(hotspot[get(spoteditname)].ath,view.hlookat);
+				copy(hotspot[get(spoteditname)].atv,view.vlookat);
+			);
+		);
+		if(%1 == 'link_roam' OR %1 == 'link_scene'
+		,
+			if(skin_settings.hotspotlinkissave == true
+			,
+				set(skin_settings.hotspotlinkissave,false);
+				txtadd(linkname,'hotspot_',get(xml.scene),get(skin_settings.hotspotcount));
+				set(linkeditname,get(linkname));
+				addEditHotspotAction(%1,%2,%3,%4);,
+				callwith(hotspot[get(linkeditname)],%4);
+				copy(hotspot[get(linkeditname)].ath,view.hlookat);
+				copy(hotspot[get(linkeditname)].atv,view.vlookat);
+			);
+		);
+		
+	</action>
+	
+	<action name="getStyle">
+		stopdelayedcall(get(name));
+		set(hotspot[%1].iconid,get(style[%2].iconid));
+		hotspot[%1].loadstyle(hotspot_default_style | %2);
+	</action>
+	
+	<!-- 动态热点的动作展示 -->
+	<action name="skin_hotspot_animate">
+		if(isgif == 1,
+			inc(frame,1,get(lastframe),0);
+			mul(ypos,frame,frameheight);
+			txtadd(crop,'0|',get(ypos),'|',get(framewidth),'|',get(frameheight));
+			delayedcall(get(name),get(frametime), skin_hotspot_animate());
+		)
+	</action>
+	
+	<action name="saveHotspot">
+		if(%1 == 'spot',
+			set(skin_settings.hotspotspotissave,true);
+		);
+		if(%1 == 'link_roam' OR %1 == 'link_scene',
+			set(skin_settings.hotspotlinkissave,true);
+		);
+	</action>
+	
+</krpano>

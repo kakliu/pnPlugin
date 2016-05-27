@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<krpano >
+	<!-- 热点默认样式 -->
+	<style name="mapspot" keep="true" url="%$STATIC%images/point.png" parent="layer[map]" align="lefttop" edge="center" />
+
+	<!-- 漫游地图    url="%SWFPATH%/testResources/map.png" -->
+	<layer name="map" scalechildren="true" type="container" url="" visible="false" keep="true" align="center" edge="center" capture="false" x="0" y="0" scale="1" onclick=""/>
+	<layer name="mapedit" scalechildren="true" type="container" url="" visible="false" keep="true" align="lefttop" edge="lefttop" capture="false" x="0" y="0" scale="1" onclick=""/>
+
+	<!-- 选中的热点 -->
+	<layer name="activespot" url="%$STATIC%images/point_click.png" parent="layer[map]" visible="false" keep="true" align="lefttop" zorder="2" />
+
+	<!-- 扫描样式 -->
+	<layer name="radar" keep="true" width="100" height="100" url.flash="%SWFPATH%/plugins/radar.swf" url.html5="%SWFPATH%/plugins/radar.js" edge="centent" visible="false" align="center" zorder="1" scale="1" fillalpha="0.5" fillcolor="0x7F5F3F" linewidth="1.0" linecolor="0xE0E0A0" linealpha="0.5"/>
+
+	<!-- 扫描样式 -->
+	<layer name="editradar" heading="0" width="80" height="80" keep="true" parent="layer[editactivespot]" url.flash="%SWFPATH%/plugins/radar.swf" url.html5="%SWFPATH%/skin/plugin/radar_edit.js" edge="centent" visible="true" align="center" zorder="1" fillalpha="0.5" fillcolor="0x986532" linewidth="1.0" linecolor="0xE0E0A0" linealpha="0.5"/>
+
+	<!-- 选中的热点 -->
+	<layer name="editactivespot" x="-28" y="-28" type="container" width="80" height="80" bgroundedge="80" bgcolor="0x000000" bgalpha="0.5" visible="false" keep="true" zorder="2" />
+
+	<action name="addradar">
+		set(layer[editactivespot].visible, true);
+	</action>
+
+
+	<action name="draglayer">
+		if(%1 != dragging,
+			copy(drag_currentx, x);
+			copy(drag_currenty, y);
+			copy(drag_stagex, mouse.stagex);
+			copy(drag_stagey, mouse.stagey);
+			set(drag_sx, +1);
+			set(drag_sy, +1);
+			if(align == righttop,    set(drag_sx,-1); );
+			if(align == right,       set(drag_sx,-1); );
+			if(align == rightbottom, set(drag_sx,-1); set(drag_sy,-1); );
+			if(align == bottom,      set(drag_sy,-1); );
+			if(align == leftbottom,  set(drag_sy,-1); );
+			draglayer(dragging);
+		  ,
+			if(pressed,
+				sub(dx, mouse.stagex, drag_stagex);
+				sub(dy, mouse.stagey, drag_stagey);
+				mul(dx, drag_sx);
+				mul(dy, drag_sy);
+				add(x, drag_currentx, dx);
+				add(y, drag_currenty, dy);
+				delayedcall(0, draglayer(dragging) );
+			  );
+		  );
+	</action>
+
+	<events name="skin_map_events" keep="true"
+		onnewscene="skin_maps_load_scene();"
+		onxmlcomplete="set(events[skin_map_events].onxmlcomplete,null);
+						ifnot(skin_settings.map_skin,
+							set(skin_settings.maps_style, skin_maps_default_right);
+							set(skin_settings.maps_parent, skin_maps_right);
+							set(style[skin_maps_default].onclick, skin_maps_swithmap());
+							if(skin_settings.isEdit != true
+							,
+								skin_maps_onstart();
+							);
+						);"
+		onloadcomplete="set(events[skin_map_events].onloadcomplete,null); if(skin_settings.maps_open == true AND skin_settings.map_skin == false,
+							skin_maps_openmap();
+						);"
+		onresize="set(events[skin_map_events].onresize,null); skin_maps_onresize();"
+		onmousedown="set(events[skin_map_events].onmousedown, null); skin_maps_closemap();"/>
+
+	<!-- 默认样式 -->
+	<style name="skin_maps_default" visible="false" state="closed" zoom="true" width="268" height="200" bgcolor="0x000000" bgcapture="false" bgalpha="0.5" keep="true" align="lefttop"/>
+
+	<!-- 放在右侧时默认样式 -->
+	<style name="skin_maps_default_right" state="closed" width="268" height="200" bgroundedge="10" handcursor="false" bgcolor="0x000000" bgcapture="true" bgalpha="0.5" keep="true" align="righttop" edge="lefttop" x="0" y="20" zorder="12"/>
+
+	<!-- 默认配置 -->
+	<skin_settings maps="true"
+				   map_skin="false"
+				   maps_parent="maps"
+				   maps_style="skin_maps_default"
+				   maps_open="true"
+				   maps_open_width="500"
+				   maps_open_height="500"
+				   maps_open_x="268"
+				   maps_open_y="20"
+				   maps_open_align="righttop"
+				   maps_open_edge="lefttop"
+				   maps_time="0.5"
+				   maps_right_click="true"
+				   radarresize="0"
+	/>
+
+	<!--
+		当加载全景时,调用方法
+	 -->
+	<action name="skin_maps_load_scene">
+		set(layer[activespot].visible, false);
+		set(layer[radar].visible, false);
+
+		for(set(i,0), i LT mapurl[get(skin_settings.maps_name)].mapradar.count, inc(i),
+
+			copy(spotname, mapurl[get(skin_settings.maps_name)].mapradar[get(i)].spotname);
+			trace("spotname-------",get(spotname));
+			set(layer[get(spotname)].zorder, 2);
+			set(layer[radar].zorder, 1);
+			if(xml.scene == mapurl[get(skin_settings.maps_name)].mapradar[get(i)].scenename
+			AND mapurl[get(skin_settings.maps_name)].mapradar[get(i)].spotname,
+				copy(layer[activespot].parent, spotname);
+				trace(扫描框的爸爸,spotname,"--",get(i));
+				copy(layer[radar].parent, spotname);
+				copy(layer[radar].heading, mapurl[get(skin_settings.maps_name)].mapradar[get(i)].heading);
+				set(layer[get(spotname)].zorder, 20);
+				set(layer[activespot].visible, true);
+				set(layer[radar].visible, true);
+			);
+		);
+	</action>
+
+
+
+	<action name="js_add_map">
+		set(layer[mapedit].visible, true);
+		set(layer[mapedit].url, %1);
+		set(layer[mapedit].ondown, draglayer(););
+	</action>	
+
+
+
+	<action name="js_add_mapspot">
+
+		addlayer(%1);
+		layer[%1].loadstyle(mapspot);
+		set(layer[%1].keep, true);
+		set(layer[%1].x, %2);
+		set(layer[%1].y, %3);
+		set(layer[%1].heading, %4);
+		set(layer[%1].zorder, 1);
+		set(layer[%1].visible, true);
+		set(layer[%1].ondown, draglayer(););
+		trace(%1,--,%2,---,%3,----,%4,---is add --------)
+
+	</action>	
+
+	<!--
+		默认开始时调用此方法
+	 -->
+	<action name="skin_maps_onstart">
+		if(skin_settings.maps == true AND skin_settings.maps_type == 'map_thumb'
+		,
+			copy(flag, layer[get(skin_settings.maps_parent)]);
+
+			if(flag != null
+			,
+				set(layer[get(skin_settings.maps_parent)].type, "container");
+			,
+				addlayer(get(skin_settings.maps_parent));
+				set(layer[get(skin_settings.maps_parent)].type, "container");
+				layer[get(skin_settings.maps_parent)].loadstyle(skin_maps_default);
+				layer[get(skin_settings.maps_parent)].loadstyle(get(skin_settings.maps_style));
+			);
+			txtadd(layer[map].parent, 'layer[', get(skin_settings.maps_parent), ']');
+			set(layer[map].visible, true);
+			set(layer[map].url, get(skin_settings.maps_url));
+			set(layer[map].onloaded, skin_maps_onresize(););
+			set(layer[activespot].visible, true);
+			skin_maps_addmapspots();
+			set(layer[get(skin_settings.maps_parent)].maps_state, "closed");
+
+			if(skin_settings.maps_right_click == true,
+				set(contextmenu.item[my].visible, true);
+			);
+		);
+	</action>
+
+	<!--
+		切换地图和热点的方法
+	-->
+	<action name="skin_maps_change_map">
+		trace(是否缩小雷达坐标,noradarresize);
+		if(skin_settings.maps_name != %1,
+
+			set(skin_settings.maps_url, get(mapurl[%1].url));
+			copy(lastmap,skin_settings.maps_name);
+			set(skin_settings.maps_name,%1);
+			skin_maps_onstart();
+			skin_maps_onresize();
+			if(noradarresize == false,
+				set(skin_settings.radarresize,1);
+			,
+				set(skin_settings.radarresize,2);
+			);
+			skin_maps_load_scene();
+		);
+	</action>
+
+	<action name="getradar">
+		set(radar,get(skin_settings.maps_name));
+	</action>
+
+	<!--
+		添加热点
+	 -->
+	<action name="skin_maps_addmapspots">
+		if(xml.scene,
+			copy(currentscene,xml.scene);
+		,
+			copy(currentscene,skin_settings.startscene);
+		);
+		copy(radarcount,mapurl[get(skin_settings.maps_name)].mapradar.count);
+		trace(雷达数量,radarcount);
+		for(set(i,0), i LT radarcount, inc(i),
+			trace(循环次数,i);
+			if(mapurl[get(skin_settings.maps_name)].mapradar,
+				copy(spotname, mapurl[get(skin_settings.maps_name)].mapradar[get(i)].name);
+				trace(上一个场景,lastscene);
+				trace(上一个场景雷达数量,lastradarcount);
+				if(lastmap AND lastradarcount,
+					trace(隐藏上一张地图的雷达);
+					for(set(j,0), j LT lastradarcount, inc(j),
+						copy(lastspotname,mapurl[get(lastmap)].mapradar[get(j)].name);
+						trace(lastradarcount,lastscene);
+						trace(i,layer[get(lastspotname)].scenename);
+						set(layer[get(lastspotname)].visible,false);
+					);
+				);
+
+				copy(radarname,mapurl[get(skin_settings.maps_name)].mapradar[get(i)].scenename);
+				if(radarname != currentscene,set(layer[radar].visible, false);,set(layer[radar].visible, true););
+				if(radarname != currentscene,set(layer[activespot].visible,false);,set(layer[activespot].visible,true););
+				set(skin_settings.maps_count,mapurl[get(skin_settings.maps_name)].mapradar.count);
+				trace(判断当前雷达是否已生成,mapurl[get(skin_settings.maps_name)].mapradar[get(i)].spotname);
+				if(mapurl[get(skin_settings.maps_name)].mapradar[get(i)].spotname,
+					set(layer[get(spotname)].visible,true);
+					set(noradarresize,true);
+				,
+					trace(添加雷达);
+					addlayer(get(spotname));
+					trace(雷达的spotname啊,spotname);
+					layer[get(spotname)].loadstyle(mapspot);
+					set(layer[get(spotname)].keep, true);
+					copy(radarx,mapurl[get(skin_settings.maps_name)].mapradar[get(i)].lat);
+					copy(radary,mapurl[get(skin_settings.maps_name)].mapradar[get(i)].lng);
+					trace(雷达的name,mapurl[get(skin_settings.maps_name)].mapradar[get(i)].name);
+					copy(layer[get(spotname)].x, radarx);
+					copy(layer[get(spotname)].y, radary);
+					copy(layer[get(spotname)].zorder, 1);
+					trace(雷达的坐标,radarx);
+					copy(mapurl[get(skin_settings.maps_name)].mapradar[get(i)].spotname, spotname);
+
+					txtadd(spotclickevent, 'skin_load_scene(', get(mapurl[get(skin_settings.maps_name)].mapradar[get(i)].scenename), ');');
+
+					if(mapurl[get(skin_settings.maps_name)].mapradar[get(i)].onclickspot,
+						txtadd(spotclickevent, get(spotclickevent) , get(mapurl[get(skin_settings.maps_name)].mapradar[get(i)].onclickspot));
+					);
+					trace("reg-------",get(spotclickevent));
+					set(layer[get(spotname)].onclick, get(spotclickevent));
+					sub(tempcount,radarcount,1);
+					set(noradarresize,false);
+				);
+			);
+		);
+
+		copy(lastradarcount,radarcount);
+		trace(最后,currentscene);
+	</action>
+
+	<action name="mobilescale" autorun="preinit" devices="mobile">
+		mul(stagescale,2);
+	</action>
+	<!--
+		自动计算,并自适应外层
+	 -->
+	<action name="skin_maps_onresize">
+		<!-- flash bug 当使用 changeorigin时,必须设置x,y轴-->
+
+		
+	</action>	
+	
+	<!-- 切换打开与关闭地图 -->
+	<action name="skin_maps_swithmap">
+		trace(layer[get(skin_settings.maps_parent)].maps_state);
+		if(layer[get(skin_settings.maps_parent)].maps_state == "opend",
+			skin_maps_closemap();
+		,
+			skin_maps_openmap();
+		)
+	</action>
+	
+	<!-- 
+		打开全景,当skin_settings.map_skin==true时,为false
+	 -->
+	<action name="skin_maps_openmap">
+		trace(layer[get(skin_settings.maps_parent)].maps_state,"---------------state");
+		ifnot(skin_settings.map_skin,
+			if(layer[get(skin_settings.maps_parent)].maps_state == "closed",
+				copy(skin_settings.maps_defalue_op.width, layer[get(skin_settings.maps_parent)].pixelwidth);
+				copy(skin_settings.maps_defalue_op.height, layer[get(skin_settings.maps_parent)].pixelheight);
+				copy(skin_settings.maps_defalue_op.x, layer[get(skin_settings.maps_parent)].x);
+				copy(skin_settings.maps_defalue_op.y, layer[get(skin_settings.maps_parent)].y);
+				copy(skin_settings.maps_defalue_op.edge, layer[get(skin_settings.maps_parent)].edge);
+				copy(skin_settings.maps_defalue_op.align, layer[get(skin_settings.maps_parent)].align);
+				
+				trace(layer[get(skin_settings.maps_parent)].x);
+				trace(layer[get(skin_settings.maps_parent)].y);
+				
+				set(layer[get(skin_settings.maps_parent)].maps_state, "opend");
+				set(layer[get(skin_settings.maps_parent)].onclick, skin_maps_closemap(); ); 
+				
+				if(skin_settings.maps_open_align != "" OR skin_settings.maps_open_edge != "",
+					layer[get(skin_settings.maps_parent)].changeorigin(get(skin_settings.maps_open_align), get(skin_settings.maps_open_edge)); 
+				);
+				
+				
+				copy(width_name, skin_settings.maps_open_width);
+				set(width_name_new, stagewidth);
+				
+				copy(height_name, skin_settings.maps_open_height);
+				set(height_name_new, stageheight);
+				
+				if(skin_settings.maps_open_width != "",
+					if(width_name_new == width_name,
+						tween(layer[get(skin_settings.maps_parent)].width, get(stagewidth), get(skin_settings.maps_time), easeOutQuad, null, skin_maps_onresize();); 
+					,
+						tween(layer[get(skin_settings.maps_parent)].width, get(skin_settings.maps_open_width), get(skin_settings.maps_time), easeOutQuad, null, skin_maps_onresize();); 
+					);
+				);
+				
+				if(skin_settings.maps_open_height != "",
+					if(height_name_new == height_name,
+						tween(layer[get(skin_settings.maps_parent)].height, get(stageheight), get(skin_settings.maps_time), easeOutQuad, null, skin_maps_onresize();); 
+					,
+						tween(layer[get(skin_settings.maps_parent)].height, get(skin_settings.maps_open_height), get(skin_settings.maps_time), easeOutQuad, null, skin_maps_onresize();); 
+					);
+				);
+				
+				if(skin_settings.maps_open_x != "" OR skin_settings.maps_open_x == 0,
+					tween(layer[get(skin_settings.maps_parent)].x, get(skin_settings.maps_open_x), get(skin_settings.maps_time), easeOutQuad, null, skin_maps_onresize();); 
+				);
+				
+				if(skin_settings.maps_open_y != "" OR skin_settings.maps_open_y == 0,
+					tween(layer[get(skin_settings.maps_parent)].y, get(skin_settings.maps_open_y), get(skin_settings.maps_time), easeOutQuad, null, skin_maps_onresize();); 
+				);
+				
+				//set(contextmenu.item[my].caption, "关闭地图");
+			);
+		);
+	</action>
+
+	<!-- 
+		关闭全景,当skin_settings.map_skin==true时,为false
+	 -->
+	<action name="skin_maps_closemap">
+		trace(layer[get(skin_settings.maps_parent)].maps_state,"---------------state");
+		ifnot(skin_settings.map_skin,
+			if(layer[get(skin_settings.maps_parent)].maps_state == "opend",
+				set(layer[get(skin_settings.maps_parent)].maps_state, "closed");
+				set(layer[get(skin_settings.maps_parent)].onclick, skin_maps_openmap(); ); 
+				layer[get(skin_settings.maps_parent)].changeorigin(get(skin_settings.maps_defalue_op.align), get(skin_settings.maps_defalue_op.edge)); 
+				
+				trace(get(skin_settings.maps_defalue_op.align));
+				tween(layer[get(skin_settings.maps_parent)].width, get(skin_settings.maps_defalue_op.width), get(skin_settings.maps_time), easeOutQuad, null, skin_maps_onresize();); 
+				tween(layer[get(skin_settings.maps_parent)].height, get(skin_settings.maps_defalue_op.height), get(skin_settings.maps_time), easeOutQuad, null, skin_maps_onresize();); 
+				
+				tween(layer[get(skin_settings.maps_parent)].x, get(skin_settings.maps_defalue_op.x), get(skin_settings.maps_time), easeOutQuad, null, skin_maps_onresize();); 
+				tween(layer[get(skin_settings.maps_parent)].y, get(skin_settings.maps_defalue_op.y), get(skin_settings.maps_time), easeOutQuad, null, skin_maps_onresize();); 
+				
+				//set(contextmenu.item[my].caption, "开启地图");
+			);
+		);
+	</action>
+</krpano>

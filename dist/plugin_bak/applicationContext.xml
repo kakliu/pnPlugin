@@ -1,0 +1,5 @@
+<krpano>
+	<skin_settings plugin_types='plugin_base, plugin_product, plugin_hotspot, plugin_navigation'/>
+
+	<plugin name='skin_applocation_context' keep='true' url="/krpano/applicationContext.js"/>
+</krpano>

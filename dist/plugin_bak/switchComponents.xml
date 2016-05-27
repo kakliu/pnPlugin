@@ -1,0 +1,147 @@
+<krpano>
+	<events name="skin_switch_events" keep="true"
+			onnewpano="trace(组件开关初始化);trace(hotspot,skin_settings.switch_hotspot);trace(组件判断是否启动);if(skin_settings.isEdit == false,
+						 trace(重力感应开关);if(skin_settings.switch_gyro == on,gyro_onstart(););
+						 trace(评论开关);if(skin_settings.switch_comment == off,comment_onstart(););
+						 trace(热点开关,skin_settings.switch_hotspot);if(skin_settings.switch_hotspot == off,trace(隐藏热点);hotspot_onstart(false););
+						);"/>
+	<plugin name="skin_gyro" keep="true" url="" html5_url="%SWFPATH%/plugins/gyro.js" devices="html5" 
+	enabled="false" camroll="true" friction="0" velastic="0" 
+	onavailable="if(device.fullscreensupport, if(device.mobile,add(layer[skin_btn_gyro].x,40),add(layer[skin_btn_gyro].x,20));); set(layer[skin_btn_gyro].visible,true);" />
+	
+	<action name="switch_gyro">
+		if(%1 == 1,
+			set(skin_settings.switch_gyro,on);
+			set(plugin[skin_gyro].enabled,true);
+			,
+			set(skin_settings.switch_gyro,off);
+			set(plugin[skin_gyro].enabled,false);
+		);
+	</action>
+	
+	<action name="switch_music">
+		if(%1 == 1 AND skin_settings.music_url,
+			playsound(bgsnd, get(skin_settings.music_url), 0);
+			set(skin_settings.switch_music,on);
+		,
+			set(skin_settings.switch_music,off);
+			stopsound(bgsnd);
+		);
+	</action>
+	
+	<action name="switch_starview">
+		if(%1 == 1,
+			copy(normalv,view.vlookat);
+			copy(normalh,view.hlookat);
+			copy(normalf,view.fov);
+			set(skin_settings.switch_starview,on);
+			skin_view_littleplanet();
+			,
+			set(skin_settings.switch_starview,off);
+			nomalview_onstart(get(normalh),get(normalv),get(normalf));
+		);
+	</action>
+	
+	<action name="switch_spin">
+		if(%1 == 1,
+			set(skin_settings.switch_spin,on);
+			set(autorotate[spin].enabled,true);
+		,
+			set(skin_settings.switch_spin,off);
+			set(autorotate[spin].enabled,false);
+		);
+	</action>
+
+	<action name="switch_hotspot">
+		trace(关开热点);
+		if(%1 == 0,
+			set(skin_settings.switch_hotspot,off);
+			hotspot_onstart(false);
+			,
+			set(skin_settings.switch_hotspot,on);
+			hotspot_onstart(true);
+		);
+	</action>
+	
+	<action name="switch_comment">
+		trace(评论开关);
+		if(%1 == 0,
+			trace(%1);
+			set(skin_settings.switch_comment,off);
+			comment_onstart(false);
+			,
+			set(skin_settings.switch_comment,on);
+			comment_onstart(true);
+		);
+	</action>
+	
+	<action name="hotspot_onstart">
+		for(set(i,0), i LT hotspot.count, inc(i),
+			trace(hotspot[get(i)].hotspot_type);
+			if(hotspot[get(i)].hotspot_type == link_roam OR hotspot[get(i)].hotspot_type == link_scene OR hotspot[get(i)].hotspot_type == spot,
+				set(hotspot[get(i)].visible,%1);
+			);
+  		);
+	</action>
+	
+	<action name="comment_onstart">
+		for(set(i,0), i LT hotspot.count, inc(i), 
+			if(hotspot[get(i)].hotspot_type == hotspot_comment,
+				set(hotspot[get(i)].visible,%1);
+			);
+  		);
+	</action>
+	
+	<action name="gyro_onstart">
+		copy(usegyro, skin_settings.switch_gyro);
+		if(device.desktop, set(usegyro, false));
+		if(device.flash, set(usegyro, false));
+		if(usegyro, copy(plugin[skin_gyro].url, plugin[skin_gyro].html5_url); );
+	</action>
+	
+	<action name="starview_onstart">
+		if(skin_settings.hasonestar != true,
+			
+			set(view.stereographic,true);
+			set(view.fisheye,1.0);
+			set(view.fov,155);
+			set(view.fovmax,150);
+			set(view.hlookat,-60);
+			set(view.vlookat,77);
+			set(view.limitview,auto);
+		);
+	</action>
+	
+	<action name="nomalview_onstart">
+		tween(view.hlookat,%1,2.5,easeInOutQuad);
+		tween(view.vlookat,%2,2.5,easeInOutQuad);
+		tween(view.fov,%3,2.5,easeInOutQuad);
+		tween(view.fisheye,0.0,2.5,easeInOutQuad);
+		wait(2.7);
+		set(display.flash10,on);
+		set(view.fovmax,%4);
+	</action>
+	
+	<action name="spin_onstart">
+		set(autorotate[spin].enabled,true);
+	</action>
+	
+	<plugin name="soundinterface"
+	        url="%SWFPATH%/plugins/soundinterface.swf"
+	        alturl="%SWFPATH%/plugins/soundinterface.js"
+	        rootpath=""
+	        preload="true"
+	        keep="true"
+	        />
+
+
+	
+	<action name="skin_music_url">
+		set(skin_settings.music_url,%1);
+		playsound(bgsnd, get(skin_settings.music_url), 1000);
+	</action>
+	
+	<autorotate name="spin" enabled="false" waittime="5.0" accel="1.0" speed="1.0"
+		horizon="0.0" tofov="off" />
+
+</krpano>

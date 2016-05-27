@@ -1,0 +1,45 @@
+<krpano> 
+	
+	<plugin name="shin_common_plugin" keep="true" visible="true" enabled="false" plugintype="plugin_hotspot" icon="/v2.0/images/icon.png" pluginname="组件开关"/>
+	
+	<skin_settings comment="true"
+				   comment_hotspotcount="0" 
+				   comment_add_label_style="skin_comment_add_label_default"
+				   comment_done_label_style="skin_comment_done_label_default"
+				   comment_add="true"
+				   comment_move="true"
+				   comment_default_plugin='/krpano/pluginComment.js'
+				   comment_plugin='/p/hotspot/comment/comment.js'
+				   comment_default_hint='拖动到想要打标签的地方'
+	/>
+	 
+	<events name="skin_comment_events" keep="true" onxmlcomplete="set(events[skin_comment_events].onxmlcomplete, null);skin_common_onstart();" />
+	
+	<style name="skin_comment_add_label_default" keep="true" url="/krpano/skin/img/background.png" is_save="false" enabled="true" zorder="101" is_move="true" ondown="set(presse, true); if(is_move OR skin_settings.comment_move, skin_hotspot_ondown_handler(true);); " onup="set(presse, false);"/>
+	
+	<style name="skin_comment_done_label_default" is_move="false"/>
+	
+	<action name="skin_common_onstart">
+		<!-- copy(plugin[shin_common_plugin].url, skin_settings.comment_default_plugin); -->
+		copy(plugin[shin_common_plugin].js, skin_settings.comment_plugin);
+		set(plugin[shin_common_plugin].enabled, true);
+		trace(123213213213213);
+	</action>
+	
+	<action name="skin_hotspot_move_off">
+		if(hotspot[%1].is_move==true,
+			set(hotspot[%1].is_move, false);
+		,	
+			set(hotspot[%1].is_move, true);
+		);
+	</action>
+	
+	<action name="skin_comment_all_move_off">
+		if(skin_settings.comment_move==true,
+			set(skin_settings.comment_move, false);
+		,	
+			set(skin_settings.comment_move, true);
+		);
+	</action>
+	
+</krpano>
