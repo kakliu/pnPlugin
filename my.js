@@ -1,4 +1,5 @@
 (function(win){
+    var krpano = YP.krpano;
 
     YP.extend.snow = function() {
         var _this = this;
@@ -12,6 +13,13 @@
             }
         }
     }
+
+    function addLayer() {
+
+
+
+    }
+
     $(function(){
         setTimeout(function(){
             console.log($("#ypView"));
@@ -20,6 +28,8 @@
             $("h1").on("click",function(){
                 console.log("--++--")
             })
+
+            console.log(krpano);
 
         },1000)
 
