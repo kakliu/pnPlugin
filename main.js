@@ -7,6 +7,7 @@
     yp.callback = function (funs) {
         return function (name, params) {
             funs.krpano = this.krpano;
+            funs.yp = this;
 
             if (name && funs[name]) {
                 funs[name].krpano = this.krpano;
@@ -114,9 +115,7 @@
         target: "pano" + new Date().getTime(),
         vars: {
             "plugin[yt_pano].url": "/plugin.js",
-            "plugin[yt_pano].keep": "true",
-            "plugin[yt_pano].width": "100%",
-            "plugin[yt_pano].height": "100%"
+            "plugin[yt_pano].keep": "true"
         },
         swf: "/viewer/krpano.swf",
         xml: undefined,

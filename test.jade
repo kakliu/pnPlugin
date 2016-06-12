@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+html(lang="en")
+head
+    meta(charset="UTF-8")
+    title Document
+    link(rel="stylesheet", href="viewer/view.scss")
+    script(src="jquery.js")
+    script(src="require.js")
+    script(src="main.js")
+    script(src="avalon.js")
+    script(src="input.js")
+
+body(ms-controller="abc")
+    h1 this is a
+    div poremdfasf sdf pore10
+    ul(ms-repeat="m")
+        li {{el.name}} - {{el.id}}
+            input(ms-duplex-h="h" ms-data-value="$index" type="checkbox" ms-duplex-changed="checka")
+

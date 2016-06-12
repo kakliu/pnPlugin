@@ -1,12 +1,108 @@
-<krpano>
+<krpano onstart="startup()">
 
     <!-- grid preview pano -->
     <include url="snow.xml" />
     <preview type="grid(cube,64,64,512,0xeeeeee,0xffffff,0xff0000);" />
     <skin_settings plugin_types="plugin_base, plugin_product, plugin_hotspot, plugin_navigation" />
 
-
     <view hlookat="0" vlookat="0" fovtype="VFOV" fov="90" fovmin="30" fovmax="150" />
+    <layer name="map" align="topleft" url="g1.jpg" alpha="1" x="100" y="100" zorder="1" keep="true" ondown="draglayer()"   />
+
+
+
+    <style name="mapspot" parent="layer[map]" url="w.png" keep="true" zorder="2" align="topleft" edge="center" width="50" height="50" />
+    <layer name="s1" parent="layer[map]" alpha=".5"  align="topleft" edge="center" style="mapspot" x="0" y="0"  />
+    <!-- <layer name="s2" parent="map" style="mapspot" x="200" y="200"  /> -->
+
+    <action name="draglayer">
+        if(%1 != dragging,
+            trace(------);
+            copy(drag_currentx, x);
+            copy(drag_currenty, y);
+            copy(drag_stagex, mouse.stagex);
+            copy(drag_stagey, mouse.stagey);
+            set(drag_sx, +1);
+            set(drag_sy, +1);
+            if(align == righttop,    set(drag_sx,-1); );
+            if(align == right,       set(drag_sx,-1); );
+            if(align == rightbottom, set(drag_sx,-1); set(drag_sy,-1); );
+            if(align == bottom,      set(drag_sy,-1); );
+            if(align == leftbottom,  set(drag_sy,-1); );
+            draglayer(dragging);
+          ,
+            if(pressed,
+                sub(dx, mouse.stagex, drag_stagex);
+                sub(dy, mouse.stagey, drag_stagey);
+                mul(dx, drag_sx);
+                mul(dy, drag_sy);
+                add(x, drag_currentx, dx);
+                add(y, drag_currenty, dy);
+                delayedcall(0, draglayer(dragging) );
+              );
+          );
+    </action>
+
+    <action name="updata">
+        trace(up--------,get(drag_currentx),---,get(drag_currenty));
+        trace(up--------,get(drag_stagex),---,get(drag_stagey));
+        trace(up--------,get(x),---,get(y));
+        js("updata()");
+    </action>
+
+    <layer name="radar" keep="true"
+           url.flash="%SWFPATH%/plugins/radar.swf"
+           url.html5="%SWFPATH%/plugins/radar.js"
+           align="center" zorder="1"
+           width="150"
+           height="150"
+           edge="center"
+           fillalpha="0.5" fillcolor="0x7F5F3F"
+           linewidth="1.0" linecolor="0xE0E0A0" linealpha="0.5"
+           />
+    <layer name="activespot" url="html.png" keep="true"
+           align="lefttop" zorder="2" scale.mobile="2" width="50" height="50"
+           />
+
+
+        <spot name="spot1" lat="41.898761" lng="12.473094" heading="0" active="true" />
+
+
+    <events name="skin_map_events" keep="true"
+        onnewscene="skin_maps_load_scene();"
+        onxmlcomplete="set(events[skin_map_events].onxmlcomplete,null);
+                        trace(onxmlcomplete);"
+        onloadcomplete="set(events[skin_map_events].onloadcomplete,null);
+                        trace(onloadcomplete);"
+        onresize="set(events[skin_map_events].onresize,null);
+                    trace(onresize);"/>
+
+
+    <action name="startup">
+        showlog(true);
+        trace("add");
+        adds(100,200);
+
+    </action>
+
+    <action name="adds">
+        mul(val, random, 10000000000);
+        Math.ceil(value, get(val));
+        txtadd(pname, 's_', get(value));
+        trace(get(pname));
+        addlayer(get(pname));
+        trace(%1,"------",%2);
+        set(layer[get(pname)].x, %1);
+        set(layer[get(pname)].y, %2);
+        layer[get(pname)].loadstyle(mapspot);
+        set(layer[s1].ondown, draglayer());
+        set(layer[s1].onup, updata());
+
+
+        set(layer[activespot].parent, get(pname));
+        set(layer[radar].parent, get(pname));
+        set(layer[radar].heading, -90);
+
+    </action>
 
 
 </krpano>
