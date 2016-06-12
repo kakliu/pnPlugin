@@ -1,7 +1,7 @@
 (function(win){
     var krpano;
     var a = "this a";
-
+    var krpano = YP.krpano;
 
     function Edit(a,b) {
         this.a = a;
@@ -45,6 +45,17 @@
         return {a:"a",b:"b"}
     }
 
+    function addLayer() {
+
+
+
+    }
+
+    $(function(){
+        setTimeout(function(){
+            console.log($("#ypView"));
+            $("#ypView").append("<h1>this is title</h1>");
+
     var funs = {}
 
     funs.edit = function(){
@@ -78,8 +89,6 @@
 
 
     }
-
-    YP.extend.snow = YP.callback(funs)
 
 
 

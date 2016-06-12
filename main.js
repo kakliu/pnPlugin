@@ -1,17 +1,29 @@
 (function (window, undefined) {
+    window.codePath = "";
+
     var yp = function (option) {
         this.init();
         this.createPano(option);
     };
+
     yp.extend = yp.prototype;
+
     yp.callback = function (funs) {
-        return function (name, params) {
+
+        return function () {
             funs.krpano = this.krpano;
+<<<<<<< HEAD
             funs.yp = this;
+=======
+            funs.option = this.option;
+            funs.yp = this;
+            var name = arguments[0];
+            var slice = [].slice;
+            var args = slice.call(arguments, 1);
+>>>>>>> 39a4dc85c4fa4a28a4626c17d0b354737596eb6a
 
             if (name && funs[name]) {
-                funs[name].krpano = this.krpano;
-                return funs[name].apply(funs[name], params);
+                return funs[name].apply(funs, args);
             } else if (name) {
                 logger.error("未找到方法:" + name);
             }
@@ -54,10 +66,10 @@
                 return false;
             }
         }
-
-        // addScript("/common/logger.js");
-        loadJS("jquery","jquery.js")
-        loadJS("myJS","/viewer/krpano.js")
+        loadJS("embedpano", codePath + "/krpano/embedpano.js");
+        loadJS("template", codePath + "/common/template.js");
+        loadJS("logger", codePath + "/common/logger.js");
+        loadJS("moveObj", codePath + "/common/move.js");
     };
 
     //创建全景
@@ -68,7 +80,7 @@
         if (this.option.xml) {
 
         } else if (this.option.panoId) {
-            this.option.xml = this.option.path + "/getXml?id=" + this.option.panoId + "&" + Date.parse(new Date());
+            this.option.xml = this.option.path + "/getXml2?id=" + this.option.panoId + "&" + Date.parse(new Date());
         } else {
             logger.error("创建失败,无可用xml");
             return;
@@ -92,20 +104,22 @@
             if (typeof self.option.onready === "function") {
                 self.option.onready();
             }
+
+            // self.maps("init");
         };
 
-
-        this.element = $("#" + kOption.target);
-
-        //防止无改div
-        if (!this.element[0]) {
-            this.element = $("<div/>").appendTo("body").attr("id", kOption.target);
-        }
-
-        this.element.css({width: this.option.width, height: this.option.height});
-        $("body, html").css({width: this.option.width, height: this.option.height, margin: 0, padding: 0});
-
-        embedpano(kOption);
+        $(function(){
+            self.element = $("#" + kOption.target);
+            //防止无改div
+            if (!self.element[0]) {
+                self.element = $("<div/>").appendTo("body").attr("id", kOption.target);
+            }
+            self.element.css({width: self.option.width, height: self.option.height});
+            $("body, html").css({width: self.option.width, height: self.option.height});
+            $("body").append("<div id='elementView'></div><i class='closeElementView'></i>");
+            logger.info(kOption);
+            embedpano(kOption);
+        })
     };
 
     yp.DEFAULT_OPTION = {
@@ -117,9 +131,9 @@
             "plugin[yt_pano].url": "/plugin.js",
             "plugin[yt_pano].keep": "true"
         },
-        swf: "/viewer/krpano.swf",
+        swf: codePath + "/krpano/krpano.swf",
         xml: undefined,
-        initvars: {},
+        initvars: {STATIC:"/static/"},
         onready: undefined,
         onerror: undefined,
         path: "http://pano.panocooker.com",
@@ -135,5 +149,8 @@
         }
     };
 
+    yp.error = function(msg){
+        alert(msg);
+    };
     window.YP = yp;
 })(window);

@@ -132,6 +132,18 @@
     }
 
     /**
+     * 删除评论
+     *
+     * 		name: 需要删除的名称,默认为删除当前为保存的评论热点
+     *
+     */
+    function removeHotspot(name){
+        if(name) {
+            krpano.removehotspot(name);
+        }
+    }
+
+    /**
      *    获取参数集合中的最终数据
      *
      *  当数据为function时执行function，根据返回值判断
